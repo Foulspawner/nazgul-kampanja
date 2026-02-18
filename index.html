@@ -178,15 +178,22 @@
         let logs = [];
 
         // --- INIT ---
+        // --- INIT ---
         window.onload = function() {
             // Yritetään ladata kuva automaattisesti 'kartta.jpg'
             const img = document.getElementById('game-map');
             
-            // Jos kuva latautuu OK
-            img.onload = function() {
-                console.log("Kartta ladattu automaattisesti.");
+            // TÄMÄ ON KORJAUS: Tarkistetaan, onko kuva jo latautunut
+            if (img.complete && img.naturalHeight !== 0) {
+                console.log("Kuva oli jo valmis!");
                 startMap(img);
-            };
+            } else {
+                // Jos ei, odotetaan latautumista
+                img.onload = function() {
+                    console.log("Kuva latautui nyt.");
+                    startMap(img);
+                };
+            }
 
             // Firebase kuuntelu
             setTimeout(() => {
@@ -201,6 +208,29 @@
                                 renderLog();
                             }
                             updateUI();
+                            renderOverlays();
+                        }
+                    });
+                }
+            }, 500);
+
+            // Drag & Drop eventit
+            let overlay = document.getElementById('start-overlay');
+            overlay.addEventListener('dragover', e => e.preventDefault());
+            overlay.addEventListener('drop', e => {
+                e.preventDefault();
+                if(e.dataTransfer.files[0]) loadMapFromFile(e.dataTransfer.files[0]);
+            });
+
+            // Karttanavigointi
+            let vp = document.getElementById('viewport');
+            vp.addEventListener('mousedown', onMouseDown);
+            window.addEventListener('mousemove', onMouseMove);
+            window.addEventListener('mouseup', onMouseUp);
+            vp.addEventListener('wheel', onWheel, {passive: false});
+
+            updateUI();
+        };
                             renderOverlays();
                         }
                     });
@@ -373,3 +403,4 @@
             if(tool === 'move') { isDragging = true; }
             else if(tool === 'fort') {
                 let c
+

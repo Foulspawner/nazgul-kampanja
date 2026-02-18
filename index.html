@@ -2,142 +2,106 @@
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
-    <title>Middle-earth Manager v5.2 (High Res & Pan)</title>
+    <title>Middle-earth Manager v6.0 (Live)</title>
+    
+    <script type="module">
+        // Tuodaan tarvittavat Firebase-kirjastot (käytämme CDN-versioita, jotta tämä toimii ilman asennuksia)
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, set, onValue, push } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+        // SINUN KONFIGURAATIOSI (Liitetty automaattisesti)
+        const firebaseConfig = {
+          apiKey: "AIzaSyAcegclb9zUf2Yk1zi0qjNPvuI43uMsr-M",
+          authDomain: "nazgul-campaign.firebaseapp.com",
+          databaseURL: "https://nazgul-campaign-default-rtdb.europe-west1.firebasedatabase.app",
+          projectId: "nazgul-campaign",
+          storageBucket: "nazgul-campaign.firebasestorage.app",
+          messagingSenderId: "931612776136",
+          appId: "1:931612776136:web:091524d064d792e9bc77fd",
+          measurementId: "G-7417E5KS9W"
+        };
+
+        // Alustetaan Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // Tehdään tietokantatyökaluista globaaleja, jotta muu koodi näkee ne
+        window.db = db;
+        window.dbRef = ref;
+        window.dbSet = set;
+        window.dbOnValue = onValue;
+        window.dbPush = push;
+        
+        console.log("Firebase yhdistetty onnistuneesti!");
+    </script>
+
     <style>
-        body {
-            background-color: #202020;
-            color: #d4af37;
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-        }
+        body { background-color: #202020; color: #d4af37; font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; height: 100vh; overflow: hidden; }
+        
+        /* Kartta-alue */
+        #viewport { flex: 3; position: relative; background: #111; overflow: hidden; cursor: grab; display: flex; align-items: center; justify-content: center; }
+        #viewport:active { cursor: grabbing; }
 
-        /* --- LAYOUT --- */
-        #viewport {
-            flex: 3;
-            position: relative;
-            background: #101010; /* Tumma tausta */
-            overflow: hidden; /* Piilotetaan ylimenevä osa, jotta zoom toimii */
-            cursor: grab; /* Oletuskursori: käsi */
-        }
-        #viewport:active { cursor: grabbing; } /* Kun painetaan: puristava käsi */
-
-        #sidebar {
-            flex: 1;
-            min-width: 350px;
-            background: #1a1a1a;
-            border-left: 2px solid #444;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: -10px 0 20px rgba(0,0,0,0.5);
-            z-index: 200;
-        }
-
-        /* --- START SCREEN --- */
-        #start-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95);
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-        .drop-box {
-            border: 4px dashed #d4af37;
-            padding: 40px;
-            border-radius: 20px;
-            background: #222;
-        }
-
-        /* --- MAP CONTAINER --- */
-        /* Tämä on se elementti jota liikutellaan ja zoomataan */
-        #world {
-            position: absolute;
-            top: 0; left: 0;
-            transform-origin: 0 0; /* Zoomataan vasemmasta yläkulmasta (lasketaan JS:llä) */
-            display: none; /* Piilossa kunnes ladattu */
-        }
-
-        /* KUVA: Tärkeä muutos - ei max-width rajoituksia! */
-        #game-map {
-            display: block;
-            pointer-events: none; /* Hiiri menee läpi jotta container nappaa raahauksen */
-        }
-
-        /* LAYERS */
-        #svg-layer, #marker-layer {
-            position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
-        }
-        #svg-layer { z-index: 1; }
+        /* Sivupaneeli */
+        #sidebar { flex: 1; min-width: 380px; background: #1a1a1a; border-left: 2px solid #444; padding: 20px; display: flex; flex-direction: column; z-index: 200; box-shadow: -10px 0 20px rgba(0,0,0,0.5); }
+        
+        /* Karttaelementit */
+        #world { position: absolute; transform-origin: 0 0; display: none; }
+        #game-map { display: block; pointer-events: none; user-select: none; }
+        #svg-layer, #marker-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+        #svg-layer { z-index: 1; } 
         #marker-layer { z-index: 2; }
 
-        /* MARKERS & TEXT */
-        .marker {
-            position: absolute;
-            transform: translate(-50%, -100%); /* Pinnin kärki */
-            display: flex; flex-direction: column; align-items: center;
-            cursor: pointer; pointer-events: auto; z-index: 100;
-        }
-        .pin {
-            width: 14px; height: 14px; border-radius: 50%;
-            border: 2px solid #fff; box-shadow: 0 0 5px #000;
-        }
-        .label {
-            background: rgba(0,0,0,0.8); color: #fff;
-            padding: 2px 6px; border-radius: 4px;
-            font-size: 12px; margin-top: 2px; white-space: nowrap;
-        }
-        .region-text {
-            position: absolute; transform: translate(-50%, -50%);
-            font-family: serif; font-weight: bold; font-size: 24px;
-            text-shadow: 0 0 5px #000; pointer-events: none;
-            z-index: 50; text-align: center; white-space: nowrap;
-        }
+        /* Markerit */
+        .marker { position: absolute; transform: translate(-50%, -100%); display: flex; flex-direction: column; align-items: center; cursor: pointer; pointer-events: auto; z-index: 100; }
+        .pin { width: 14px; height: 14px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 5px #000; }
+        .label { background: rgba(0,0,0,0.8); color: #fff; padding: 2px 6px; border-radius: 4px; font-size: 12px; margin-top: 2px; white-space: nowrap; }
+        .region-text { position: absolute; transform: translate(-50%, -50%); font-family: serif; font-weight: bold; font-size: 24px; text-shadow: 0 0 5px #000; pointer-events: none; z-index: 50; text-align: center; white-space: nowrap; }
 
-        /* --- CONTROLS --- */
+        /* Käyttöliittymä */
         .controls { display: flex; gap: 5px; margin-bottom: 10px; }
-        button, select, input {
-            background: #333; color: #fff; border: 1px solid #555;
-            padding: 10px; width: 100%; cursor: pointer;
-        }
+        button, select, input { background: #333; color: #fff; border: 1px solid #555; padding: 10px; width: 100%; cursor: pointer; }
+        button:hover { background: #444; }
         .active-tool { background: #d4af37; color: #000; font-weight: bold; }
         
-        /* Floating buttons */
-        #map-tools {
-            position: absolute; bottom: 20px; left: 20px;
-            display: none; gap: 10px; z-index: 1000;
-        }
+        #log { background: #000; border: 1px solid #333; flex-grow: 1; padding: 10px; overflow-y: auto; font-family: monospace; font-size: 0.85em; color: #ccc; margin-bottom: 10px; }
+        
+        /* Overlayt (Aloitus & Asetukset) */
+        #start-overlay, #settings-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .box { border: 2px solid #d4af37; padding: 40px; border-radius: 10px; background: #222; text-align: center; max-width: 400px; }
+        
+        /* Kelluvat työkalut */
+        #map-tools, #draw-tools { position: absolute; z-index: 1000; display: none; gap: 10px; }
+        #map-tools { bottom: 20px; left: 20px; }
+        #draw-tools { top: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.9); padding: 10px; border: 1px solid #d4af37; }
         .float-btn { width: auto; padding: 5px 15px; background: rgba(0,0,0,0.8); border: 1px solid #888; }
-
-        #draw-tools {
-            position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
-            background: rgba(0,0,0,0.9); padding: 10px; border: 1px solid #d4af37;
-            display: none; z-index: 1000;
-        }
-
-        #log {
-            background: #000; border: 1px solid #333;
-            flex-grow: 1; padding: 10px; overflow-y: auto;
-            font-family: monospace; font-size: 0.85em; color: #ccc;
-        }
+        
+        /* AI Viestit */
+        .ai-msg { color: #88ccff; font-style: italic; border-left: 2px solid #88ccff; padding-left: 10px; margin: 5px 0; background: #112233; padding: 5px; }
     </style>
 </head>
 <body>
 
     <div id="viewport">
         <div id="start-overlay">
-            <div class="drop-box" id="drop-zone">
-                <h1>KESKIMAA</h1>
-                <p>Raahaa karttatiedosto tähän.</p>
+            <div class="box">
+                <h1>KESKIMAA ONLINE</h1>
+                <p>1. Raahaa karttakuvatiedosto (kartta.jpg) tähän.</p>
                 <input type="file" id="fileInput" accept="image/*" onchange="handleInput(this)">
+                <hr style="border-color:#444; margin: 20px 0;">
+                <p style="font-size:0.8em; color:#888;">Tai odota pilvisynkronointia...</p>
+                <button onclick="openSettings()" style="margin-top:10px;">⚙️ Asetukset (Gemini API Key)</button>
+            </div>
+        </div>
+
+        <div id="settings-overlay" style="display:none;">
+            <div class="box">
+                <h2>Asetukset</h2>
+                <p>Syötä Gemini API Key (AI-kuvauksia varten):</p>
+                <input type="password" id="apiKeyInput" placeholder="Liitä avain tähän...">
+                <div style="font-size:0.8em; color:#888; margin-bottom:10px;">Avain tallentuu vain selaimeesi.</div>
+                <button onclick="saveSettings()" style="background:#28a745;">Tallenna & Sulje</button>
+                <button onclick="closeSettings()" style="background:#442222; margin-top:5px;">Peruuta</button>
             </div>
         </div>
 
@@ -148,13 +112,13 @@
         </div>
 
         <div id="draw-tools">
-            <span style="color:#fff; margin-right:10px;">Piirretään...</span>
+            <span style="color:#fff; margin-right:10px;">Piirretään aluetta...</span>
             <button onclick="finishPoly()" style="width:auto; background:#28a745;">✔ Valmis</button>
             <button onclick="cancelPoly()" style="width:auto; background:#dc3545;">❌ Peruuta</button>
         </div>
 
         <div id="world">
-            <img id="game-map" alt="Map">
+            <img id="game-map" alt="">
             <svg id="svg-layer"></svg>
             <div id="marker-layer"></div>
         </div>
@@ -163,6 +127,7 @@
     <div id="sidebar">
         <h2 style="color:#ff4500; text-align:center;">NAZGÛL COMMAND</h2>
         
+        <label>Valitse Hahmo:</label>
         <select id="nazgulSelect" onchange="updateUI()">
             <option value="0">Ren the Unclean</option>
             <option value="1">Murazor (Witch-King)</option>
@@ -181,27 +146,28 @@
         </div>
 
         <div class="controls">
-            <input type="number" id="dice" placeholder="Nopat">
-            <input type="number" id="ob" placeholder="Ob">
+            <input type="number" id="dice" placeholder="Nopat" value="3">
+            <input type="number" id="ob" placeholder="Ob" value="3">
         </div>
         <div class="controls">
-            <button onclick="action('Rakenna', 'wealth')">Rakenna</button>
-            <button onclick="action('Sota', 'might')">Sota</button>
+            <button onclick="performAction('Rakenna', 'wealth')">🛠️ Rakenna</button>
+            <button onclick="performAction('Sota', 'might')">⚔️ Sota</button>
         </div>
         <div class="controls">
-            <button onclick="action('Uskonto', 'religion')">Uskonto</button>
-            <button onclick="action('Hallinto', 'loyalty')">Hallinto</button>
+            <button onclick="performAction('Uskonto', 'religion')">👁️ Uskonto</button>
+            <button onclick="performAction('Hallinto', 'loyalty')">⚖️ Hallinto</button>
         </div>
 
+        <h3>Kronikka</h3>
         <div id="log"></div>
-        <div style="margin-top:10px; display:flex; gap:5px;">
-            <button onclick="saveGame()" style="background:#224422;">Tallenna</button>
-            <button onclick="resetGame()" style="background:#442222;">Nollaa</button>
+        <div style="display:flex; gap:5px;">
+            <button onclick="clearLog()" style="background:#442222; font-size:0.8em;">Tyhjennä historia</button>
+            <button onclick="openSettings()" style="background:#333; font-size:0.8em;">⚙️ API Key</button>
         </div>
     </div>
 
     <script>
-        // --- DATA ---
+        // --- DATA & STATE ---
         let nazguls = [
             { name: "Ren", wealth: 4, religion: 6, loyalty: 2, might: 5, corruption: 3, color: "#ff4444", markers: [], territories: [] },
             { name: "Murazor", wealth: 2, religion: 8, loyalty: 5, might: 3, corruption: 2, color: "#aa44ff", markers: [], territories: [] },
@@ -210,21 +176,40 @@
             { name: "Akhorahil", wealth: 7, religion: 2, loyalty: 3, might: 2, corruption: 1, color: "#ffd700", markers: [], territories: [] }
         ];
 
-        // --- GLOBAL STATE ---
-        // x, y = sijainti pikseleinä. scale = zoom taso (1 = 100%).
         let view = { x: 0, y: 0, scale: 1 };
-        let isDragging = false;
         let tool = 'move';
+        let isDragging = false;
         let draw = { active: false, points: [] };
         let currentNaz = 0;
+        let geminiKey = localStorage.getItem('geminiKey') || "";
+        let logs = [];
 
         // --- INIT ---
         window.onload = function() {
-            let saved = localStorage.getItem('nazgul_v52');
-            if(saved) { try { nazguls = JSON.parse(saved); } catch(e){} }
-            updateUI();
+            // 1. Yritä ladata kartta automaattisesti jos se on jo selaimen muistissa (cache)
+            // Huom: Tämä vaatii silti usein manuaalisen valinnan, mutta valmistellaan pohja
+            
+            // 2. Yhdistä Firebaseen ja kuuntele muutoksia
+            setTimeout(() => {
+                if(window.db) {
+                    const dbRef = window.dbRef(window.db, 'gameState');
+                    window.dbOnValue(dbRef, (snapshot) => {
+                        const data = snapshot.val();
+                        if(data) {
+                            if(data.nazguls) nazguls = data.nazguls;
+                            if(data.logs) {
+                                // Firebase palauttaa objektin avaimilla, muutetaan listaksi ja käännetään järjestys
+                                logs = Object.values(data.logs).reverse(); 
+                                renderLog();
+                            }
+                            updateUI();
+                            renderOverlays(); // Piirrä uudet linnoitukset jos niitä tuli
+                        }
+                    });
+                }
+            }, 500);
 
-            // Drag & Drop
+            // 3. Event Listenerit
             let overlay = document.getElementById('start-overlay');
             overlay.addEventListener('dragover', e => e.preventDefault());
             overlay.addEventListener('drop', e => {
@@ -232,99 +217,187 @@
                 if(e.dataTransfer.files[0]) loadMap(e.dataTransfer.files[0]);
             });
 
-            // Hiiritapahtumat (Viewport)
             let vp = document.getElementById('viewport');
             vp.addEventListener('mousedown', onMouseDown);
             window.addEventListener('mousemove', onMouseMove);
             window.addEventListener('mouseup', onMouseUp);
             vp.addEventListener('wheel', onWheel, {passive: false});
+
+            updateUI();
         };
 
-        function handleInput(el) { if(el.files[0]) loadMap(el.files[0]); }
+        // --- FIREBASE SYNC FUNCTIONS ---
+        function uploadState() {
+            // Lähetä pelitilanne pilveen
+            if(window.db) {
+                window.dbSet(window.dbRef(window.db, 'gameState/nazguls'), nazguls);
+            }
+        }
 
+        function pushLog(entryHtml) {
+            // Lisää paikalliseen listaan heti (visuaalinen vaste)
+            logs.unshift(entryHtml);
+            renderLog();
+            
+            // Lähetä pilveen (uusi merkintä listan jatkoksi)
+            if(window.db) {
+                window.dbPush(window.dbRef(window.db, 'gameState/logs'), entryHtml);
+            }
+        }
+
+        function clearLog() {
+            if(confirm("Haluatko varmasti poistaa koko historian pilvestä?")) {
+                logs = [];
+                renderLog();
+                if(window.db) window.dbSet(window.dbRef(window.db, 'gameState/logs'), null);
+            }
+        }
+
+        // --- AI (GEMINI) ---
+        async function callAI(prompt) {
+            if(!geminiKey) return null;
+            
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiKey}`;
+            const data = { contents: [{ parts: [{ text: prompt }] }] };
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(data)
+                });
+                const json = await response.json();
+                if(json.error) {
+                    console.error(json.error);
+                    return "AI Error: " + json.error.message;
+                }
+                return json.candidates[0].content.parts[0].text;
+            } catch (error) {
+                console.error("Fetch error:", error);
+                return null;
+            }
+        }
+
+        // --- ACTIONS ---
+        async function performAction(actionName, stat) {
+            let d = parseInt(document.getElementById('dice').value) || 0;
+            let ob = parseInt(document.getElementById('ob').value) || 0;
+            if(d===0 || ob===0) { alert("Aseta nopat ja Ob!"); return; }
+
+            // Heitä nopat
+            let succ = 0; let rolls = [];
+            for(let i=0; i<d; i++) {
+                let r = Math.floor(Math.random()*6)+1;
+                rolls.push(r); if(r>=4) succ++;
+            }
+            rolls.sort((a,b)=>b-a);
+            let margin = succ - ob;
+            let n = nazguls[currentNaz];
+            let resultText = margin >= 0 ? "ONNISTUI" : "EPÄONNISTUI";
+            let color = margin >= 0 ? "#4f4" : "#f44";
+
+            // Päivitä Statsit
+            if(margin >= 0 && n[stat] < 10) n[stat]++;
+            
+            // 1. Tallenna mekaniikka logiin
+            let timestamp = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+            let logHtml = `<div><span style="color:#666">[${timestamp}]</span> <b style="color:${n.color}">${n.name}</b>: ${actionName} (Ob ${ob})<br>🎲 [${rolls.join(", ")}] <span style="color:${color}">${resultText}</span></div>`;
+            pushLog(logHtml);
+            
+            // 2. Synkkaa statsit pilveen
+            uploadState();
+
+            // 3. Pyydä AI kuvaus
+            if(geminiKey) {
+                let loadingId = "loading-" + Date.now();
+                // Lisää väliaikainen latausviesti
+                document.getElementById('log').innerHTML = `<div id="${loadingId}" style="color:#88ccff; font-style:italic;">🔮 Ennustetaan seurauksia...</div>` + document.getElementById('log').innerHTML;
+                
+                let prompt = `Game system: Burning Wheel style logic. Setting: Middle-earth (Second Age/Third Age dark fantasy). 
+                Character: ${n.name} (A Nazgûl/Ringwraith). 
+                Action taken: ${actionName} (Stat used: ${stat}). 
+                Outcome: ${resultText} (Margin: ${margin}). 
+                Task: Write a very short, atmospheric description (max 2 sentences) of this event happening in the game world. 
+                Do not mention game mechanics or dice. Keep it immersive.`;
+
+                let aiText = await callAI(prompt);
+                
+                // Poista latausviesti
+                let loader = document.getElementById(loadingId);
+                if(loader) loader.remove();
+
+                if(aiText) {
+                    let aiHtml = `<div class="ai-msg">${aiText}</div><hr style="border-color:#333">`;
+                    pushLog(aiHtml);
+                }
+            } else {
+                pushLog(`<hr style="border-color:#333">`);
+            }
+        }
+
+        // --- MAP FUNCTIONS ---
+        function handleInput(el) { if(el.files[0]) loadMap(el.files[0]); }
         function loadMap(file) {
-            if(!file) return;
             let url = URL.createObjectURL(file);
             let img = document.getElementById('game-map');
-            
             img.onload = function() {
                 document.getElementById('start-overlay').style.display = 'none';
                 document.getElementById('world').style.display = 'block';
                 document.getElementById('map-tools').style.display = 'flex';
                 
-                // Aseta layerit kuvan kokoiseksi
-                let w = img.naturalWidth;
-                let h = img.naturalHeight;
+                let w = img.naturalWidth; let h = img.naturalHeight;
+                // Aseta SVG ja Marker layerit kuvan kokoon
                 document.getElementById('svg-layer').setAttribute('viewBox', `0 0 ${w} ${h}`);
                 document.getElementById('marker-layer').style.width = w + 'px';
                 document.getElementById('marker-layer').style.height = h + 'px';
-
+                
                 fitToScreen();
                 renderOverlays();
             };
             img.src = url;
         }
 
-        // --- NAVIGATION LOGIC ---
         function updateTransform() {
-            let world = document.getElementById('world');
-            // Käytetään translate3d suorituskyvyn vuoksi
-            world.style.transform = `translate3d(${view.x}px, ${view.y}px, 0) scale(${view.scale})`;
+            document.getElementById('world').style.transform = `translate3d(${view.x}px, ${view.y}px, 0) scale(${view.scale})`;
         }
-
         function fitToScreen() {
             let img = document.getElementById('game-map');
             let vp = document.getElementById('viewport');
             if(img.naturalWidth) {
-                // Laske sopiva zoom, jotta koko kartta mahtuu
                 let s = Math.min(vp.offsetWidth / img.naturalWidth, vp.offsetHeight / img.naturalHeight) * 0.95;
                 view.scale = s;
-                // Keskitä
                 view.x = (vp.offsetWidth - img.naturalWidth * s) / 2;
                 view.y = (vp.offsetHeight - img.naturalHeight * s) / 2;
                 updateTransform();
             }
         }
-
         function zoomIn() { view.scale *= 1.2; updateTransform(); }
         function zoomOut() { view.scale /= 1.2; updateTransform(); }
-
+        
         function onWheel(e) {
             e.preventDefault();
-            // Google Maps -tyylinen zoom hiiren kohdalle
             let zoomFactor = e.deltaY > 0 ? 0.9 : 1.1;
-            
-            // Hiiren sijainti suhteessa viewporttiin
             let rect = document.getElementById('viewport').getBoundingClientRect();
             let mouseX = e.clientX - rect.left;
             let mouseY = e.clientY - rect.top;
-
-            // Lasketaan uusi sijainti ja skaala
-            // Matikka: siirretään karttaa niin, että hiiren alla oleva piste pysyy paikallaan
+            
             view.x = mouseX - (mouseX - view.x) * zoomFactor;
             view.y = mouseY - (mouseY - view.y) * zoomFactor;
             view.scale *= zoomFactor;
-
             updateTransform();
         }
 
         function onMouseDown(e) {
-            // Estä jos painetaan nappeja
             if(e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT') return;
-            
-            if(tool === 'move') {
-                isDragging = true;
-                // Tallennetaan vain tila, liike hoidetaan movementX/Y avulla
-            }
+            if(tool === 'move') { isDragging = true; }
             else if(tool === 'fort') {
                 let c = getWorldCoords(e);
                 let name = prompt("Linnoituksen nimi:");
                 if(name) {
                     nazguls[currentNaz].markers.push({x: c.x, y: c.y, label: name});
-                    renderOverlays(); saveGame();
+                    renderOverlays(); uploadState();
                 }
-            }
-            else if(tool === 'area') {
+            } else if(tool === 'area') {
                 draw.points.push(getWorldCoords(e));
                 renderTempPoly();
             }
@@ -332,36 +405,25 @@
 
         function onMouseMove(e) {
             if(isDragging && tool === 'move') {
-                // movementX/Y on moderni ja helppo tapa
-                view.x += e.movementX;
-                view.y += e.movementY;
+                view.x += e.movementX; view.y += e.movementY;
                 updateTransform();
             }
         }
-
         function onMouseUp() { isDragging = false; }
 
-        // Muuntaa hiiren ruutukoordinaatit kartan pikselikoordinaateiksi
         function getWorldCoords(e) {
             let rect = document.getElementById('world').getBoundingClientRect();
-            // Koska world on skaalattu, jaetaan skaalalla
-            return {
-                x: (e.clientX - rect.left) / view.scale,
-                y: (e.clientY - rect.top) / view.scale
-            };
+            return { x: (e.clientX - rect.left) / view.scale, y: (e.clientY - rect.top) / view.scale };
         }
 
-        // --- TOOLS ---
+        // --- DRAWING & RENDERING ---
         function setTool(t) {
             tool = t;
             document.getElementById('btnMove').className = t==='move'?'active-tool':'';
             document.getElementById('btnFort').className = t==='fort'?'active-tool':'';
             document.getElementById('btnArea').className = t==='area'?'active-tool':'';
+            document.getElementById('viewport').style.cursor = t==='move' ? 'grab' : 'crosshair';
             
-            let vp = document.getElementById('viewport');
-            if(t === 'move') vp.style.cursor = 'grab';
-            else vp.style.cursor = 'crosshair';
-
             if(t === 'area') {
                 draw.active = true; draw.points = [];
                 document.getElementById('draw-tools').style.display = 'block';
@@ -376,31 +438,23 @@
             let svg = document.getElementById('svg-layer');
             let old = document.getElementById('temp-poly');
             if(old) old.remove();
-            
             if(draw.points.length > 0) {
                 let pts = draw.points.map(p => `${p.x},${p.y}`).join(" ");
                 let el = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
-                el.id = 'temp-poly';
-                el.setAttribute("points", pts);
-                el.setAttribute("fill", "none");
-                el.setAttribute("stroke", "#fff");
-                el.setAttribute("stroke-width", "3");
-                el.setAttribute("stroke-dasharray", "5,5");
+                el.id = 'temp-poly'; el.setAttribute("points", pts);
+                el.setAttribute("fill", "none"); el.setAttribute("stroke", "#fff");
+                el.setAttribute("stroke-width", "3"); el.setAttribute("stroke-dasharray", "5,5");
                 svg.appendChild(el);
             }
         }
-
         function finishPoly() {
             if(draw.points.length < 3) return;
             let name = prompt("Alueen nimi:");
             if(name) {
-                // Laske keskipiste tekstille
-                let cx=0, cy=0;
-                draw.points.forEach(p=>{cx+=p.x; cy+=p.y});
+                let cx=0, cy=0; draw.points.forEach(p=>{cx+=p.x; cy+=p.y});
                 cx/=draw.points.length; cy/=draw.points.length;
-                
                 nazguls[currentNaz].territories.push({points: [...draw.points], label: name, cx, cy});
-                renderOverlays(); saveGame();
+                renderOverlays(); uploadState();
             }
             setTool('move');
         }
@@ -409,13 +463,15 @@
         function renderOverlays() {
             let svg = document.getElementById('svg-layer');
             let markers = document.getElementById('marker-layer');
-            
             let temp = document.getElementById('temp-poly');
-            svg.innerHTML = '';
+            svg.innerHTML = ''; markers.innerHTML = '';
             if(temp) svg.appendChild(temp);
-            markers.innerHTML = '';
 
             nazguls.forEach(n => {
+                // Varmista että listat on olemassa
+                if(!n.territories) n.territories = [];
+                if(!n.markers) n.markers = [];
+
                 n.territories.forEach(t => {
                     let pts = t.points.map(p => `${p.x},${p.y}`).join(" ");
                     let poly = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
@@ -444,49 +500,34 @@
             });
         }
 
-        // --- GAME UI ---
+        function renderLog() {
+            document.getElementById('log').innerHTML = logs.join("");
+        }
+
+        // --- SETTINGS ---
+        function openSettings() { 
+            document.getElementById('settings-overlay').style.display = 'flex'; 
+            document.getElementById('apiKeyInput').value = geminiKey; 
+        }
+        function closeSettings() { document.getElementById('settings-overlay').style.display = 'none'; }
+        function saveSettings() {
+            geminiKey = document.getElementById('apiKeyInput').value;
+            localStorage.setItem('geminiKey', geminiKey);
+            closeSettings();
+            alert("Avain tallennettu!");
+        }
+
         function updateUI() {
             currentNaz = document.getElementById('nazgulSelect').value;
             let n = nazguls[currentNaz];
             let html = `
-                <div>💰 Vauraus: ${n.wealth}/10</div>
-                <div style="background:#333; height:8px; margin-bottom:5px;"><div style="background:#d4af37; height:100%; width:${n.wealth*10}%"></div></div>
-                <div>👁️ Uskonto: ${n.religion}/10</div>
-                <div style="background:#333; height:8px; margin-bottom:5px;"><div style="background:#9370db; height:100%; width:${n.religion*10}%"></div></div>
-                <div>⚔️ Asevoima: ${n.might}/10</div>
-                <div style="background:#333; height:8px; margin-bottom:5px;"><div style="background:#b22222; height:100%; width:${n.might*10}%"></div></div>
-                <div>⚖️ Lojaalisuus: ${n.loyalty}/10</div>
-                <div style="background:#333; height:8px; margin-bottom:5px;"><div style="background:#4682b4; height:100%; width:${n.loyalty*10}%"></div></div>
+                <div>💰 Vauraus: ${n.wealth}/10</div><div style="background:#333; height:8px; margin-bottom:5px;"><div style="background:#d4af37; height:100%; width:${n.wealth*10}%"></div></div>
+                <div>👁️ Uskonto: ${n.religion}/10</div><div style="background:#333; height:8px; margin-bottom:5px;"><div style="background:#9370db; height:100%; width:${n.religion*10}%"></div></div>
+                <div>⚔️ Asevoima: ${n.might}/10</div><div style="background:#333; height:8px; margin-bottom:5px;"><div style="background:#b22222; height:100%; width:${n.might*10}%"></div></div>
+                <div>⚖️ Lojaalisuus: ${n.loyalty}/10</div><div style="background:#333; height:8px; margin-bottom:5px;"><div style="background:#4682b4; height:100%; width:${n.loyalty*10}%"></div></div>
             `;
             document.getElementById('statsDisplay').innerHTML = html;
         }
-
-        function action(name, stat) {
-            let d = parseInt(document.getElementById('dice').value) || 0;
-            let ob = parseInt(document.getElementById('ob').value) || 0;
-            if(d===0 || ob===0) { alert("Nopat ja Ob puuttuu!"); return; }
-
-            let succ = 0; let rolls = [];
-            for(let i=0; i<d; i++) {
-                let r = Math.floor(Math.random()*6)+1;
-                rolls.push(r); if(r>=4) succ++;
-            }
-            let margin = succ - ob;
-            let n = nazguls[currentNaz];
-            let res = margin >= 0 ? 
-                `<span style="color:#4f4">ONNISTUI (+${margin})</span>` : 
-                `<span style="color:#f44">EPÄONNISTUI (${margin})</span>`;
-
-            if(margin >= 0 && n[stat] < 10) n[stat]++;
-
-            let log = document.getElementById('log');
-            log.innerHTML = `<div><b>${n.name}</b>: ${name} (Ob ${ob})<br>🎲 [${rolls}] ${res}</div><hr style="border-color:#333">` + log.innerHTML;
-            
-            updateUI(); saveGame();
-        }
-
-        function saveGame() { localStorage.setItem('nazgul_v52', JSON.stringify(nazguls)); }
-        function resetGame() { if(confirm("Nollaa kaikki?")) { localStorage.removeItem('nazgul_v52'); location.reload(); } }
 
     </script>
 </body>

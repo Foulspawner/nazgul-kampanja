@@ -200,4 +200,163 @@
         function fitToScreen() {
             let img = document.getElementById('game-map'), vp = document.getElementById('viewport');
             let w = img.naturalWidth || 1000, h = img.naturalHeight || 1000;
-            let vpw = vp.offsetWidth > 0 ? vp.offsetWidth : window.innerWidth * 0.75
+            let vpw = vp.offsetWidth > 0 ? vp.offsetWidth : window.innerWidth * 0.75;
+            let vph = vp.offsetHeight > 0 ? vp.offsetHeight : window.innerHeight;
+            let s = Math.min(vpw / w, vph / h) * 0.95;
+            if (s <= 0) s = 0.5;
+            view.scale = s; view.x = (vpw - w * s) / 2; view.y = (vph - h * s) / 2;
+            updateTransform();
+        }
+
+        function zoomIn() { view.scale *= 1.2; updateTransform(); }
+        function zoomOut() { view.scale /= 1.2; updateTransform(); }
+        
+        function setupListeners() {
+            let vp = document.getElementById('viewport');
+            vp.addEventListener('mousedown', onMouseDown);
+            window.addEventListener('mousemove', onMouseMove);
+            window.addEventListener('mouseup', onMouseUp);
+            vp.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                let z = e.deltaY > 0 ? 0.9 : 1.1, rect = vp.getBoundingClientRect();
+                let mx = e.clientX - rect.left, my = e.clientY - rect.top;
+                view.x = mx - (mx - view.x) * z; view.y = my - (my - view.y) * z; view.scale *= z;
+                updateTransform();
+            }, {passive: false});
+        }
+
+        function onMouseDown(e) {
+            if(e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT') return;
+            if(tool === 'move') { isDragging = true; }
+            else if(tool === 'fort') {
+                let c = getWorldCoords(e), name = prompt("Linnoituksen nimi:");
+                if(name) { nazguls[currentNaz].markers.push({x: c.x, y: c.y, label: name}); renderOverlays(); uploadState(); }
+            } else if(tool === 'area') { draw.points.push(getWorldCoords(e)); renderTempPoly(); }
+        }
+        function onMouseMove(e) { if(isDragging && tool === 'move') { view.x += e.movementX; view.y += e.movementY; updateTransform(); } }
+        function onMouseUp() { isDragging = false; }
+        function getWorldCoords(e) { let r = document.getElementById('world').getBoundingClientRect(); return { x: (e.clientX - r.left) / view.scale, y: (e.clientY - r.top) / view.scale }; }
+
+        function uploadState() { if(window.db) window.dbSet(window.dbRef(window.db, 'gameState/nazguls'), nazguls); }
+        function pushLog(h) { logs.unshift(h); renderLog(); if(window.db) window.dbPush(window.dbRef(window.db, 'gameState/logs'), h); }
+        function clearLog() { if(confirm("Tyhjennä historia?")) { logs=[]; renderLog(); if(window.db) window.dbSet(window.dbRef(window.db, 'gameState/logs'), null); } }
+
+        // --- UUSI FUNKTIO: STATSIEN MANUAALINEN SÄÄTÖ ---
+        function adjustStat(stat, amount) {
+            let n = nazguls[currentNaz];
+            n[stat] += amount;
+            
+            // Rajoitetaan arvot välille 0-10
+            if(n[stat] < 0) n[stat] = 0;
+            if(n[stat] > 10) n[stat] = 10;
+            
+            updateUI();
+            uploadState(); // Synkronoidaan Firebaseen heti!
+        }
+
+        async function performAction(action, stat) {
+            let d = parseInt(document.getElementById('dice').value)||0, ob = parseInt(document.getElementById('ob').value)||0;
+            if(!d || !ob) return alert("Nopat/Ob!");
+            let succ=0, rolls=[];
+            for(let i=0;i<d;i++){ let r=Math.floor(Math.random()*6)+1; rolls.push(r); if(r>=4)succ++; }
+            rolls.sort((a,b)=>b-a);
+            let margin = succ - ob, n = nazguls[currentNaz];
+            let res = margin >= 0 ? "ONNISTUI" : "EPÄONNISTUI", col = margin >= 0 ? "#4f4" : "#f44";
+            if(margin>=0 && n[stat]<10) n[stat]++;
+            
+            let time = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+            pushLog(`<div><span style="color:#666">[${time}]</span> <b style="color:${n.color}">${n.name}</b>: ${action} (Ob ${ob})<br>🎲 [${rolls.join(", ")}] <span style="color:${col}">${res}</span></div>`);
+            uploadState();
+
+            if(geminiKey) {
+                let loadId = "load-"+Date.now();
+                document.getElementById('log').innerHTML = `<div id="${loadId}" style="color:#88ccff">🔮 ...</div>` + document.getElementById('log').innerHTML;
+                let txt = await callAI(`RPG: Middle-earth. Char: ${n.name}. Action: ${action}. Result: ${res}. Short atmospheric description.`);
+                let l = document.getElementById(loadId); if(l) l.remove();
+                if(txt) pushLog(`<div class="ai-msg">${txt}</div><hr style="border-color:#333">`);
+            } else pushLog(`<hr style="border-color:#333">`);
+        }
+
+        async function callAI(prompt) {
+            try {
+                let res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiKey}`, {
+                    method: 'POST', headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                });
+                let json = await res.json();
+                return json.candidates?.[0]?.content?.parts?.[0]?.text;
+            } catch(e) { return null; }
+        }
+
+        function setTool(t) { tool=t; document.getElementById('viewport').style.cursor=t==='move'?'grab':'crosshair'; document.querySelectorAll('.controls button').forEach(b=>b.className=''); document.getElementById(t==='move'?'btnMove':t==='fort'?'btnFort':'btnArea').className='active-tool'; document.getElementById('draw-tools').style.display=t==='area'?'block':'none'; draw.points=[]; renderTempPoly(); }
+        function renderTempPoly() { let svg=document.getElementById('svg-layer'), old=document.getElementById('temp-poly'); if(old)old.remove(); if(draw.points.length){ let el=document.createElementNS("http://www.w3.org/2000/svg","polyline"); el.id='temp-poly'; el.setAttribute("points",draw.points.map(p=>`${p.x},${p.y}`).join(" ")); el.setAttribute("fill","none"); el.setAttribute("stroke","#fff"); el.setAttribute("stroke-width","3"); el.setAttribute("stroke-dasharray","5,5"); svg.appendChild(el); } }
+        function finishPoly() { if(draw.points.length<3)return; let name=prompt("Alue:"); if(name){ let cx=0,cy=0; draw.points.forEach(p=>{cx+=p.x;cy+=p.y}); cx/=draw.points.length; cy/=draw.points.length; nazguls[currentNaz].territories.push({points:[...draw.points],label:name,cx,cy}); renderOverlays(); uploadState(); } setTool('move'); }
+        function cancelPoly() { setTool('move'); }
+        function openSettings() { document.getElementById('settings-overlay').style.display='flex'; document.getElementById('apiKeyInput').value=geminiKey; }
+        function closeSettings() { document.getElementById('settings-overlay').style.display='none'; }
+        function saveSettings() { geminiKey=document.getElementById('apiKeyInput').value; localStorage.setItem('geminiKey',geminiKey); closeSettings(); }
+        
+        function renderOverlays() {
+            let svg=document.getElementById('svg-layer'), m=document.getElementById('marker-layer'), t=document.getElementById('temp-poly');
+            svg.innerHTML=''; m.innerHTML=''; if(t)svg.appendChild(t);
+            nazguls.forEach(n=>{
+                (n.territories||[]).forEach(te=>{
+                    let p=document.createElementNS("http://www.w3.org/2000/svg","polygon");
+                    p.setAttribute("points",te.points.map(pt=>`${pt.x},${pt.y}`).join(" ")); p.setAttribute("fill",n.color); p.setAttribute("fill-opacity","0.25"); p.setAttribute("stroke",n.color); p.setAttribute("stroke-width","2");
+                    svg.appendChild(p);
+                    let txt=document.createElement('div'); txt.className='region-text'; txt.innerText=te.label; txt.style.left=te.cx+'px'; txt.style.top=te.cy+'px'; txt.style.color=n.color; m.appendChild(txt);
+                });
+                (n.markers||[]).forEach(mk=>{
+                    let el=document.createElement('div'); el.className='marker'; el.style.left=mk.x+'px'; el.style.top=mk.y+'px';
+                    el.innerHTML=`<div class="pin" style="background:${n.color}"></div><div class="label">${mk.label}</div>`; m.appendChild(el);
+                });
+            });
+        }
+        function renderLog() { document.getElementById('log').innerHTML=logs.join(""); }
+        
+        // --- PÄIVITETTY KÄYTTÖLIITTYMÄ ---
+        function updateUI() {
+            currentNaz = document.getElementById('nazgulSelect').value; 
+            let n = nazguls[currentNaz];
+            
+            document.getElementById('statsDisplay').innerHTML = `
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:5px;">
+                    <span>💰 Vauraus: ${n.wealth}/10</span>
+                    <div>
+                        <button class="stat-btn" onclick="adjustStat('wealth', -1)">-</button>
+                        <button class="stat-btn" onclick="adjustStat('wealth', 1)">+</button>
+                    </div>
+                </div>
+                <div style="background:#333;height:8px;margin-bottom:5px"><div style="background:#d4af37;height:100%;width:${n.wealth*10}%"></div></div>
+                
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:5px;">
+                    <span>👁️ Uskonto: ${n.religion}/10</span>
+                    <div>
+                        <button class="stat-btn" onclick="adjustStat('religion', -1)">-</button>
+                        <button class="stat-btn" onclick="adjustStat('religion', 1)">+</button>
+                    </div>
+                </div>
+                <div style="background:#333;height:8px;margin-bottom:5px"><div style="background:#9370db;height:100%;width:${n.religion*10}%"></div></div>
+                
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:5px;">
+                    <span>⚔️ Asevoima: ${n.might}/10</span>
+                    <div>
+                        <button class="stat-btn" onclick="adjustStat('might', -1)">-</button>
+                        <button class="stat-btn" onclick="adjustStat('might', 1)">+</button>
+                    </div>
+                </div>
+                <div style="background:#333;height:8px;margin-bottom:5px"><div style="background:#b22222;height:100%;width:${n.might*10}%"></div></div>
+                
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:5px;">
+                    <span>⚖️ Lojaalisuus: ${n.loyalty}/10</span>
+                    <div>
+                        <button class="stat-btn" onclick="adjustStat('loyalty', -1)">-</button>
+                        <button class="stat-btn" onclick="adjustStat('loyalty', 1)">+</button>
+                    </div>
+                </div>
+                <div style="background:#333;height:8px;margin-bottom:5px"><div style="background:#4682b4;height:100%;width:${n.loyalty*10}%"></div></div>
+            `;
+        }
+    </script>
+</body>
+</html>

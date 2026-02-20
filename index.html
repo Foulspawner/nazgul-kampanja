@@ -2,7 +2,7 @@
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
-    <title>Middle-earth Manager v6.5 (Safe Mode)</title>
+    <title>Middle-earth Manager v6.6 (Final Safe)</title>
     
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -22,25 +22,272 @@
         const app = initializeApp(firebaseConfig);
         window.db = getDatabase(app);
         window.dbRef = ref; window.dbSet = set; window.dbOnValue = onValue; window.dbPush = push;
-        console.log("Firebase OK");
     </script>
 
     <style>
-        body { background-color: #202020; color: #d4af37; font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; height: 100vh; overflow: hidden; }
-        
-        /* KARTTA-ALUE */
+        body { background-color: #202020; color: #d4af37; font-family: sans-serif; margin: 0; display: flex; height: 100vh; overflow: hidden; }
         #viewport { flex: 3; position: relative; background: #111; overflow: hidden; cursor: grab; display: flex; align-items: center; justify-content: center; }
-        #viewport:active { cursor: grabbing; }
-
-        /* SIVUPALKKI */
-        #sidebar { flex: 1; min-width: 380px; background: #1a1a1a; border-left: 2px solid #444; padding: 20px; display: flex; flex-direction: column; z-index: 200; box-shadow: -10px 0 20px rgba(0,0,0,0.5); overflow-y: auto; }
-        
-        /* KARTTAELEMENTIT */
+        #sidebar { flex: 1; min-width: 380px; background: #1a1a1a; border-left: 2px solid #444; padding: 20px; display: flex; flex-direction: column; z-index: 200; overflow-y: auto; }
         #world { position: absolute; transform-origin: 0 0; display: none; }
-        #game-map { display: block; pointer-events: none; user-select: none; }
+        #game-map { display: block; pointer-events: none; }
         #svg-layer, #marker-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
         #svg-layer { z-index: 1; } #marker-layer { z-index: 2; }
-
         .marker { position: absolute; transform: translate(-50%, -100%); display: flex; flex-direction: column; align-items: center; cursor: pointer; pointer-events: auto; z-index: 100; }
         .pin { width: 14px; height: 14px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 5px #000; }
-        .label { background: rgba(0,
+        .label { background: rgba(0,0,0,0.8); color: #fff; padding: 2px 6px; border-radius: 4px; font-size: 12px; margin-top: 2px; white-space: nowrap; }
+        .region-text { position: absolute; transform: translate(-50%, -50%); font-family: serif; font-weight: bold; font-size: 24px; text-shadow: 0 0 5px #000; pointer-events: none; z-index: 50; text-align: center; }
+        .controls { display: flex; gap: 5px; margin-bottom: 10px; }
+        button, select, input { background: #333; color: #fff; border: 1px solid #555; padding: 10px; width: 100%; cursor: pointer; }
+        .active-tool { background: #d4af37; color: #000; font-weight: bold; }
+        #log { background: #000; border: 1px solid #333; flex-grow: 1; padding: 10px; overflow-y: auto; font-family: monospace; font-size: 0.85em; color: #ccc; margin-bottom: 10px; min-height: 150px; }
+        #settings-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .box { border: 2px solid #d4af37; padding: 40px; border-radius: 10px; background: #222; text-align: center; max-width: 400px; }
+        #map-tools, #draw-tools { position: absolute; z-index: 1000; display: none; gap: 10px; }
+        #map-tools { bottom: 20px; left: 20px; }
+        #draw-tools { top: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.9); padding: 10px; border: 1px solid #d4af37; }
+        .float-btn { width: auto; padding: 5px 15px; background: rgba(0,0,0,0.8); border: 1px solid #888; }
+        .ai-msg { color: #88ccff; font-style: italic; border-left: 2px solid #88ccff; padding-left: 10px; margin: 5px 0; background: #112233; padding: 5px; }
+        .file-upload-box { background: #2a2a2a; border: 1px dashed #d4af37; padding: 10px; text-align: center; margin-bottom: 15px; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+
+    <div id="viewport">
+        <div id="settings-overlay" style="display:none;">
+            <div class="box">
+                <h2>Asetukset</h2>
+                <input type="password" id="apiKeyInput" placeholder="Gemini API Key...">
+                <button onclick="saveSettings()" style="background:#28a745; margin-top:10px;">Tallenna & Sulje</button>
+                <button onclick="closeSettings()" style="background:#442222; margin-top:5px;">Peruuta</button>
+            </div>
+        </div>
+
+        <div id="map-tools">
+            <button class="float-btn" onclick="fitToScreen()">Sovita ruutuun</button>
+            <button class="float-btn" onclick="zoomIn()">+</button>
+            <button class="float-btn" onclick="zoomOut()">-</button>
+        </div>
+
+        <div id="draw-tools">
+            <span style="color:#fff; margin-right:10px;">Piirretään...</span>
+            <button onclick="finishPoly()" style="width:auto; background:#28a745;">✔ Valmis</button>
+            <button onclick="cancelPoly()" style="width:auto; background:#dc3545;">❌ Peruuta</button>
+        </div>
+
+        <div id="world">
+            <img id="game-map" alt="Kartta">
+            <svg id="svg-layer"></svg>
+            <div id="marker-layer"></div>
+        </div>
+    </div>
+
+    <div id="sidebar">
+        <h2 style="color:#ff4500; text-align:center; margin-top:0;">NAZGÛL COMMAND</h2>
+        
+        <div class="file-upload-box" id="manual-upload-box">
+            <span>Kartta ei näy? Lataa kuva tästä:</span><br>
+            <input type="file" accept="image/*" onchange="handleInput(this)" style="margin-top:5px;">
+        </div>
+
+        <select id="nazgulSelect" onchange="updateUI()">
+            <option value="0">Ren the Unclean</option>
+            <option value="1">Murazor (Witch-King)</option>
+            <option value="2">Uvatha</option>
+            <option value="3">Hoarmurath</option>
+            <option value="4">Akhorahil</option>
+        </select>
+
+        <div id="statsDisplay" style="margin:20px 0;"></div>
+        <hr style="border-color:#444;">
+        
+        <div class="controls">
+            <button id="btnMove" onclick="setTool('move')" class="active-tool">✋ Liikuta</button>
+            <button id="btnFort" onclick="setTool('fort')">🏰 Linnoitus</button>
+            <button id="btnArea" onclick="setTool('area')">✏️ Alue</button>
+        </div>
+
+        <div class="controls">
+            <input type="number" id="dice" placeholder="Nopat" value="3">
+            <input type="number" id="ob" placeholder="Ob" value="3">
+        </div>
+        <div class="controls">
+            <button onclick="performAction('Rakenna', 'wealth')">🛠️ Rakenna</button>
+            <button onclick="performAction('Sota', 'might')">⚔️ Sota</button>
+        </div>
+        <div class="controls">
+            <button onclick="performAction('Uskonto', 'religion')">👁️ Uskonto</button>
+            <button onclick="performAction('Hallinto', 'loyalty')">⚖️ Hallinto</button>
+        </div>
+
+        <h3>Kronikka</h3>
+        <div id="log"></div>
+        <div style="display:flex; gap:5px;">
+            <button onclick="clearLog()" style="background:#442222; font-size:0.8em;">Tyhjennä historia</button>
+            <button onclick="openSettings()" style="background:#333; font-size:0.8em;">⚙️ API Key</button>
+        </div>
+    </div>
+
+    <script>
+        let nazguls = [
+            { name: "Ren", wealth: 4, religion: 6, loyalty: 2, might: 5, corruption: 3, color: "#ff4444", markers: [], territories: [] },
+            { name: "Murazor", wealth: 2, religion: 8, loyalty: 5, might: 3, corruption: 2, color: "#aa44ff", markers: [], territories: [] },
+            { name: "Uvatha", wealth: 5, religion: 3, loyalty: 6, might: 7, corruption: 1, color: "#ffaa00", markers: [], territories: [] },
+            { name: "Hoarmurath", wealth: 3, religion: 4, loyalty: 4, might: 5, corruption: 1, color: "#00ccff", markers: [], territories: [] },
+            { name: "Akhorahil", wealth: 7, religion: 2, loyalty: 3, might: 2, corruption: 1, color: "#ffd700", markers: [], territories: [] }
+        ];
+
+        let view = { x: 0, y: 0, scale: 1 };
+        let tool = 'move', isDragging = false, draw = { active: false, points: [] }, currentNaz = 0;
+        let geminiKey = localStorage.getItem('geminiKey') || "";
+        let logs = [];
+
+        window.onload = function() {
+            let imgElement = document.getElementById('game-map');
+            imgElement.onload = function() { startMap(imgElement); };
+            imgElement.src = "kartta.jpg?t=" + new Date().getTime();
+
+            setTimeout(() => {
+                if(window.db) {
+                    window.dbOnValue(window.dbRef(window.db, 'gameState'), (snapshot) => {
+                        let data = snapshot.val();
+                        if(data) {
+                            if(data.nazguls) nazguls = data.nazguls;
+                            if(data.logs) { logs = Object.values(data.logs).reverse(); renderLog(); }
+                            updateUI(); renderOverlays();
+                        }
+                    });
+                }
+            }, 1000);
+
+            setupListeners();
+            updateUI();
+        };
+
+        function handleInput(el) {
+            if(el.files[0]) {
+                let img = document.getElementById('game-map');
+                img.onload = function() { startMap(img); };
+                img.src = URL.createObjectURL(el.files[0]);
+            }
+        }
+
+        function startMap(img) {
+            document.getElementById('world').style.display = 'block';
+            document.getElementById('map-tools').style.display = 'flex';
+            document.getElementById('manual-upload-box').style.display = 'none';
+            let w = img.naturalWidth || 1000, h = img.naturalHeight || 1000;
+            document.getElementById('svg-layer').setAttribute('viewBox', `0 0 ${w} ${h}`);
+            document.getElementById('marker-layer').style.width = w + 'px';
+            document.getElementById('marker-layer').style.height = h + 'px';
+            fitToScreen(); renderOverlays();
+        }
+
+        function updateTransform() { document.getElementById('world').style.transform = `translate3d(${view.x}px, ${view.y}px, 0) scale(${view.scale})`; }
+        
+        function fitToScreen() {
+            let img = document.getElementById('game-map'), vp = document.getElementById('viewport');
+            let w = img.naturalWidth || 1000, h = img.naturalHeight || 1000;
+            let s = Math.min(vp.offsetWidth / w, vp.offsetHeight / h) * 0.95;
+            view.scale = s; view.x = (vp.offsetWidth - w * s) / 2; view.y = (vp.offsetHeight - h * s) / 2;
+            updateTransform();
+        }
+
+        function zoomIn() { view.scale *= 1.2; updateTransform(); }
+        function zoomOut() { view.scale /= 1.2; updateTransform(); }
+        
+        function setupListeners() {
+            let vp = document.getElementById('viewport');
+            vp.addEventListener('mousedown', onMouseDown);
+            window.addEventListener('mousemove', onMouseMove);
+            window.addEventListener('mouseup', onMouseUp);
+            vp.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                let z = e.deltaY > 0 ? 0.9 : 1.1, rect = vp.getBoundingClientRect();
+                let mx = e.clientX - rect.left, my = e.clientY - rect.top;
+                view.x = mx - (mx - view.x) * z; view.y = my - (my - view.y) * z; view.scale *= z;
+                updateTransform();
+            }, {passive: false});
+        }
+
+        function onMouseDown(e) {
+            if(e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT') return;
+            if(tool === 'move') { isDragging = true; }
+            else if(tool === 'fort') {
+                let c = getWorldCoords(e), name = prompt("Linnoituksen nimi:");
+                if(name) { nazguls[currentNaz].markers.push({x: c.x, y: c.y, label: name}); renderOverlays(); uploadState(); }
+            } else if(tool === 'area') { draw.points.push(getWorldCoords(e)); renderTempPoly(); }
+        }
+        function onMouseMove(e) { if(isDragging && tool === 'move') { view.x += e.movementX; view.y += e.movementY; updateTransform(); } }
+        function onMouseUp() { isDragging = false; }
+        function getWorldCoords(e) { let r = document.getElementById('world').getBoundingClientRect(); return { x: (e.clientX - r.left) / view.scale, y: (e.clientY - r.top) / view.scale }; }
+
+        function uploadState() { if(window.db) window.dbSet(window.dbRef(window.db, 'gameState/nazguls'), nazguls); }
+        function pushLog(h) { logs.unshift(h); renderLog(); if(window.db) window.dbPush(window.dbRef(window.db, 'gameState/logs'), h); }
+        function clearLog() { if(confirm("Tyhjennä?")) { logs=[]; renderLog(); if(window.db) window.dbSet(window.dbRef(window.db, 'gameState/logs'), null); } }
+
+        async function performAction(action, stat) {
+            let d = parseInt(document.getElementById('dice').value)||0, ob = parseInt(document.getElementById('ob').value)||0;
+            if(!d || !ob) return alert("Nopat/Ob!");
+            let succ=0, rolls=[];
+            for(let i=0;i<d;i++){ let r=Math.floor(Math.random()*6)+1; rolls.push(r); if(r>=4)succ++; }
+            rolls.sort((a,b)=>b-a);
+            let margin = succ - ob, n = nazguls[currentNaz];
+            let res = margin >= 0 ? "ONNISTUI" : "EPÄONNISTUI", col = margin >= 0 ? "#4f4" : "#f44";
+            if(margin>=0 && n[stat]<10) n[stat]++;
+            
+            let time = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+            pushLog(`<div><span style="color:#666">[${time}]</span> <b style="color:${n.color}">${n.name}</b>: ${action} (Ob ${ob})<br>🎲 [${rolls.join(", ")}] <span style="color:${col}">${res}</span></div>`);
+            uploadState();
+
+            if(geminiKey) {
+                let loadId = "load-"+Date.now();
+                document.getElementById('log').innerHTML = `<div id="${loadId}" style="color:#88ccff">🔮 ...</div>` + document.getElementById('log').innerHTML;
+                let txt = await callAI(`RPG: Middle-earth. Char: ${n.name}. Action: ${action}. Result: ${res}. Short atmospheric description.`);
+                let l = document.getElementById(loadId); if(l) l.remove();
+                if(txt) pushLog(`<div class="ai-msg">${txt}</div><hr style="border-color:#333">`);
+            } else pushLog(`<hr style="border-color:#333">`);
+        }
+
+        async function callAI(prompt) {
+            try {
+                let res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiKey}`, {
+                    method: 'POST', headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                });
+                let json = await res.json();
+                return json.candidates?.[0]?.content?.parts?.[0]?.text;
+            } catch(e) { return null; }
+        }
+
+        function setTool(t) { tool=t; document.getElementById('viewport').style.cursor=t==='move'?'grab':'crosshair'; document.querySelectorAll('.controls button').forEach(b=>b.className=''); document.getElementById(t==='move'?'btnMove':t==='fort'?'btnFort':'btnArea').className='active-tool'; document.getElementById('draw-tools').style.display=t==='area'?'block':'none'; draw.points=[]; renderTempPoly(); }
+        function renderTempPoly() { let svg=document.getElementById('svg-layer'), old=document.getElementById('temp-poly'); if(old)old.remove(); if(draw.points.length){ let el=document.createElementNS("http://www.w3.org/2000/svg","polyline"); el.id='temp-poly'; el.setAttribute("points",draw.points.map(p=>`${p.x},${p.y}`).join(" ")); el.setAttribute("fill","none"); el.setAttribute("stroke","#fff"); el.setAttribute("stroke-width","3"); el.setAttribute("stroke-dasharray","5,5"); svg.appendChild(el); } }
+        function finishPoly() { if(draw.points.length<3)return; let name=prompt("Alue:"); if(name){ let cx=0,cy=0; draw.points.forEach(p=>{cx+=p.x;cy+=p.y}); cx/=draw.points.length; cy/=draw.points.length; nazguls[currentNaz].territories.push({points:[...draw.points],label:name,cx,cy}); renderOverlays(); uploadState(); } setTool('move'); }
+        function cancelPoly() { setTool('move'); }
+        function openSettings() { document.getElementById('settings-overlay').style.display='flex'; document.getElementById('apiKeyInput').value=geminiKey; }
+        function closeSettings() { document.getElementById('settings-overlay').style.display='none'; }
+        function saveSettings() { geminiKey=document.getElementById('apiKeyInput').value; localStorage.setItem('geminiKey',geminiKey); closeSettings(); }
+        
+        function renderOverlays() {
+            let svg=document.getElementById('svg-layer'), m=document.getElementById('marker-layer'), t=document.getElementById('temp-poly');
+            svg.innerHTML=''; m.innerHTML=''; if(t)svg.appendChild(t);
+            nazguls.forEach(n=>{
+                (n.territories||[]).forEach(te=>{
+                    let p=document.createElementNS("http://www.w3.org/2000/svg","polygon");
+                    p.setAttribute("points",te.points.map(pt=>`${pt.x},${pt.y}`).join(" ")); p.setAttribute("fill",n.color); p.setAttribute("fill-opacity","0.25"); p.setAttribute("stroke",n.color); p.setAttribute("stroke-width","2");
+                    svg.appendChild(p);
+                    let txt=document.createElement('div'); txt.className='region-text'; txt.innerText=te.label; txt.style.left=te.cx+'px'; txt.style.top=te.cy+'px'; txt.style.color=n.color; m.appendChild(txt);
+                });
+                (n.markers||[]).forEach(mk=>{
+                    let el=document.createElement('div'); el.className='marker'; el.style.left=mk.x+'px'; el.style.top=mk.y+'px';
+                    el.innerHTML=`<div class="pin" style="background:${n.color}"></div><div class="label">${mk.label}</div>`; m.appendChild(el);
+                });
+            });
+        }
+        function renderLog() { document.getElementById('log').innerHTML=logs.join(""); }
+        function updateUI() {
+            currentNaz = document.getElementById('nazgulSelect').value; let n = nazguls[currentNaz];
+            document.getElementById('statsDisplay').innerHTML = `<div>💰 Vauraus: ${n.wealth}/10</div><div style="background:#333;height:8px;margin-bottom:5px"><div style="background:#d4af37;height:100%;width:${n.wealth*10}%"></div></div><div>👁️ Uskonto: ${n.religion}/10</div><div style="background:#333;height:8px;margin-bottom:5px"><div style="background:#9370db;height:100%;width:${n.religion*10}%"></div></div><div>⚔️ Asevoima: ${n.might}/10</div><div style="background:#333;height:8px;margin-bottom:5px"><div style="background:#b22222;height:100%;width:${n.might*10}%"></div></div><div>⚖️ Lojaalisuus: ${n.loyalty}/10</div><div style="background:#333;height:8px;margin-bottom:5px"><div style="background:#4682b4;height:100%;width:${n.loyalty*10}%"></div></div>`;
+        }
+    </script>
+</body>
+</html>

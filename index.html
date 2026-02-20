@@ -2,7 +2,7 @@
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
-    <title>Middle-earth Manager v6.6 (Final Safe)</title>
+    <title>Middle-earth Manager v6.7 (Zoom Fix)</title>
     
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -179,7 +179,12 @@
             document.getElementById('svg-layer').setAttribute('viewBox', `0 0 ${w} ${h}`);
             document.getElementById('marker-layer').style.width = w + 'px';
             document.getElementById('marker-layer').style.height = h + 'px';
-            fitToScreen(); renderOverlays();
+            
+            // Pieni viive estää "0-zoomauksen" ikkunan piirtyessä
+            setTimeout(() => {
+                fitToScreen(); 
+                renderOverlays();
+            }, 100);
         }
 
         function updateTransform() { document.getElementById('world').style.transform = `translate3d(${view.x}px, ${view.y}px, 0) scale(${view.scale})`; }
@@ -187,8 +192,14 @@
         function fitToScreen() {
             let img = document.getElementById('game-map'), vp = document.getElementById('viewport');
             let w = img.naturalWidth || 1000, h = img.naturalHeight || 1000;
-            let s = Math.min(vp.offsetWidth / w, vp.offsetHeight / h) * 0.95;
-            view.scale = s; view.x = (vp.offsetWidth - w * s) / 2; view.y = (vp.offsetHeight - h * s) / 2;
+            // Varmistetaan, ettei leveys tai korkeus voi olla 0
+            let vpw = vp.offsetWidth > 0 ? vp.offsetWidth : window.innerWidth * 0.75;
+            let vph = vp.offsetHeight > 0 ? vp.offsetHeight : window.innerHeight;
+            
+            let s = Math.min(vpw / w, vph / h) * 0.95;
+            if (s <= 0) s = 0.5; // Estää kartan katoamisen kokonaan!
+            
+            view.scale = s; view.x = (vpw - w * s) / 2; view.y = (vph - h * s) / 2;
             updateTransform();
         }
 
@@ -223,7 +234,7 @@
 
         function uploadState() { if(window.db) window.dbSet(window.dbRef(window.db, 'gameState/nazguls'), nazguls); }
         function pushLog(h) { logs.unshift(h); renderLog(); if(window.db) window.dbPush(window.dbRef(window.db, 'gameState/logs'), h); }
-        function clearLog() { if(confirm("Tyhjennä?")) { logs=[]; renderLog(); if(window.db) window.dbSet(window.dbRef(window.db, 'gameState/logs'), null); } }
+        function clearLog() { if(confirm("Tyhjennä historia?")) { logs=[]; renderLog(); if(window.db) window.dbSet(window.dbRef(window.db, 'gameState/logs'), null); } }
 
         async function performAction(action, stat) {
             let d = parseInt(document.getElementById('dice').value)||0, ob = parseInt(document.getElementById('ob').value)||0;

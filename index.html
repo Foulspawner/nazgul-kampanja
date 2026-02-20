@@ -2,7 +2,7 @@
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
-    <title>Middle-earth Manager v6.7 (Zoom Fix)</title>
+    <title>Middle-earth Manager v6.8 (AI Collab Fix)</title>
     
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -28,7 +28,10 @@
         body { background-color: #202020; color: #d4af37; font-family: sans-serif; margin: 0; display: flex; height: 100vh; overflow: hidden; }
         #viewport { flex: 3; position: relative; background: #111; overflow: hidden; cursor: grab; display: flex; align-items: center; justify-content: center; }
         #sidebar { flex: 1; min-width: 380px; background: #1a1a1a; border-left: 2px solid #444; padding: 20px; display: flex; flex-direction: column; z-index: 200; overflow-y: auto; }
-        #world { position: absolute; transform-origin: 0 0; display: none; }
+        
+        /* TÄSSÄ ON CHATGPT:N KORJAUS CSS:ÄÄN */
+        #world { position: absolute; top: 0; left: 0; transform-origin: 0 0; display: none; }
+        
         #game-map { display: block; pointer-events: none; }
         #svg-layer, #marker-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
         #svg-layer { z-index: 1; } #marker-layer { z-index: 2; }
@@ -47,7 +50,7 @@
         #draw-tools { top: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.9); padding: 10px; border: 1px solid #d4af37; }
         .float-btn { width: auto; padding: 5px 15px; background: rgba(0,0,0,0.8); border: 1px solid #888; }
         .ai-msg { color: #88ccff; font-style: italic; border-left: 2px solid #88ccff; padding-left: 10px; margin: 5px 0; background: #112233; padding: 5px; }
-        .file-upload-box { background: #2a2a2a; border: 1px dashed #d4af37; padding: 10px; text-align: center; margin-bottom: 15px; font-size: 0.9em; }
+        .file-upload-box { background: #2a2a2a; border: 1px dashed #d4af37; padding: 10px; text-align: center; margin-bottom: 15px; font-size: 0.9em; display: none; }
     </style>
 </head>
 <body>
@@ -85,7 +88,8 @@
         <h2 style="color:#ff4500; text-align:center; margin-top:0;">NAZGÛL COMMAND</h2>
         
         <div class="file-upload-box" id="manual-upload-box">
-            <span>Kartta ei näy? Lataa kuva tästä:</span><br>
+            <span style="color:#f66"><b>Karttaa ei löytynyt automaattisesti!</b></span><br>
+            <span>Lataa kartta.jpg manuaalisesti tästä:</span><br>
             <input type="file" accept="image/*" onchange="handleInput(this)" style="margin-top:5px;">
         </div>
 
@@ -143,8 +147,22 @@
 
         window.onload = function() {
             let imgElement = document.getElementById('game-map');
-            imgElement.onload = function() { startMap(imgElement); };
-            imgElement.src = "kartta.jpg?t=" + new Date().getTime();
+            
+            imgElement.onload = function() { 
+                startMap(imgElement); 
+            };
+            
+            // TÄSSÄ ON CHATGPT:N KORJAUS LATAUSVIRHEESEEN
+            imgElement.onerror = function(e) {
+                console.error("Kartta ei lataudu:", imgElement.src, e);
+                document.getElementById('manual-upload-box').style.display = 'block';
+                let errorMsg = `<div style="color:#f66"><b>❌ Kartta ei lataudu</b><br>Haettu: <code>${imgElement.src}</code><br>Tarkista GitHubista, että tiedosto on olemassa tällä nimellä.</div><hr style="border-color:#333">`;
+                // Tulostetaan suoraan ruudulle, vaikkei pushLog olisi valmis
+                document.getElementById('log').innerHTML = errorMsg + document.getElementById('log').innerHTML;
+            };
+
+            // TÄSSÄ ON CHATGPT:N KORJAUS POLKUUN
+            imgElement.src = "./kartta.jpg?t=" + Date.now();
 
             setTimeout(() => {
                 if(window.db) {
@@ -180,7 +198,6 @@
             document.getElementById('marker-layer').style.width = w + 'px';
             document.getElementById('marker-layer').style.height = h + 'px';
             
-            // Pieni viive estää "0-zoomauksen" ikkunan piirtyessä
             setTimeout(() => {
                 fitToScreen(); 
                 renderOverlays();
@@ -192,12 +209,11 @@
         function fitToScreen() {
             let img = document.getElementById('game-map'), vp = document.getElementById('viewport');
             let w = img.naturalWidth || 1000, h = img.naturalHeight || 1000;
-            // Varmistetaan, ettei leveys tai korkeus voi olla 0
             let vpw = vp.offsetWidth > 0 ? vp.offsetWidth : window.innerWidth * 0.75;
             let vph = vp.offsetHeight > 0 ? vp.offsetHeight : window.innerHeight;
             
             let s = Math.min(vpw / w, vph / h) * 0.95;
-            if (s <= 0) s = 0.5; // Estää kartan katoamisen kokonaan!
+            if (s <= 0) s = 0.5;
             
             view.scale = s; view.x = (vpw - w * s) / 2; view.y = (vph - h * s) / 2;
             updateTransform();

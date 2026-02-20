@@ -2,7 +2,7 @@
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
-    <title>Middle-earth Manager v7.0 (Stat Controls)</title>
+    <title>Middle-earth Manager v7.1 (Drawing Fix)</title>
     
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -42,7 +42,6 @@
         button, select, input { background: #333; color: #fff; border: 1px solid #555; padding: 10px; width: 100%; cursor: pointer; }
         .active-tool { background: #d4af37; color: #000; font-weight: bold; }
         
-        /* Statsien säätönappien tyyli */
         .stat-btn { width: 30px; padding: 2px 0; margin-left: 5px; font-weight: bold; font-size: 16px; background: #444; border: 1px solid #666; border-radius: 4px; }
         .stat-btn:hover { background: #d4af37; color: #000; }
         
@@ -230,7 +229,12 @@
             if(tool === 'move') { isDragging = true; }
             else if(tool === 'fort') {
                 let c = getWorldCoords(e), name = prompt("Linnoituksen nimi:");
-                if(name) { nazguls[currentNaz].markers.push({x: c.x, y: c.y, label: name}); renderOverlays(); uploadState(); }
+                if(name) { 
+                    // TÄRKEÄ KORJAUS: Luodaan lista, jos sitä ei ole
+                    if (!nazguls[currentNaz].markers) nazguls[currentNaz].markers = [];
+                    nazguls[currentNaz].markers.push({x: c.x, y: c.y, label: name}); 
+                    renderOverlays(); uploadState(); 
+                }
             } else if(tool === 'area') { draw.points.push(getWorldCoords(e)); renderTempPoly(); }
         }
         function onMouseMove(e) { if(isDragging && tool === 'move') { view.x += e.movementX; view.y += e.movementY; updateTransform(); } }
@@ -241,17 +245,13 @@
         function pushLog(h) { logs.unshift(h); renderLog(); if(window.db) window.dbPush(window.dbRef(window.db, 'gameState/logs'), h); }
         function clearLog() { if(confirm("Tyhjennä historia?")) { logs=[]; renderLog(); if(window.db) window.dbSet(window.dbRef(window.db, 'gameState/logs'), null); } }
 
-        // --- UUSI FUNKTIO: STATSIEN MANUAALINEN SÄÄTÖ ---
         function adjustStat(stat, amount) {
             let n = nazguls[currentNaz];
             n[stat] += amount;
-            
-            // Rajoitetaan arvot välille 0-10
             if(n[stat] < 0) n[stat] = 0;
             if(n[stat] > 10) n[stat] = 10;
-            
             updateUI();
-            uploadState(); // Synkronoidaan Firebaseen heti!
+            uploadState(); 
         }
 
         async function performAction(action, stat) {
@@ -290,7 +290,25 @@
 
         function setTool(t) { tool=t; document.getElementById('viewport').style.cursor=t==='move'?'grab':'crosshair'; document.querySelectorAll('.controls button').forEach(b=>b.className=''); document.getElementById(t==='move'?'btnMove':t==='fort'?'btnFort':'btnArea').className='active-tool'; document.getElementById('draw-tools').style.display=t==='area'?'block':'none'; draw.points=[]; renderTempPoly(); }
         function renderTempPoly() { let svg=document.getElementById('svg-layer'), old=document.getElementById('temp-poly'); if(old)old.remove(); if(draw.points.length){ let el=document.createElementNS("http://www.w3.org/2000/svg","polyline"); el.id='temp-poly'; el.setAttribute("points",draw.points.map(p=>`${p.x},${p.y}`).join(" ")); el.setAttribute("fill","none"); el.setAttribute("stroke","#fff"); el.setAttribute("stroke-width","3"); el.setAttribute("stroke-dasharray","5,5"); svg.appendChild(el); } }
-        function finishPoly() { if(draw.points.length<3)return; let name=prompt("Alue:"); if(name){ let cx=0,cy=0; draw.points.forEach(p=>{cx+=p.x;cy+=p.y}); cx/=draw.points.length; cy/=draw.points.length; nazguls[currentNaz].territories.push({points:[...draw.points],label:name,cx,cy}); renderOverlays(); uploadState(); } setTool('move'); }
+        
+        function finishPoly() { 
+            if(draw.points.length<3) return; 
+            let name=prompt("Alue:"); 
+            if(name){ 
+                let cx=0,cy=0; 
+                draw.points.forEach(p=>{cx+=p.x;cy+=p.y}); 
+                cx/=draw.points.length; cy/=draw.points.length; 
+                
+                // TÄRKEÄ KORJAUS: Luodaan lista, jos sitä ei ole
+                if (!nazguls[currentNaz].territories) nazguls[currentNaz].territories = [];
+                nazguls[currentNaz].territories.push({points:[...draw.points],label:name,cx,cy}); 
+                
+                renderOverlays(); 
+                uploadState(); 
+            } 
+            setTool('move'); 
+        }
+        
         function cancelPoly() { setTool('move'); }
         function openSettings() { document.getElementById('settings-overlay').style.display='flex'; document.getElementById('apiKeyInput').value=geminiKey; }
         function closeSettings() { document.getElementById('settings-overlay').style.display='none'; }
@@ -314,7 +332,6 @@
         }
         function renderLog() { document.getElementById('log').innerHTML=logs.join(""); }
         
-        // --- PÄIVITETTY KÄYTTÖLIITTYMÄ ---
         function updateUI() {
             currentNaz = document.getElementById('nazgulSelect').value; 
             let n = nazguls[currentNaz];

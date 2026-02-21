@@ -2,7 +2,7 @@
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
-    <title>Middle-earth Manager v8.8 (Anti-Spoiler Engine)</title>
+    <title>Middle-earth Manager v8.9 (Factor Engine)</title>
     
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -166,7 +166,6 @@
         let campaignLore = ""; 
 
         window.onload = function() {
-            // Ladataan lore.txt muistiin, pakotetaan selaimen välimuistin ohitus cache-bustilla
             fetch('./lore.txt?t=' + Date.now())
                 .then(response => {
                     if(response.ok) return response.text();
@@ -291,26 +290,29 @@
 
             let n = nazguls[currentNaz];
             let loadId = "load-"+Date.now();
-            document.getElementById('log').innerHTML = `<div id="${loadId}" style="color:#d4af37">🧙‍♂️ GM selaa taikakirjojaan...</div>` + document.getElementById('log').innerHTML;
+            document.getElementById('log').innerHTML = `<div id="${loadId}" style="color:#d4af37">🧙‍♂️ GM analysoi tilannetta...</div>` + document.getElementById('log').innerHTML;
             
-            // TÄSSÄ ON ANTI-SPOILER PROMPTI
             let prompt = `Olet pelinjohtaja (Game Master) Keskimaahan sijoittuvassa synkässä roolipelissä, joka käyttää Burning Wheel -tyyppistä noppamekaniikkaa.
 Pelaajan hahmo on Nazgûl nimeltä ${n.name}.
 
 ${campaignLore ? "KAMPANJAN TAUSTATIETO (LORE):\n" + campaignLore + "\n" : ""}
 ${getMapStateForAI()}
 
-TÄRKEÄ SÄÄNTÖ (ANTI-SPOILER): Puhu pelaajalle ikään kuin hän olisi ainoastaan kyseinen Nazgûl. Nazgûlit eivät ole kaikkitietäviä. Jos yllä olevassa KAMPANJAN LORE -tekstissä mainitaan salaisuuksia (esimerkiksi "ÄLÄ PALJASTA TÄTÄ PELAAJILLE", kuka oikeasti johtaa kultteja tms.), et saa MISSÄÄN NIMESSÄ mainita näitä salaisuuksia vastauksessasi. Viittaa asioihin vain niin kapeasti kuin Pimeyden palvelija ne näkisi (huhuina, ärsyttävinä kultisteina jne.).
+TÄRKEÄ SÄÄNTÖ (ANTI-SPOILER): Puhu pelaajalle ikään kuin hän olisi ainoastaan kyseinen Nazgûl. Älä koskaan paljasta salaisuuksia (esim. salaseurojen todellisia johtajia), jos ne on merkitty LORESSA salaisuuksiksi.
 
 Pelaaja ilmoittaa aikeensa (Intent): "${intent}".
 
 Tehtäväsi:
-1. Kerro 2-3 lauseella lyhyt, tunnelmallinen kuvaus kohteesta (hyödynnä mahdollista yllä annettua lorea ja karttatilannetta, mutta älä riko anti-spoiler -sääntöä) ja arvioi miksi aie on haastava (tai helppo).
-2. Määritä toiminnalle vaikeustaso eli Ob (Obstacle, luku väliltä 1-6). 
+1. Kerro 2-3 lauseella lyhyt, tunnelmallinen kuvaus kohteesta hyödyntäen yllä olevaa KAMPANJAN LOREA.
+2. Etsi LORESTA asioita, jotka tekevät tästä aikeesta joko vaikeamman tai helpomman (esim. kukkulainen maasto, vahva armeija, heikko usko). Listaa nämä FAKTORIT ranskalaisilla viivoilla ja anna niille Ob-muutos (esim. "Vaikeakulkuinen vuoristo: +1 Ob" tai "Heikko talous: -1 Ob"). Jos alueen tietoja ei löydy loresta, arvioi ne loogisesti Keskimaan kontekstissa.
+3. Laske lopullinen Ob (Obstacle, perusvaikeus 1-6 + faktorit).
 
-Vastaa ytimekkäästi suomeksi muodossa:
+Vastaa tismalleen tässä muodossa:
 Tarinallinen arvio: [Teksti tähän]
-Ehdottamasi Ob: [Numero]`;
+Faktorit:
+- [Faktori 1]: [+/- X Ob]
+- [Faktori 2]: [+/- X Ob]
+Lopullinen Ob: [Numero]`;
 
             let txt = await callAI(prompt);
             let l = document.getElementById(loadId); if(l) l.remove();
@@ -351,7 +353,7 @@ Pelaajan aie oli: "${intent}".
 Käytetty taito/toiminto: ${action}.
 Nopanheiton tulos oli: ${res} (Marginaali vaadittuun: ${margin}).
 
-TÄRKEÄ SÄÄNTÖ: Pelaaja ohjaa Nazgûlia. Jos yllä olevassa LORESSA on salaisuuksia (kuten vihollisten oikeat johtajat tai identiteetit), älä koskaan paljasta niitä nopanheiton lopputuloksessa. Pidä mysteerit yllä.
+TÄRKEÄ SÄÄNTÖ: Älä koskaan paljasta nopanheiton lopputuloksessa salaisuuksia, jotka on merkitty salaisiksi LORESSA.
 
 Tehtäväsi:
 1. Kuvaile tapahtumien lopputulos tarinallisesti (max 3 lausetta) ottaen huomioon onnistuiko vai epäonnistuiko yritys.

@@ -723,6 +723,76 @@ Sotoprofiili: palkkavartijat; sisäinen turvallisuus heikko
 
 BW: Kauppasopimus / liittolaisuus Ob 3–5; vastavakoilu/verkoston paljastus Ob 4–6
 
+Relmether — paikkadossier v1.0 (S.A. 1993)
+Vauraus: 4/10
+Viljantuotanto + varastot + tullit = selvä ylijäämä, mutta jatkuva turvallisuuspaine (ylitysten suojaus) syö resursseja.
+Sauron's Grand Strategy: Second…
+Uskonto: 6/10
+Uskonto on organisoitunutta (joentemppeli ja valarit/valon liikkeet elävät), mutta kilpailtu: Valon Kulkijat ja Tûronielin lapset repivät kenttää, Sauron yrittää ujuttautua.
+Asevoima: 3/10
+Ei suurvalta, mutta erittäin kova jokipuolustuksessa (fordit, linnakkeet, jokijoukot). Hyökkääjä tarvitsee joko diplomatiaa tai massiivisen ylityskyvyn.
+Lojaalisuus: 6/10
+Kruunu + temppeli + vilja-aitat pitävät järjestyksen. Lojaalisuus ei ole “kultti”, mutta se on vahvempi kuin klaaniliitoissa – kunnes temppeli ja kauppakaupungit riitaantuvat.
+0) Yleistä
+Relmether on Khûrash-joen pohjoisrannan fordien ja jokikaupan valtakunta: puoliksi monarkia, puoliksi temppelien ja kaupunkien liitto, jonka koko olemassaolo perustuu siihen, kuka hallitsee ylityspaikkoja ja viljareittejä. Mordorin strategisissa papereissa juuri “neutraaliksi” kuvattu valtakunta, joka kontrolloi kriittisiä kahlaamoja (fords) ja siten idästä tulevaa viljahuoltoa, sopii suoraan Relmetheriin (ja antaa sinulle pelillisen “miksi tämä maa merkitsee”).
+Sauron's Grand Strategy: Second…
+Sijainti suhteessa kampanjaasi: Cheystä pohjoiseen joen takana; lännessä/luoteessa Dalpyyis (naapuri), koillisessa arot/rajaseutu (Karyayis Ahar -suunta), etelässä joen yli Oryorhraath ja Chey.
+
+1) Geografia ja ilmasto
+Ydinmaasto: leveä jokilaakso + tulvatasangot (vilja, pellava, karja), niiden takana harjuja ja sekametsää (rakennuspuu, metsästys, piiloreitit).
+Strateginen maasto: 2–4 “isoa” ylitystä (kahlaamot/sillat), joiden ympärille on kasvanut kaupunkeja ja linnakkeita.
+Rajaluonne: itäiset laidat “aukeavat” kohti aroja → hevoskauppa, palkkaratsuväki, ryöstöretket.
+
+2) Hallinto ja avainhenkilöt
+Hallintomuoto: Ford-kruunu (perinnöllinen kuningas) + Joenneuvosto (kaupunkien ja temppelien edustajat).
+Legitimiteetti: “Kuningas takaa rauhan joella ja oikeuden ylityksiin.”
+Avainhenkilöt (valmiit softaan):
+Kuningas Edrak (tai ruhtinas-kuningas): “neutraali” ulkopolitiikka, myy kulkua kaikille – mutta ei alistu.
+ Sauron's Grand Strategy: Second…
+Kahlaamojen Vartija (Warden of the Fords): käytännön sotavoima; komentaa jokilinnoitukset.
+Joentemppelin Ylipappi/Ylipapitar: kontrolloi rituaalit ja vannomiset (“vesivalat”).
+Viljakillan Mestari: varastot ja hinnat – pystyy kaatamaan hallitsijan ilman miekkaa.
+Sinisen Varjon Tie -kontaktipää (salassa): tiedusteluverkko, joka ohjaa pakolaisia ja sabotaasia.
+
+3) Uskonto (miksi se on kiistanalainen)
+Relmetherissä uskonto on vahvaa ja instituutionaalista, mutta ei yhden totuuden monopoli:
+Joen Henki / jokijumalatar -kultti (enemmistö): valat, puhdistautumiset, veden oikeudet.
+Itäisen Valon Kulkijat: “toivon ja vastarinnan” solut, jotka rakentavat verkostoja kansan keskuuteen.
+Tûronielin Lapset (Pallandon fatalistinen haara): erityisesti syrjäseudulla; voivat halvaannuttaa yhteisöjä (“älkää vastustako, kärsimys on tie”).
+Sauronin kultti: pieni mutta kasvava raja-asemilla ja virkamiesten kautta (lahjonta, pelko, “järjestys”).
+
+4) Talous
+Vilja ja varastot: tulvatasangot + suuret aitat (Relmether on “leipäaitta”), mikä tekee siitä Mordorille ja Cheylle hermopisteen.
+ Sauron's Grand Strategy: Second…
+Tullit ja ylitysoikeudet: kahlaamot ja sillat = jatkuva kassavirta.
+Jokilaivasto: kuljetus, kalastus, lautturit (ja salakuljetus). Cheyssä Khûrash on jo elämänlanka ja “liikenneväylä”, joten sama logiikka toimii Relmetherissä pohjoisrannalla.
+
+5) Sotavoima (mitä Relmether oikeasti osaa)
+Ford- ja sillansulkupuolustus: linnakkeet + siirrettävät sulut, ketjut, paalutukset.
+Jokijoukot: kevyet alukset, lautturitiedustelu, nopea reagointi.
+Levy/jalkaväki: kaupunkimilitia ja “kahlaamokaarti” (raskas kilpimuuri ylityksiin).
+Aro-apujoukot: palkkaratsuväki (luotettavuus vaihtelee).
+Heikkous: jos jokin suuri kaupunki vaihtaa puolta tai jos temppeli julistaa kruunun epälegitiimiksi → sisäinen murtuma.
+
+6) Muinaiskohteet ja Ensimmäisen ajan muistot (Relmetherille istuva setti)
+Valkoisen Kiven Vartiotorni (Ñoldorin rajatorni, raunio): edelleen “puhdistava” vaikutus pimeää vastaan, mutta heikkenee ajan myötä (peilaa Cheyn elven-ruin -teemaa).
+ CHEY VALLEY - KINGDOM OF REN TH…
+Kahlaamokummut (vanhat kuninkaiden hautakummut): aseita, valoja, kirouksia; ideaalinen BW-tilanne “oath/ancestor”-teemoille.
+Särkynyt Tulvapyhäkkö: muinainen joen puhdistusriitti, jonka palautus voisi murtaa Sauronin kultin etenemistä (tai kääntyä sitä palvelevaksi).
+
+Relmether — avainpaikat (9 kpl) “karttaneuloiksi”
+Sama formaatti kuin Vaay: tyyppi + miksi tärkeä + BW-käyttö.
+Lithárin (Kahlaamokruunu) – pääkaupunki, suuri kahlaamo ja vilja-aitat; poliittinen ydin. (Diplomatia/coup Ob 4–6; piiritys Ob 6–8)
+ Sauron's Grand Strategy: Second…
+Edrakin Kahlaamo – strateginen ylitys: ketjusulut ja paalutukset; “sillan hallinta = valtakunnan hallinta”. (Pakko-ylitys Ob 6–8)
+Joentemppeli “Veden Valat” – uskonnollinen legitimiteetti; kun kruunu kruunataan, vesi “todistaa”. (Legitimiteettiriitti Ob 4–6)
+Viljanmustat Aitat – varastokompleksi; nälänhätä-ase ja vallan väline. (Sabotaasin torjunta Ob 4–6)
+Kahlaamokaartin Linna (Stone-Chain Keep) – joen pohjoisrannan avainlinnoitus; sulkee reitin Oryorhraathista. (Läpimurto Ob 5–7)
+Ruokokaisla-Suot (Salakuljettajien delta) – piiloreitit ja kapinallisten logistiikka; “Blue Shadow Path” -tyyppinen paikka. (Jäljitys/verkoston paljastus Ob 4–6)
+Sinisen Kiven Erakkomaja – Tûronielin lasten pyhiinvaelluspaikka; voi lamauttaa tai ohjata kansaa. (Mielen/sosiaalinen vaikuttaminen Ob 4–7)
+Valkoisen Kiven Vartiotorni (raunio) – First Age -muisto; “valo joka ei sammu”. (Raunion aktivointi Ob 5–7)
+ CHEY VALLEY - KINGDOM OF REN TH…
+Aroportti (Itäinen rajatori) – hevoskauppa, palkkaratsut, tiedustelu; kohtaamispaikka Karyayis Ahar -suunnan väelle. (Tietojen ostaminen/rekrytointi Ob 3–5)
 
 
 

@@ -1,5 +1,41 @@
 Vaayn ruhtinaskunta — paikkadossier v1.0 (S.A. 1993)
-0) Pikatunnus
+Vauraus: 5
+Plussat: solien tullitulot, karavaanikauppa (etelän erikoistuotteet), terassiviljelyn ja vuohitalouden “vakaa perusta”.
+
+
+Miinukset: vesiriippuvuus + kuumuus/kausivaihtelu, klaanien sisäinen kitka ja turvallisuusriskit syövät ylijäämää.
+
+
+Tulkinta: Vaay ei ole köyhä periferiamaa, mutta ei myöskään “kultainen keskus”.
+
+Uskonto: 5
+Plussat: uskonto on arjessa vahvaa (vanhat henget/esi-isät + rituaalit veden ja rajojen ympärillä).
+
+
+Miinukset: ei yhtä hegemonista uskoa; kilpailu (vanhat henget vs. Sauronin kultin tunkeuma vs. sinisen liekin solut) laskee “yhtenäistä uskonnollista kontrollia”.
+
+
+Tulkinta: uskonto merkitsee, mutta se ei ole yhden jumalhahmon/valtiokultin tiukassa otteessa.
+
+Asevoima: 4
+Plussat: maasto suosii puolustajaa (kukkulat/solat), hillfort-ketjut, väijytysdoktriini; pienempi armeija voi olla “terävä”.
+
+
+Miinukset: rajallinen miesmäärä ja huolto pitkään sotaan, klaanien hajanaisuus; vaikea projisoida voimaa arolle tai useaan suuntaan.
+
+
+Tulkinta: Vaay pystyy tekemään hyökkääjän elämästä helvettiä solissa, mutta ei ole alueellinen suurvalta.
+
+Lojaalisuus: 5
+Plussat: ruhtinaan valta nojaa “kovaan infraan” (solat, tullit, vesioikeudet) → kohtuullinen järjestys.
+
+
+Miinukset: klaanien kilpailu + ulkoinen vaikutus (Chey, eteläiset kauppaverkot, uskonnolliset verkostot) → lojaalisuus on neuvoteltua.
+
+
+Tulkinta: ei anarkia, mutta ei myöskään kulttimainen yhtenäisyys.
+
+0) Yleistä
 Vaay on Cheyn kaakkoisnaapuri: kukkulainen “march”-ruhtinaskunta, joka istuu kuuman vyöhykkeen ja eteläisen kosteuden rajalla. Ilmasto on “Umbarin leveyspiirin” kaltainen (pitkät kuumat kaudet), mutta Vaayn eteläinen läheisyys sademetsävyöhykkeeseen tekee siitä vaihtelevamman: kuivuus + kausittaiset rankkasateet/ukkosrintamat. Umbarista löytyy viitteitä juuri “miedot talvet / erittäin kuumat ja kuivat kesät” -tyyppisestä ilmastosta, mikä sopii analogiaksi Vaayn peruslämpötiloihin.
 Rajanaapurit:
 Pohjoinen: Cheyn eteläisin provinssi Oryorhraath

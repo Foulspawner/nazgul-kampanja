@@ -1,1 +1,685 @@
+Vaayn ruhtinaskunta — paikkadossier v1.0 (S.A. 1993)
+0) Pikatunnus
+Vaay on Cheyn kaakkoisnaapuri: kukkulainen “march”-ruhtinaskunta, joka istuu kuuman vyöhykkeen ja eteläisen kosteuden rajalla. Ilmasto on “Umbarin leveyspiirin” kaltainen (pitkät kuumat kaudet), mutta Vaayn eteläinen läheisyys sademetsävyöhykkeeseen tekee siitä vaihtelevamman: kuivuus + kausittaiset rankkasateet/ukkosrintamat. Umbarista löytyy viitteitä juuri “miedot talvet / erittäin kuumat ja kuivat kesät” -tyyppisestä ilmastosta, mikä sopii analogiaksi Vaayn peruslämpötiloihin.
+Rajanaapurit:
+Pohjoinen: Cheyn eteläisin provinssi Oryorhraath
+
+
+Itä: Gaathyykarkan
+
+
+Etelä: Acaana, Lodenuly
+
+
+Länsi: Chy
+
+
+Lännessä vuorten takana: Clyan
+
+
+Pohjoisessa avautuvat idän arot (Cheystä itään) — Vaay on niiden “reunamaa”
+
+
+
+1) Geografia ja ilmasto 
+Maasto: pyöristyneet, kiviset kukkulat, harjanteet ja kuivat laaksot (wadi-tyyppiset uomat), joiden pohjilla on viljelytaskuja ja lähteitä.
+ Eteläreuna: kosteusvyöhyke lähestyy → jokiuomat ja notkot vihertyvät, ja hartsi-, mauste- ja värikasvikauppa on mahdollinen.
+ Eteläpuolen vuorijono (Cheyn eteläiset vuoret jatkuvat kohti merta): toimii säämuurina ja samalla strategisena “porttina”: solat ja rotkot määräävät liikkeen.
+Luonnolliset “chokepointit”:
+2–4 merkittävää solaa länteen (Chy/Clyan -suunta) ja etelään (Acaana/Lodenuly)
+
+
+1–2 “isoa” harjanneketjua, joiden hallinta ratkaisee koko ruhtinaskunnan puolustuksen
+
+
+pohjoisessa aro-reuna: nopea ratsuväki pääsee Vaayhin vain tiettyjen kulku-urien kautta
+
+
+
+2) Hallintomuoto ja valtarakenne
+Valtioformaatti: ruhtinaskunta, joka on käytännössä kukkulaisten klaanien liittokunta. Ruhtinas hallitsee, koska:
+hän kontrolloi tärkeimmät solat + tullit,
+
+
+hän jakaa “veden ja varaston” (vilja, suola, kupari/rauta),
+
+
+hän pitää klaanien välisen verikoston kurissa.
+
+
+Hovi ja instituutiot:
+Ruhtinas (Vaayn kruunu): pragmaattinen, tasapainottelee Cheyn varjon ja etelän kaupan välillä.
+
+
+Solapäällikkö (Warden of the Passes): todellinen sotilaallinen voima; jos hän vaihtaa puolta, Vaay kaatuu.
+
+
+Vesituomarit: paikallinen virkamies/pappiskunta, joka jakaa lähde- ja kasteluoikeuksia (valtaa enemmän kuin näyttää).
+
+
+Klaanineuvosto: 5–9 suurklaania; ruhtinas ostaa lojaalisuutta avioliitoilla ja panttivangeilla.
+
+
+Kauppiassuvut: hallitsevat etelän tavaravirtaa (hartsi, väriaineet, eksoottipuu, orjat/työvoima jos haluat synkistää).
+
+
+
+3) Uskonto ja “kognitiivinen taistelukenttä”
+Vaay on luonteva uskontoristeys (ja siksi Renin hyökkäyksen kannalta herkullinen).
+A) Vanha Vaay (enemmistö)
+Kukkuloiden ja veden henget + esi-isälinjat.
+ Rituaalit liittyvät sateeseen, lähteisiin, kiveen ja rajakiviin. Tämä on yhteisöä koossa pitävä “normaalius”.
+B) Sauronin kultti (kasvava vähemmistö)
+Renin vaikutus Cheyssä on jo kuvattu “valtiokultin” kaltaiseksi (temppelit käännetty palvelemaan Sauronia, rituaalit ja pelko).
+ Vaayhin tämä leviää tyypillisesti kolmea kanavaa pitkin:
+panttivangit/avioliitot (hovin taso),
+
+
+tullisopimukset (kauppiaat),
+
+
+pappien “turvapalvelu” (lupaus suojelusta, todellisuudessa riippuvuus).
+
+
+C) Sininen liekki / Pallandon perintö (salainen, mutta vaikutusvaltainen)
+Teidän “Itäisen valon kulkijat / Tûronielin Lapset” -kuvaus antaa valmiin rungon: hiljaisuuden filosofia, kärsimysriitit, sisäinen hierarkia ja radikaalit haarat.
+ Sauronin strategiadokumentti korostaa, että vastarinta idässä on muuttunut “teologiseksi” ja että Siniset Velhot rakentavat kultteja ja liittoumia, jotka uhkaavat verotus- ja miesvoimajärjestelmiä.
+Vaayhin istuva tulkinta: liike ei ole “armeija”, vaan rajaseutujen moraalinen selkäranka: se voi lamauttaa yhteistyön Renin kanssa, suojata pakolaisia ja tarjota viestiverkon.
+
+4) Talous
+Peruspilarit:
+terassiviljely (viljat, pavut), vuohitalous, kuivien laaksojen taatelit/hedelmäpuut analogiana
+
+
+metallit ja kivi (kupari, rauta, rakennuskivi) — erityisesti jos haluat Vaaysta “asepajojen” syöttäjän
+
+
+eteläiset erikoistuotteet sademetsäreunalta (hartsi, väriaineet, lääkekasvit, eksoottipuu)
+
+
+tullit: solat ja karavaanireitit ovat ruhtinaan kassa
+
+
+Taloudellinen haavoittuvuus: vesi + kulkureitit. Jos Ren kontrolloi Oryorhraathin kautta pohjoisen reitin ja pakottaa solat kiinni, Vaay kuristuu nopeasti.
+
+5) Sotavoima (mitä Vaay “oikeasti osaa”)
+Doctrine: puolustus harjanteilta, nopea reagointi solissa, väijytykset rotkoissa; ei halua avoimen kentän sotaa (siinä arokansat ja Cheyn massat jyräävät).
+Ydinkyvyt:
+kukkulajalkaväki (keihäät, kilvet, linkomiehet)
+
+
+solavartiot ja majakat (viestituliverkko)
+
+
+kevyt ratsuväki (pieni, usein palkattu aroreunalta)
+
+
+linnoitetut kukkulakaupungit (“hillfort”-ketju), jotka pakottavat hyökkääjän sarjaan piirityksiä
+
+
+Heikkoudet:
+rajallinen huolto pitkään sotaan
+
+
+klaanien sisäinen kilpailu (Ren voi ostaa yhden klaanin ja rikkoa puolustuksen)
+
+
+
+6) Ensimmäisen ajan kohteet ja muinaiset muistot 
+
+Elenrûna, Harjanteen Majakka – raunioitunut valotorni kukkulan huipulla; sen sytyttäminen näkyy arolle asti (strateginen + myyttinen).
+
+
+Kiven alla oleva Kaivo – Ulmon/vesivoiman muistoon kytkeytyvä lähdepyhäkkö; vesi on “oikeaa” vain jos ruhtinas hallitsee rituaalin.
+
+
+Mustan Rotkon Portti – Morgothin pakolaisten/vanhan varjon jättämä halkeama etelävuorilla (ei välttämättä “Utumno”, mutta sama kauhu).
+
+
+Nämä ovat tarkoituksella “peilikuva” Cheyn kohteista: Chey = jo korruptoitunut; Vaay = vielä kiistanalainen.
+
+7) BW-faktorit Renin hyökkäyksen OB-laskentaan (Vaay-case)
+Tässä tekijälista, jonka voit syöttää deterministiseen OB-laskuriin (LLM vain arvioi arvot 0–2):
+Maasto: kukkulat/rotkot (vaikeuttaa massahyökkäystä)
+ Linnoitteet: hillfort-ketju + solaportit
+ Huolto: kuumuus + vesi (hyökkääjä kärsii)
+ Poliittinen yhtenäisyys: klaaniliitto (hauras → subvertoitavissa)
+ Ulkoinen interventio: Acaana/Lodenuly/Chy (tuleeko apua?)
+ Uskonnollinen kitka: Sauron-kultti vs. vanhat henget vs. Tûronielin Lapset
+ Tiedustelu: Renin verkko (Cheyssä jo vahva), Vaayn paikallistuntemus
+Esimerkkiskaala (suuntaa-antava):
+Nopea rangaistusretki / ryöstö: Ob 3–5
+
+
+Täysimittainen valloitus: Ob 5–7
+
+
+Coup / klaanin ostaminen / temppelikaappaus: Ob 4–6 (onnistuu helpommin kuin sotilaallinen valloitus, jos klaanit riitelevät)
+
+
+Vaayn avainpaikat (9 kpl) — “karttaneulat” softaan
+Alla jokaisesta: tyyppi + sijainti + miksi tärkeä + valta/uskonto + sotilaallinen profiili + 1–2 BW-käyttöä (OB-suunta).
+
+1) Vaar-Vaay (Kruununharja)
+Tyyppi: pääkaupunki / kukkulalinnoitus
+
+
+Sijainti: keskinen Vaay, korkeimmalla harjanteella (reittien risteys länteen Chyyn ja etelään Acaanaan)
+
+
+Miksi tärkeä: ruhtinaan hovi, tullikassa, panttivankipolitiikan keskus (klaanien nuoria kasvatetaan “hovissa”)
+
+
+Valta/uskonto: kruunu + klaanineuvosto; vanhat henget näkyvät julkisesti, Sauronin kultti hivuttautuu virastojen kautta
+
+
+Sotaprofiili: kivimuurit, sisälinna, linkomiehet; pitkä piiritys on mahdollinen
+
+
+BW: Piiritys Ob 6–8; vallankaappaus/diplomatia Ob 4–6
+
+
+
+2) Oryor-Portti (Pohjoinen Rajalinnoitus)
+Tyyppi: rajalinna / tullipiste
+
+
+Sijainti: Vaayn pohjoisreuna, kohti Oryorhraathia (Cheyn eteläisin provinssi)
+
+
+Miksi tärkeä: ensimmäinen paikka, johon Renin sotajoukot “osuvat” jos tulevat maitse; myös pakolais- ja salakuljetusreitti
+
+
+Valta/uskonto: solavartijat + paikallisklaani; sinisen liekin verkosto käyttää yösuojia
+
+
+Sotaprofiili: nopea hälytys, majakkatulit viestittää Kruununharjalle
+
+
+BW: Läpimurto rajan läpi Ob 5–7; infiltraatio/sabotaasi Ob 4–6
+
+
+
+3) Chy-Sola (Kivihampaiden Käytävä)
+Tyyppi: vuoristosola / kauppareitti
+
+
+Sijainti: Vaayn länsireuna, reitti Chyyn (ja edelleen lännessä vuorten taakse)
+
+
+Miksi tärkeä: elintärkeä kauppakäytävä, ja sotilaallisesti “sulkuventtiili”: jos tämä menee, Vaay vuotaa
+
+
+Valta/uskonto: klaanivartiot; kauppiassuvut maksavat suojelurahaa
+
+
+Sotaprofiili: kapeikko + kivivyöryt + väijytysmaasto
+
+
+BW: Sola väkisin auki Ob 6–8; salaisten maksujen/lojaalisuuden ostaminen Ob 3–5
+
+
+
+4) Clyan-Yläsilta (Pilvisola)
+Tyyppi: korkea sola / “vuorten takainen yhteys”
+
+
+Sijainti: Vaayn länsi-lounais, reitti vuorten yli Clyaniin
+
+
+Miksi tärkeä: strateginen selkäreitti: jos Vaay joutuu puristuksiin, tämä on pakotie tai yllätyshyökkäyslinja
+
+
+Valta/uskonto: käytännössä sotilaallisen “Solapäällikön” reviiri
+
+
+Sotoprofiili: vaikeakulkuinen; pienikin joukko voi estää suuren armeijan
+
+
+BW: Talvi/kuivuusmarssi yli Ob 5–7; yllätysratsia Ob 4–6
+
+
+
+5) Gaathin Reunatori (Aro- ja Itärajan Kauppapaikka)
+Tyyppi: markkinakylä / karavaanikeskus
+
+
+Sijainti: Vaayn koillisreuna, “siirtymävyöhyke” aroille; reitti Gaathyykarkaniin
+
+
+Miksi tärkeä: hevoset, suola, vilja, tiedustelu; täällä kuulee ensimmäisenä liikkeet aroilta ja idästä
+
+
+Valta/uskonto: kauppiassuvut + aro-oppaat; vanhat taivaan/tuulen rituaalit vahvoja
+
+
+Sotoprofiili: heikko muuri, mutta paljon aseistettuja matkueita; levoton
+
+
+BW: Tietojen ostaminen Ob 3–5; mellakan tukahdutus Ob 4–6
+
+
+
+6) Kiven-Alla-Kaivo (Vesipyhäkkö)
+Tyyppi: pyhä lähde / “vesituomarien” vallan keskus
+
+
+Sijainti: keski-eteläinen Vaay, syvässä notkossa terassiviljelmien yläpuolella
+
+
+Miksi tärkeä: veden jako = poliittinen valta; kuivuuden aikana ruhtinaskunta voi hajota tämän ympärillä
+
+
+Valta/uskonto: vanhat henget + vesituomarit; Sauronin kultti yrittää “pyhittää” lähteen uudelleen
+
+
+Sotoprofiili: vaikea vallata suoraan, mutta helppo myrkyttää/sabotoida
+
+
+BW: Rituaalinen legitimaatio (oikeus hallita) Ob 4–6; kaivon turvaaminen sabotööreiltä Ob 4–6
+
+
+
+7) Elenrûna (Harjanteen Majakka)
+Tyyppi: First Age -raunio / majakkatorni
+
+
+Sijainti: yksi Vaayn korkeimmista harjanteista (näkyvyys arolle asti)
+
+
+Miksi tärkeä: “kerran sytytetty valo” on symboli; toimii viestiverkon supernode-pisteenä
+
+
+Valta/uskonto: virallisesti kruunun suojelu; käytännössä kiistakapula (vanhat henget vs. sininen liekki vs. Sauronin puhdistajat)
+
+
+Sotoprofiili: pieni varuskunta; psykologinen vaikutus suurempi kuin sotilaallinen
+
+
+BW: Raunion herättäminen/rituaali Ob 5–7; majakan hallinta taistelussa Ob 4–6
+
+
+
+8) Mustan Rotkon Portti
+Tyyppi: muinainen halkeama/sola / “varjon paikka”
+
+
+Sijainti: Vaayn eteläpuolen vuorijonon juurella (lähellä polkua kohti Acaanaa/Lodenulya)
+
+
+Miksi tärkeä: pelkoalue, jossa katoamisia; tarjoaa myös salareitin ja kätköjä (sekä “pimeän lupauksia”)
+
+
+Valta/uskonto: paikalliset karttavat; Sauronin kultti houkuttelee “kurin ja vallan” kautta, sininen liekki taas yrittää sulkea/valvoa
+
+
+Sotoprofiili: huono paikka suurelle joukolle, hyvä väijytykseen ja erikoisoperaatioihin
+
+
+BW: Kulkureitin pakottaminen Ob 6–8; pelon/korruption vastustus (Steel tms.) Ob 4–7
+
+
+
+9) Sateenreunan Aste (Eteläinen Entrepôt)
+Tyyppi: kauppapaikka / jokiuomien ja kosteuden rajakaupunki
+
+
+Sijainti: Vaayn etelä-kaakko, lähellä sademetsävyöhykettä; yhteydet Acaanaan ja Lodenulyyn
+
+
+Miksi tärkeä: hartsit, väriaineet, lääkekasvit, eksoottipuu; “kuumat rahat” → korruptio ja ulkomainen vaikutus
+
+
+Valta/uskonto: kauppiassuvut + paikallinen klaani; moniuskontoisuus (vanhat henget + etelän jumalat + salaiset sinisen liekin solut)
+
+
+Sotoprofiili: palkkavartijat; sisäinen turvallisuus heikko
+
+
+BW: Kauppasopimus / liittolaisuus Ob 3–5; vastavakoilu/verkoston paljastus Ob 4–6
+
+
+
+Vaayn ruhtinaskunta — paikkadossier v1.0 (S.A. 1993)
+0) Pikatunnus
+Vaay on Cheyn kaakkoisnaapuri: kukkulainen “march”-ruhtinaskunta, joka istuu kuuman vyöhykkeen ja eteläisen kosteuden rajalla. Ilmasto on “Umbarin leveyspiirin” kaltainen (pitkät kuumat kaudet), mutta Vaayn eteläinen läheisyys sademetsävyöhykkeeseen tekee siitä vaihtelevamman: kuivuus + kausittaiset rankkasateet/ukkosrintamat. Umbarista löytyy viitteitä juuri “miedot talvet / erittäin kuumat ja kuivat kesät” -tyyppisestä ilmastosta, mikä sopii analogiaksi Vaayn peruslämpötiloihin.
+Rajanaapurit:
+Pohjoinen: Cheyn eteläisin provinssi Oryorhraath
+
+
+Itä: Gaathyykarkan
+
+
+Etelä: Acaana, Lodenuly
+
+
+Länsi: Chy
+
+
+Lännessä vuorten takana: Clyan
+
+
+Pohjoisessa avautuvat idän arot (Cheystä itään) — Vaay on niiden “reunamaa”
+
+
+
+1) Geografia ja ilmasto 
+Maasto: pyöristyneet, kiviset kukkulat, harjanteet ja kuivat laaksot (wadi-tyyppiset uomat), joiden pohjilla on viljelytaskuja ja lähteitä.
+ Eteläreuna: kosteusvyöhyke lähestyy → jokiuomat ja notkot vihertyvät, ja hartsi-, mauste- ja värikasvikauppa on mahdollinen.
+ Eteläpuolen vuorijono (Cheyn eteläiset vuoret jatkuvat kohti merta): toimii säämuurina ja samalla strategisena “porttina”: solat ja rotkot määräävät liikkeen.
+Luonnolliset “chokepointit”:
+2–4 merkittävää solaa länteen (Chy/Clyan -suunta) ja etelään (Acaana/Lodenuly)
+
+
+1–2 “isoa” harjanneketjua, joiden hallinta ratkaisee koko ruhtinaskunnan puolustuksen
+
+
+pohjoisessa aro-reuna: nopea ratsuväki pääsee Vaayhin vain tiettyjen kulku-urien kautta
+
+
+
+2) Hallintomuoto ja valtarakenne
+Valtioformaatti: ruhtinaskunta, joka on käytännössä kukkulaisten klaanien liittokunta. Ruhtinas hallitsee, koska:
+hän kontrolloi tärkeimmät solat + tullit,
+
+
+hän jakaa “veden ja varaston” (vilja, suola, kupari/rauta),
+
+
+hän pitää klaanien välisen verikoston kurissa.
+
+
+Hovi ja instituutiot:
+Ruhtinas (Vaayn kruunu): pragmaattinen, tasapainottelee Cheyn varjon ja etelän kaupan välillä.
+
+
+Solapäällikkö (Warden of the Passes): todellinen sotilaallinen voima; jos hän vaihtaa puolta, Vaay kaatuu.
+
+
+Vesituomarit: paikallinen virkamies/pappiskunta, joka jakaa lähde- ja kasteluoikeuksia (valtaa enemmän kuin näyttää).
+
+
+Klaanineuvosto: 5–9 suurklaania; ruhtinas ostaa lojaalisuutta avioliitoilla ja panttivangeilla.
+
+
+Kauppiassuvut: hallitsevat etelän tavaravirtaa (hartsi, väriaineet, eksoottipuu, orjat/työvoima jos haluat synkistää).
+
+
+
+3) Uskonto ja “kognitiivinen taistelukenttä”
+Vaay on luonteva uskontoristeys (ja siksi Renin hyökkäyksen kannalta herkullinen).
+A) Vanha Vaay (enemmistö)
+Kukkuloiden ja veden henget + esi-isälinjat.
+ Rituaalit liittyvät sateeseen, lähteisiin, kiveen ja rajakiviin. Tämä on yhteisöä koossa pitävä “normaalius”.
+B) Sauronin kultti (kasvava vähemmistö)
+Renin vaikutus Cheyssä on jo kuvattu “valtiokultin” kaltaiseksi (temppelit käännetty palvelemaan Sauronia, rituaalit ja pelko).
+ Vaayhin tämä leviää tyypillisesti kolmea kanavaa pitkin:
+panttivangit/avioliitot (hovin taso),
+
+
+tullisopimukset (kauppiaat),
+
+
+pappien “turvapalvelu” (lupaus suojelusta, todellisuudessa riippuvuus).
+
+
+C) Sininen liekki / Pallandon perintö (salainen, mutta vaikutusvaltainen)
+Teidän “Itäisen valon kulkijat / Tûronielin Lapset” -kuvaus antaa valmiin rungon: hiljaisuuden filosofia, kärsimysriitit, sisäinen hierarkia ja radikaalit haarat.
+ Sauronin strategiadokumentti korostaa, että vastarinta idässä on muuttunut “teologiseksi” ja että Siniset Velhot rakentavat kultteja ja liittoumia, jotka uhkaavat verotus- ja miesvoimajärjestelmiä.
+Vaayhin istuva tulkinta: liike ei ole “armeija”, vaan rajaseutujen moraalinen selkäranka: se voi lamauttaa yhteistyön Renin kanssa, suojata pakolaisia ja tarjota viestiverkon.
+
+4) Talous
+Peruspilarit:
+terassiviljely (viljat, pavut), vuohitalous, kuivien laaksojen taatelit/hedelmäpuut analogiana
+
+
+metallit ja kivi (kupari, rauta, rakennuskivi) — erityisesti jos haluat Vaaysta “asepajojen” syöttäjän
+
+
+eteläiset erikoistuotteet sademetsäreunalta (hartsi, väriaineet, lääkekasvit, eksoottipuu)
+
+
+tullit: solat ja karavaanireitit ovat ruhtinaan kassa
+
+
+Taloudellinen haavoittuvuus: vesi + kulkureitit. Jos Ren kontrolloi Oryorhraathin kautta pohjoisen reitin ja pakottaa solat kiinni, Vaay kuristuu nopeasti.
+
+5) Sotavoima (mitä Vaay “oikeasti osaa”)
+Doctrine: puolustus harjanteilta, nopea reagointi solissa, väijytykset rotkoissa; ei halua avoimen kentän sotaa (siinä arokansat ja Cheyn massat jyräävät).
+Ydinkyvyt:
+kukkulajalkaväki (keihäät, kilvet, linkomiehet)
+
+
+solavartiot ja majakat (viestituliverkko)
+
+
+kevyt ratsuväki (pieni, usein palkattu aroreunalta)
+
+
+linnoitetut kukkulakaupungit (“hillfort”-ketju), jotka pakottavat hyökkääjän sarjaan piirityksiä
+
+
+Heikkoudet:
+rajallinen huolto pitkään sotaan
+
+
+klaanien sisäinen kilpailu (Ren voi ostaa yhden klaanin ja rikkoa puolustuksen)
+
+
+
+6) Ensimmäisen ajan kohteet ja muinaiset muistot 
+
+Elenrûna, Harjanteen Majakka – raunioitunut valotorni kukkulan huipulla; sen sytyttäminen näkyy arolle asti (strateginen + myyttinen).
+
+
+Kiven alla oleva Kaivo – Ulmon/vesivoiman muistoon kytkeytyvä lähdepyhäkkö; vesi on “oikeaa” vain jos ruhtinas hallitsee rituaalin.
+
+
+Mustan Rotkon Portti – Morgothin pakolaisten/vanhan varjon jättämä halkeama etelävuorilla (ei välttämättä “Utumno”, mutta sama kauhu).
+
+
+Nämä ovat tarkoituksella “peilikuva” Cheyn kohteista: Chey = jo korruptoitunut; Vaay = vielä kiistanalainen.
+
+7) BW-faktorit Renin hyökkäyksen OB-laskentaan (Vaay-case)
+Tässä tekijälista, jonka voit syöttää deterministiseen OB-laskuriin (LLM vain arvioi arvot 0–2):
+Maasto: kukkulat/rotkot (vaikeuttaa massahyökkäystä)
+ Linnoitteet: hillfort-ketju + solaportit
+ Huolto: kuumuus + vesi (hyökkääjä kärsii)
+ Poliittinen yhtenäisyys: klaaniliitto (hauras → subvertoitavissa)
+ Ulkoinen interventio: Acaana/Lodenuly/Chy (tuleeko apua?)
+ Uskonnollinen kitka: Sauron-kultti vs. vanhat henget vs. Tûronielin Lapset
+ Tiedustelu: Renin verkko (Cheyssä jo vahva), Vaayn paikallistuntemus
+Esimerkkiskaala (suuntaa-antava):
+Nopea rangaistusretki / ryöstö: Ob 3–5
+
+
+Täysimittainen valloitus: Ob 5–7
+
+
+Coup / klaanin ostaminen / temppelikaappaus: Ob 4–6 (onnistuu helpommin kuin sotilaallinen valloitus, jos klaanit riitelevät)
+
+
+Vaayn avainpaikat (9 kpl) — “karttaneulat” softaan
+Alla jokaisesta: tyyppi + sijainti + miksi tärkeä + valta/uskonto + sotilaallinen profiili + 1–2 BW-käyttöä (OB-suunta).
+
+1) Vaar-Vaay (Kruununharja)
+Tyyppi: pääkaupunki / kukkulalinnoitus
+
+
+Sijainti: keskinen Vaay, korkeimmalla harjanteella (reittien risteys länteen Chyyn ja etelään Acaanaan)
+
+
+Miksi tärkeä: ruhtinaan hovi, tullikassa, panttivankipolitiikan keskus (klaanien nuoria kasvatetaan “hovissa”)
+
+
+Valta/uskonto: kruunu + klaanineuvosto; vanhat henget näkyvät julkisesti, Sauronin kultti hivuttautuu virastojen kautta
+
+
+Sotaprofiili: kivimuurit, sisälinna, linkomiehet; pitkä piiritys on mahdollinen
+
+
+BW: Piiritys Ob 6–8; vallankaappaus/diplomatia Ob 4–6
+
+
+
+2) Oryor-Portti (Pohjoinen Rajalinnoitus)
+Tyyppi: rajalinna / tullipiste
+
+
+Sijainti: Vaayn pohjoisreuna, kohti Oryorhraathia (Cheyn eteläisin provinssi)
+
+
+Miksi tärkeä: ensimmäinen paikka, johon Renin sotajoukot “osuvat” jos tulevat maitse; myös pakolais- ja salakuljetusreitti
+
+
+Valta/uskonto: solavartijat + paikallisklaani; sinisen liekin verkosto käyttää yösuojia
+
+
+Sotaprofiili: nopea hälytys, majakkatulit viestittää Kruununharjalle
+
+
+BW: Läpimurto rajan läpi Ob 5–7; infiltraatio/sabotaasi Ob 4–6
+
+
+
+3) Chy-Sola (Kivihampaiden Käytävä)
+Tyyppi: vuoristosola / kauppareitti
+
+
+Sijainti: Vaayn länsireuna, reitti Chyyn (ja edelleen lännessä vuorten taakse)
+
+
+Miksi tärkeä: elintärkeä kauppakäytävä, ja sotilaallisesti “sulkuventtiili”: jos tämä menee, Vaay vuotaa
+
+
+Valta/uskonto: klaanivartiot; kauppiassuvut maksavat suojelurahaa
+
+
+Sotaprofiili: kapeikko + kivivyöryt + väijytysmaasto
+
+
+BW: Sola väkisin auki Ob 6–8; salaisten maksujen/lojaalisuuden ostaminen Ob 3–5
+
+
+
+4) Clyan-Yläsilta (Pilvisola)
+Tyyppi: korkea sola / “vuorten takainen yhteys”
+
+
+Sijainti: Vaayn länsi-lounais, reitti vuorten yli Clyaniin
+
+
+Miksi tärkeä: strateginen selkäreitti: jos Vaay joutuu puristuksiin, tämä on pakotie tai yllätyshyökkäyslinja
+
+
+Valta/uskonto: käytännössä sotilaallisen “Solapäällikön” reviiri
+
+
+Sotoprofiili: vaikeakulkuinen; pienikin joukko voi estää suuren armeijan
+
+
+BW: Talvi/kuivuusmarssi yli Ob 5–7; yllätysratsia Ob 4–6
+
+
+
+5) Gaathin Reunatori (Aro- ja Itärajan Kauppapaikka)
+Tyyppi: markkinakylä / karavaanikeskus
+
+
+Sijainti: Vaayn koillisreuna, “siirtymävyöhyke” aroille; reitti Gaathyykarkaniin
+
+
+Miksi tärkeä: hevoset, suola, vilja, tiedustelu; täällä kuulee ensimmäisenä liikkeet aroilta ja idästä
+
+
+Valta/uskonto: kauppiassuvut + aro-oppaat; vanhat taivaan/tuulen rituaalit vahvoja
+
+
+Sotoprofiili: heikko muuri, mutta paljon aseistettuja matkueita; levoton
+
+
+BW: Tietojen ostaminen Ob 3–5; mellakan tukahdutus Ob 4–6
+
+
+
+6) Kiven-Alla-Kaivo (Vesipyhäkkö)
+Tyyppi: pyhä lähde / “vesituomarien” vallan keskus
+
+
+Sijainti: keski-eteläinen Vaay, syvässä notkossa terassiviljelmien yläpuolella
+
+
+Miksi tärkeä: veden jako = poliittinen valta; kuivuuden aikana ruhtinaskunta voi hajota tämän ympärillä
+
+
+Valta/uskonto: vanhat henget + vesituomarit; Sauronin kultti yrittää “pyhittää” lähteen uudelleen
+
+
+Sotoprofiili: vaikea vallata suoraan, mutta helppo myrkyttää/sabotoida
+
+
+BW: Rituaalinen legitimaatio (oikeus hallita) Ob 4–6; kaivon turvaaminen sabotööreiltä Ob 4–6
+
+
+
+7) Elenrûna (Harjanteen Majakka)
+Tyyppi: First Age -raunio / majakkatorni
+
+
+Sijainti: yksi Vaayn korkeimmista harjanteista (näkyvyys arolle asti)
+
+
+Miksi tärkeä: “kerran sytytetty valo” on symboli; toimii viestiverkon supernode-pisteenä
+
+
+Valta/uskonto: virallisesti kruunun suojelu; käytännössä kiistakapula (vanhat henget vs. sininen liekki vs. Sauronin puhdistajat)
+
+
+Sotoprofiili: pieni varuskunta; psykologinen vaikutus suurempi kuin sotilaallinen
+
+
+BW: Raunion herättäminen/rituaali Ob 5–7; majakan hallinta taistelussa Ob 4–6
+
+
+
+8) Mustan Rotkon Portti
+Tyyppi: muinainen halkeama/sola / “varjon paikka”
+
+
+Sijainti: Vaayn eteläpuolen vuorijonon juurella (lähellä polkua kohti Acaanaa/Lodenulya)
+
+
+Miksi tärkeä: pelkoalue, jossa katoamisia; tarjoaa myös salareitin ja kätköjä (sekä “pimeän lupauksia”)
+
+
+Valta/uskonto: paikalliset karttavat; Sauronin kultti houkuttelee “kurin ja vallan” kautta, sininen liekki taas yrittää sulkea/valvoa
+
+
+Sotoprofiili: huono paikka suurelle joukolle, hyvä väijytykseen ja erikoisoperaatioihin
+
+
+BW: Kulkureitin pakottaminen Ob 6–8; pelon/korruption vastustus (Steel tms.) Ob 4–7
+
+
+
+9) Sateenreunan Aste (Eteläinen Entrepôt)
+Tyyppi: kauppapaikka / jokiuomien ja kosteuden rajakaupunki
+
+
+Sijainti: Vaayn etelä-kaakko, lähellä sademetsävyöhykettä; yhteydet Acaanaan ja Lodenulyyn
+
+
+Miksi tärkeä: hartsit, väriaineet, lääkekasvit, eksoottipuu; “kuumat rahat” → korruptio ja ulkomainen vaikutus
+
+
+Valta/uskonto: kauppiassuvut + paikallinen klaani; moniuskontoisuus (vanhat henget + etelän jumalat + salaiset sinisen liekin solut)
+
+
+Sotoprofiili: palkkavartijat; sisäinen turvallisuus heikko
+
+
+BW: Kauppasopimus / liittolaisuus Ob 3–5; vastavakoilu/verkoston paljastus Ob 4–6
+
+
+
 

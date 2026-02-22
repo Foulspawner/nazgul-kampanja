@@ -2,7 +2,7 @@
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
-    <title>Middle-earth Manager v9.1 (Auto-Lore Fetch)</title>
+    <title>Middle-earth Manager v9.2 (Export & GM Lock)</title>
     
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -70,13 +70,17 @@
     <div id="viewport">
         <div id="settings-overlay" style="display:none;">
             <div class="box">
-                <h2 style="margin-top:0; text-align:center;">Asetukset & Kampanjan Lore</h2>
+                <h2 style="margin-top:0; text-align:center;">Asetukset</h2>
                 
                 <label style="color:#aaa; font-size:0.9em;">Gemini API Key:</label>
                 <input type="password" id="apiKeyInput" placeholder="Liitä API-avain tähän...">
                 
-                <label style="color:#aaa; font-size:0.9em; margin-top:10px;">Kampanjan Lore (Ladataan automaattisesti lore.txt tiedostosta):</label>
-                <textarea id="loreInput" placeholder="Lore latautuu tähän..." style="height: 200px; resize: vertical;"></textarea>
+                <button id="gmUnlockBtn" onclick="unlockGM()" style="background:#552222; margin-top:10px;">🔒 Avaa GM-työkalut (Kampanjan Lore)</button>
+                
+                <div id="gmSecretArea" style="display:none; flex-direction:column; gap:10px; margin-top:10px; border-top:1px solid #444; padding-top:10px;">
+                    <label style="color:#d4af37; font-size:0.9em; font-weight:bold;">Kampanjan Lore (SALAISTA TIETOA):</label>
+                    <textarea id="loreInput" placeholder="Lore latautuu tähän..." style="height: 200px; resize: vertical;"></textarea>
+                </div>
                 
                 <div style="display:flex; gap:10px; margin-top:15px;">
                     <button onclick="saveSettings()" style="background:#28a745; flex:2;">Tallenna & Sulje</button>
@@ -156,8 +160,9 @@
         <div class="section-title">Kronikka</div>
         <div id="log"></div>
         <div style="display:flex; gap:5px;">
-            <button onclick="clearLog()" style="background:#442222; font-size:0.8em;">Tyhjennä historia</button>
-            <button onclick="openSettings()" style="background:#333; font-size:0.8em;">⚙️ Asetukset / Lore</button>
+            <button onclick="exportLog()" style="background:#28a745; font-size:0.8em;">💾 Lataa Kronikka</button>
+            <button onclick="clearLog()" style="background:#442222; font-size:0.8em;">Tyhjennä</button>
+            <button onclick="openSettings()" style="background:#333; font-size:0.8em;">⚙️ Asetukset</button>
         </div>
     </div>
 
@@ -177,29 +182,23 @@
         let logs = [];
 
         window.onload = async function() {
-            // Ladataan kartta
             let imgElement = document.getElementById('game-map');
             imgElement.onload = function() { startMap(imgElement); };
             imgElement.onerror = function(e) { document.getElementById('manual-upload-box').style.display = 'block'; };
             imgElement.src = "./kartta.jpg?t=" + Date.now();
 
-            // UUSI: Ladataan lore.txt automaattisesti GitHubista
+            // Haetaan lore taustalla hiljaa
             try {
                 let loreRes = await fetch('./lore.txt?t=' + Date.now());
                 if (loreRes.ok) {
                     let text = await loreRes.text();
-                    // Jos sivu on olemassa mutta se on esim. 404 HTML-sivu, varmistetaan että se on oikeaa tekstiä
                     if (!text.includes("<!DOCTYPE html>")) {
                         campaignLore = text;
                         document.getElementById('loreInput').value = text;
-                        pushLog("<div style='color:#88ccff; font-style:italic;'>📚 Kampanjan lore.txt ladattu automaattisesti!</div>");
                     }
                 }
-            } catch (err) {
-                console.log("lore.txt tiedostoa ei voitu hakea automaattisesti.", err);
-            }
+            } catch (err) { console.log("lore.txt haku epäonnistui", err); }
 
-            // Ladataan tila Firebasesta
             setTimeout(() => {
                 if(window.db) {
                     window.dbOnValue(window.dbRef(window.db, 'gameState'), (snapshot) => {
@@ -292,11 +291,7 @@
         async function askGM() {
             let intent = document.getElementById('intentInput').value;
             if(!intent) return alert("Kirjoita ensin aikeesi tekstikenttään!");
-            if(!geminiKey) {
-                alert("Aseta Gemini API Key asetuksista ensin!");
-                openSettings();
-                return;
-            }
+            if(!geminiKey) { alert("Aseta Gemini API Key asetuksista ensin!"); openSettings(); return; }
 
             let n = nazguls[currentNaz];
             let loadId = "load-"+Date.now();
@@ -449,6 +444,30 @@ Tehtäväsi:
             }
         }
 
+        // --- UUSI: LOKIN EXPORT (.TXT) ---
+        function exportLog() {
+            if (logs.length === 0) return alert("Kronikka on tyhjä!");
+            
+            let logText = "KAMPANJAN KRONIKKA\n==============================\n\n";
+            let tempDiv = document.createElement('div');
+            
+            // Käännetään lokit takaisin aikajärjestykseen (vanhin ensin)
+            let chronologicalLogs = [...logs].reverse();
+            
+            chronologicalLogs.forEach(logHtml => {
+                tempDiv.innerHTML = logHtml.replace(/<br>/g, '\n'); // Säilytetään rivinvaihdot
+                let text = tempDiv.innerText || tempDiv.textContent;
+                logText += text.trim() + "\n\n------------------------------\n\n";
+            });
+
+            // Luodaan tiedosto ja ladataan se
+            let blob = new Blob([logText], { type: "text/plain;charset=utf-8" });
+            let link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = `keskimaa_kronikka_${new Date().toISOString().slice(0,10)}.txt`;
+            link.click();
+        }
+
         function undoLastPoint() {
             if (draw.points.length > 0) {
                 draw.points.pop();
@@ -489,11 +508,27 @@ Tehtäväsi:
         
         function cancelPoly() { setTool('move'); }
         
+        // --- UUSI GM-LUKKO LOGIIKKA ---
         function openSettings() { 
             document.getElementById('settings-overlay').style.display='flex'; 
             document.getElementById('apiKeyInput').value = geminiKey; 
             document.getElementById('loreInput').value = campaignLore; 
+            // Piilotetaan GM-alue aina aluksi
+            document.getElementById('gmSecretArea').style.display = 'none';
+            document.getElementById('gmUnlockBtn').style.display = 'block';
         }
+        
+        function unlockGM() {
+            let pass = prompt("Anna pelinjohtajan salasana:");
+            // TÄSSÄ ON GM-SALASANA: Voit vaihtaa "mordor" sanan tilalle minkä haluat
+            if (pass === "mordor") {
+                document.getElementById('gmSecretArea').style.display = 'flex';
+                document.getElementById('gmUnlockBtn').style.display = 'none';
+            } else {
+                alert("Väärä salasana. Pysy poissa, kuolevainen.");
+            }
+        }
+
         function closeSettings() { 
             document.getElementById('settings-overlay').style.display='none'; 
         }

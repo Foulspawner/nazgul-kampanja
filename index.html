@@ -2,7 +2,8 @@
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
-    <title>Middle-earth Manager v9.2 (Export & GM Lock)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Middle-earth Manager v9.3 (Mobile Fix)</title>
     
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -29,6 +30,13 @@
         #viewport { flex: 3; position: relative; background: #111; overflow: hidden; cursor: grab; display: flex; align-items: center; justify-content: center; }
         #sidebar { flex: 1; min-width: 400px; background: #1a1a1a; border-left: 2px solid #444; padding: 20px; display: flex; flex-direction: column; z-index: 200; overflow-y: auto; }
         
+        /* MOBIILI-ASSETTELU (Alle 800px ruudut, esim. puhelin pystyssä) */
+        @media (max-width: 800px) {
+            body { flex-direction: column; }
+            #viewport { flex: 1; height: 50vh; }
+            #sidebar { flex: 1; height: 50vh; min-width: 100%; border-left: none; border-top: 2px solid #444; padding: 10px; box-sizing: border-box; }
+        }
+
         #world { position: absolute; top: 0; left: 0; transform-origin: 0 0; display: none; }
         #game-map { display: block; pointer-events: none; }
         #svg-layer, #marker-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
@@ -47,22 +55,22 @@
         .stat-btn { width: 30px; padding: 2px 0; margin-left: 5px; font-weight: bold; font-size: 16px; background: #444; border: 1px solid #666; border-radius: 4px; }
         .stat-btn:hover { background: #d4af37; color: #000; }
         
-        #log { background: #000; border: 1px solid #333; flex-grow: 1; padding: 10px; overflow-y: auto; font-family: monospace; font-size: 0.85em; color: #ccc; margin-bottom: 10px; min-height: 200px; }
+        #log { background: #000; border: 1px solid #333; flex-grow: 1; padding: 10px; overflow-y: auto; font-family: monospace; font-size: 0.85em; color: #ccc; margin-bottom: 10px; min-height: 150px; }
         #settings-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         
-        .box { border: 2px solid #d4af37; padding: 30px; border-radius: 10px; background: #222; text-align: left; width: 80%; max-width: 600px; display: flex; flex-direction: column; gap: 10px; }
+        .box { border: 2px solid #d4af37; padding: 30px; border-radius: 10px; background: #222; text-align: left; width: 90%; max-width: 600px; display: flex; flex-direction: column; gap: 10px; }
         
         #map-tools, #draw-tools { position: absolute; z-index: 1000; display: none; gap: 10px; }
         #map-tools { bottom: 20px; left: 20px; }
         #draw-tools { top: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.9); padding: 10px; border: 1px solid #d4af37; display: flex; align-items: center;}
-        .float-btn { width: auto; padding: 5px 15px; background: rgba(0,0,0,0.8); border: 1px solid #888; }
+        .float-btn { width: auto; padding: 10px 15px; background: rgba(0,0,0,0.8); border: 1px solid #888; font-size: 16px;}
         
         .ai-gm { color: #d4af37; font-style: normal; border-left: 3px solid #d4af37; padding-left: 10px; margin: 10px 0; background: #1a1a1a; padding: 10px; border-radius: 0 4px 4px 0;}
         .ai-result { color: #88ccff; font-style: italic; border-left: 3px solid #88ccff; padding-left: 10px; margin: 10px 0; background: #112233; padding: 10px; border-radius: 0 4px 4px 0;}
         .ai-error { color: #ff6666; border-left: 3px solid #ff6666; padding-left: 10px; margin: 10px 0; background: #331111; padding: 10px; border-radius: 0 4px 4px 0;}
         
         .file-upload-box { background: #2a2a2a; border: 1px dashed #d4af37; padding: 10px; text-align: center; margin-bottom: 15px; font-size: 0.9em; display: none; }
-        .section-title { font-size: 0.9em; text-transform: uppercase; color: #888; margin: 15px 0 5px 0; letter-spacing: 1px; }
+        .section-title { font-size: 0.9em; text-transform: uppercase; color: #888; margin: 10px 0 5px 0; letter-spacing: 1px; }
     </style>
 </head>
 <body>
@@ -71,17 +79,13 @@
         <div id="settings-overlay" style="display:none;">
             <div class="box">
                 <h2 style="margin-top:0; text-align:center;">Asetukset</h2>
-                
                 <label style="color:#aaa; font-size:0.9em;">Gemini API Key:</label>
                 <input type="password" id="apiKeyInput" placeholder="Liitä API-avain tähän...">
-                
-                <button id="gmUnlockBtn" onclick="unlockGM()" style="background:#552222; margin-top:10px;">🔒 Avaa GM-työkalut (Kampanjan Lore)</button>
-                
+                <button id="gmUnlockBtn" onclick="unlockGM()" style="background:#552222; margin-top:10px;">🔒 Avaa GM-työkalut</button>
                 <div id="gmSecretArea" style="display:none; flex-direction:column; gap:10px; margin-top:10px; border-top:1px solid #444; padding-top:10px;">
-                    <label style="color:#d4af37; font-size:0.9em; font-weight:bold;">Kampanjan Lore (SALAISTA TIETOA):</label>
-                    <textarea id="loreInput" placeholder="Lore latautuu tähän..." style="height: 200px; resize: vertical;"></textarea>
+                    <label style="color:#d4af37; font-size:0.9em; font-weight:bold;">Kampanjan Lore (SALAISTA):</label>
+                    <textarea id="loreInput" placeholder="Lore latautuu tähän..." style="height: 150px; resize: vertical;"></textarea>
                 </div>
-                
                 <div style="display:flex; gap:10px; margin-top:15px;">
                     <button onclick="saveSettings()" style="background:#28a745; flex:2;">Tallenna & Sulje</button>
                     <button onclick="closeSettings()" style="background:#442222; flex:1;">Peruuta</button>
@@ -90,16 +94,16 @@
         </div>
 
         <div id="map-tools">
-            <button class="float-btn" onclick="fitToScreen()">Sovita ruutuun</button>
+            <button class="float-btn" onclick="fitToScreen()">Sovita</button>
             <button class="float-btn" onclick="zoomIn()">+</button>
             <button class="float-btn" onclick="zoomOut()">-</button>
         </div>
 
         <div id="draw-tools">
-            <span style="color:#fff; margin-right:10px;">Piirretään...</span>
-            <button onclick="undoLastPoint()" style="width:auto; background:#ff8800; color:#fff;">↩️ Kumoa piste</button>
-            <button onclick="finishPoly()" style="width:auto; background:#28a745;">✔ Valmis</button>
-            <button onclick="cancelPoly()" style="width:auto; background:#dc3545;">❌ Peruuta</button>
+            <span style="color:#fff; margin-right:10px; display:none;">Piirretään...</span>
+            <button onclick="undoLastPoint()" style="width:auto; background:#ff8800; color:#fff;">↩️</button>
+            <button onclick="finishPoly()" style="width:auto; background:#28a745;">✔</button>
+            <button onclick="cancelPoly()" style="width:auto; background:#dc3545;">❌</button>
         </div>
 
         <div id="world">
@@ -136,17 +140,17 @@
 
         <hr style="border-color:#444;">
         
-        <div class="section-title">Toiminnot & Tekoäly-GM</div>
+        <div class="section-title">Tekoäly-GM</div>
         <div class="controls">
-            <input type="text" id="intentInput" placeholder="Kirjoita aie (esim. 'Hyökkään Relmetheriin')">
+            <input type="text" id="intentInput" placeholder="Aie (esim. 'Hyökkään')">
         </div>
         <div class="controls">
-            <button onclick="askGM()" style="background:#5c3a21; border-color:#d4af37;">🔮 1. Kysy GM:ltä arvio (Lore & Ob)</button>
+            <button onclick="askGM()" style="background:#5c3a21; border-color:#d4af37;">🔮 1. Kysy arvio</button>
         </div>
 
         <div class="controls" style="margin-top:10px;">
-            <input type="number" id="dice" placeholder="Nopat" value="3" title="Heitettävät nopat">
-            <input type="number" id="ob" placeholder="Ob" value="3" title="Obstacle (Vaikeustaso)">
+            <input type="number" id="dice" placeholder="Nopat" value="3">
+            <input type="number" id="ob" placeholder="Ob" value="3">
         </div>
         <div class="controls">
             <button onclick="performAction('Rakenna', 'wealth')">🛠️ Rakenna</button>
@@ -160,7 +164,7 @@
         <div class="section-title">Kronikka</div>
         <div id="log"></div>
         <div style="display:flex; gap:5px;">
-            <button onclick="exportLog()" style="background:#28a745; font-size:0.8em;">💾 Lataa Kronikka</button>
+            <button onclick="exportLog()" style="background:#28a745; font-size:0.8em;">💾 Lataa</button>
             <button onclick="clearLog()" style="background:#442222; font-size:0.8em;">Tyhjennä</button>
             <button onclick="openSettings()" style="background:#333; font-size:0.8em;">⚙️ Asetukset</button>
         </div>
@@ -177,6 +181,7 @@
 
         let view = { x: 0, y: 0, scale: 1 };
         let tool = 'move', isDragging = false, draw = { active: false, points: [] }, currentNaz = 0;
+        let lastTouch = {x: 0, y: 0}; // Mobiiliraahausta varten
         let geminiKey = localStorage.getItem('geminiKey') || "";
         let campaignLore = localStorage.getItem('campaignLore') || ""; 
         let logs = [];
@@ -187,17 +192,15 @@
             imgElement.onerror = function(e) { document.getElementById('manual-upload-box').style.display = 'block'; };
             imgElement.src = "./kartta.jpg?t=" + Date.now();
 
-            // Haetaan lore taustalla hiljaa
             try {
                 let loreRes = await fetch('./lore.txt?t=' + Date.now());
                 if (loreRes.ok) {
                     let text = await loreRes.text();
                     if (!text.includes("<!DOCTYPE html>")) {
-                        campaignLore = text;
-                        document.getElementById('loreInput').value = text;
+                        campaignLore = text; document.getElementById('loreInput').value = text;
                     }
                 }
-            } catch (err) { console.log("lore.txt haku epäonnistui", err); }
+            } catch (err) {}
 
             setTimeout(() => {
                 if(window.db) {
@@ -214,14 +217,6 @@
             setupListeners(); updateUI();
         };
 
-        function handleInput(el) {
-            if(el.files[0]) {
-                let img = document.getElementById('game-map');
-                img.onload = function() { startMap(img); };
-                img.src = URL.createObjectURL(el.files[0]);
-            }
-        }
-
         function startMap(img) {
             document.getElementById('world').style.display = 'block';
             document.getElementById('manual-upload-box').style.display = 'none';
@@ -237,22 +232,36 @@
         function fitToScreen() {
             let img = document.getElementById('game-map'), vp = document.getElementById('viewport');
             let w = img.naturalWidth || 1000, h = img.naturalHeight || 1000;
-            let vpw = vp.offsetWidth > 0 ? vp.offsetWidth : window.innerWidth * 0.75;
-            let vph = vp.offsetHeight > 0 ? vp.offsetHeight : window.innerHeight;
+            let vpw = vp.offsetWidth > 0 ? vp.offsetWidth : window.innerWidth;
+            let vph = vp.offsetHeight > 0 ? vp.offsetHeight : window.innerHeight / 2;
             let s = Math.min(vpw / w, vph / h) * 0.95;
             if (s <= 0) s = 0.5;
             view.scale = s; view.x = (vpw - w * s) / 2; view.y = (vph - h * s) / 2;
             updateTransform();
         }
 
-        function zoomIn() { view.scale *= 1.2; updateTransform(); }
-        function zoomOut() { view.scale /= 1.2; updateTransform(); }
+        function zoomIn() { view.scale *= 1.3; updateTransform(); }
+        function zoomOut() { view.scale /= 1.3; updateTransform(); }
         
+        function getCoords(e) {
+            if(e.touches && e.touches.length > 0) return {x: e.touches[0].clientX, y: e.touches[0].clientY};
+            return {x: e.clientX, y: e.clientY};
+        }
+
         function setupListeners() {
             let vp = document.getElementById('viewport');
-            vp.addEventListener('mousedown', onMouseDown);
-            window.addEventListener('mousemove', onMouseMove);
-            window.addEventListener('mouseup', onMouseUp);
+            
+            // Hiiri
+            vp.addEventListener('mousedown', onDragStart);
+            window.addEventListener('mousemove', onDragMove);
+            window.addEventListener('mouseup', onDragEnd);
+            
+            // Kosketusnäyttö
+            vp.addEventListener('touchstart', onDragStart, {passive: false});
+            vp.addEventListener('touchmove', onDragMove, {passive: false});
+            vp.addEventListener('touchend', onDragEnd);
+            
+            // Rullaus
             vp.addEventListener('wheel', (e) => {
                 e.preventDefault();
                 let z = e.deltaY > 0 ? 0.9 : 1.1, rect = vp.getBoundingClientRect();
@@ -260,11 +269,20 @@
                 view.x = mx - (mx - view.x) * z; view.y = my - (my - view.y) * z; view.scale *= z;
                 updateTransform();
             }, {passive: false});
+
+            // TÄMÄ KORJAA JUMITTUMISEN PUHELIMEN KÄÄNTYESSÄ
+            window.addEventListener('resize', () => {
+                clearTimeout(window.resizeTimer);
+                window.resizeTimer = setTimeout(fitToScreen, 200);
+            });
         }
 
-        function onMouseDown(e) {
-            if(e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-            if(tool === 'move') { isDragging = true; }
+        function onDragStart(e) {
+            if(e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT') return;
+            if(tool === 'move') { 
+                isDragging = true; 
+                lastTouch = getCoords(e);
+            }
             else if(tool === 'fort') {
                 let c = getWorldCoords(e), name = prompt("Linnoituksen nimi:");
                 if(name) { 
@@ -274,9 +292,25 @@
                 }
             } else if(tool === 'area') { draw.points.push(getWorldCoords(e)); renderTempPoly(); }
         }
-        function onMouseMove(e) { if(isDragging && tool === 'move') { view.x += e.movementX; view.y += e.movementY; updateTransform(); } }
-        function onMouseUp() { isDragging = false; }
-        function getWorldCoords(e) { let r = document.getElementById('world').getBoundingClientRect(); return { x: (e.clientX - r.left) / view.scale, y: (e.clientY - r.top) / view.scale }; }
+        
+        function onDragMove(e) { 
+            if(isDragging && tool === 'move') { 
+                if (e.type === 'touchmove' && e.cancelable) e.preventDefault(); // Estää sivun rullautumisen mobiilissa!
+                let c = getCoords(e);
+                view.x += c.x - lastTouch.x; 
+                view.y += c.y - lastTouch.y; 
+                lastTouch = c;
+                updateTransform(); 
+            } 
+        }
+        
+        function onDragEnd() { isDragging = false; }
+        
+        function getWorldCoords(e) { 
+            let c = getCoords(e);
+            let r = document.getElementById('world').getBoundingClientRect(); 
+            return { x: (c.x - r.left) / view.scale, y: (c.y - r.top) / view.scale }; 
+        }
 
         function uploadState() { if(window.db) window.dbSet(window.dbRef(window.db, 'gameState/nazguls'), nazguls); }
         function pushLog(h) { logs.unshift(h); renderLog(); if(window.db) window.dbPush(window.dbRef(window.db, 'gameState/logs'), h); }
@@ -295,20 +329,18 @@
 
             let n = nazguls[currentNaz];
             let loadId = "load-"+Date.now();
-            document.getElementById('log').innerHTML = `<div id="${loadId}" style="color:#d4af37">🧙‍♂️ GM tutkii kampanjan muistiinpanoja...</div>` + document.getElementById('log').innerHTML;
+            document.getElementById('log').innerHTML = `<div id="${loadId}" style="color:#d4af37">🧙‍♂️ GM miettii...</div>` + document.getElementById('log').innerHTML;
             
-            let loreContext = campaignLore ? `\n\n=== KAMPANJAN VIRALLINEN LORE (KÄYTÄ TÄTÄ EHDOTTOMASTI ENSISIJAISESTI) ===\n${campaignLore}\n========================================================================\nÄlä keksi omia maantieteellisiä yksityiskohtia (kuten sademetsiä), jotka ovat ristiriidassa yllä olevan loren kanssa. Keskity dossierin tietoihin.\n` : "";
+            let loreContext = campaignLore ? `\n\n=== KAMPANJAN VIRALLINEN LORE ===\n${campaignLore}\n==================================\nKäytä lorea ehdottomasti. Älä keksi sille vastakkaista sisältöä.\n` : "";
 
-            let prompt = `Olet pelinjohtaja (Game Master) Keskimaahan sijoittuvassa synkässä roolipelissä, joka käyttää Burning Wheel -tyyppistä noppamekaniikkaa.
-Pelaajan hahmo on Nazgûl nimeltä ${n.name}.
-Pelaaja ilmoittaa aikeensa (Intent): "${intent}".
+            let prompt = `Olet pelinjohtaja (Game Master) Keskimaahan sijoittuvassa roolipelissä (Burning Wheel). Pelaaja on Nazgûl ${n.name}.
+Aie (Intent): "${intent}".
 ${loreContext}
 Tehtäväsi:
-1. Kerro 2-3 lauseella lyhyt, tunnelmallinen kuvaus kohteesta (noudata kampanjan lorea tarkasti!) ja arvioi miksi aie on haastava (tai helppo).
-2. Määritä toiminnalle vaikeustaso eli Ob (Obstacle, luku väliltä 1-6). 
-
-Vastaa ytimekkäästi suomeksi muodossa:
-Tarinallinen arvio: [Teksti tähän]
+1. Kerro 2-3 lauseella lyhyt, tunnelmallinen kuvaus kohteesta (noudata kampanjan lorea!).
+2. Määritä toiminnalle vaikeustaso eli Ob (luku 1-6). 
+Vastaa ytimekkäästi suomeksi:
+Tarinallinen arvio: [Teksti]
 Ehdottamasi Ob: [Numero]`;
 
             let txt = await callAI(prompt);
@@ -316,12 +348,8 @@ Ehdottamasi Ob: [Numero]`;
             
             if(txt) {
                 let time = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
-                if (txt.startsWith("⚠️")) {
-                     pushLog(`<div class="ai-error">${txt}<br><span style="font-size:0.8em">Varmista API-avain tai kokeile uudelleen.</span></div><hr style="border-color:#333">`);
-                } else {
-                     pushLog(`<div><span style="color:#666">[${time}]</span> <b style="color:${n.color}">${n.name} aie:</b> ${intent}</div>
-                             <div class="ai-gm"><b>👑 GM vastaa:</b><br>${txt.replace(/\n/g, '<br>')}</div><hr style="border-color:#333">`);
-                }
+                if (txt.startsWith("⚠️")) pushLog(`<div class="ai-error">${txt}</div><hr style="border-color:#333">`);
+                else pushLog(`<div><span style="color:#666">[${time}]</span> <b style="color:${n.color}">${n.name} aie:</b> ${intent}</div><div class="ai-gm"><b>👑 GM vastaa:</b><br>${txt.replace(/\n/g, '<br>')}</div><hr style="border-color:#333">`);
             }
         }
 
@@ -343,204 +371,89 @@ Ehdottamasi Ob: [Numero]`;
             if(geminiKey) {
                 let loadId = "load-"+Date.now();
                 document.getElementById('log').innerHTML = `<div id="${loadId}" style="color:#88ccff">🔮 Kirjataan historiaa...</div>` + document.getElementById('log').innerHTML;
-                
-                let loreContext = campaignLore ? `\nHuomioi vastauksessa tämä kampanjan taustatieto:\n${campaignLore}\n` : "";
-
-                let prompt = `Olet pelinjohtaja Keskimaassa. Pelaaja on Nazgûl ${n.name}.
-Pelaajan aie oli: "${intent}".
-Käytetty taito/toiminto: ${action}.
-Nopanheiton tulos oli: ${res} (Marginaali vaadittuun: ${margin}).
+                let loreContext = campaignLore ? `\nLore:\n${campaignLore}\n` : "";
+                let prompt = `Pelinjohtaja Keskimaassa. Pelaaja on Nazgûl ${n.name}. Aie: "${intent}". Toiminto: ${action}. Tulos: ${res} (Marginaali: ${margin}).
 ${loreContext}
-Tehtäväsi:
-1. Kuvaile tapahtumien lopputulos tarinallisesti (max 3 lausetta) ottaen huomioon onnistuiko vai epäonnistuiko yritys. Pysy uskollisena annetulle lorelle.
-2. Ehdota selkeästi lopuksi, miten pelaajan resurssit (Vauraus, Asevoima, Uskonto, Lojaalisuus) muuttuvat tuloksen myötä. (Esimerkiksi: "Suositellut muutokset: Asevoima -1, Vauraus +1"). Vastaa suomeksi.`;
+1. Kuvaile lopputulos tarinallisesti (max 3 lausetta) loreen perustuen.
+2. Ehdota stattimuutoksia (Vauraus, Asevoima, Uskonto, Lojaalisuus). Suomeksi.`;
 
                 let txt = await callAI(prompt);
                 let l = document.getElementById(loadId); if(l) l.remove();
                 if(txt) {
-                    if (txt.startsWith("⚠️")) {
-                        pushLog(`<div class="ai-error">${txt}</div><hr style="border-color:#333">`);
-                    } else {
-                        pushLog(`<div class="ai-result"><b>📜 Lopputulos:</b><br>${txt.replace(/\n/g, '<br>')}</div><hr style="border-color:#333">`);
-                    }
+                    if (txt.startsWith("⚠️")) pushLog(`<div class="ai-error">${txt}</div><hr style="border-color:#333">`);
+                    else pushLog(`<div class="ai-result"><b>📜 Lopputulos:</b><br>${txt.replace(/\n/g, '<br>')}</div><hr style="border-color:#333">`);
                 }
             } else pushLog(`<hr style="border-color:#333">`);
         }
 
         async function callAI(prompt) {
             if (!geminiKey) return "⚠️ API Virhe: API-avain puuttuu.";
-
             const cached = localStorage.getItem("geminiModelName");
             if (cached) {
                 const r = await tryModelGenerate(cached, prompt);
                 if (r.ok) return r.text;
                 if (r.isNotFound) localStorage.removeItem("geminiModelName");
             }
-
             let modelsJson;
             try {
                 const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${geminiKey}`);
                 modelsJson = await res.json();
-                if (modelsJson.error) {
-                    return "⚠️ API Virhe: " + (modelsJson.error.message || "ListModels epäonnistui");
-                }
-            } catch (e) {
-                return "⚠️ API Virhe: Yhteysvirhe ListModels-kutsussa.";
-            }
-
+                if (modelsJson.error) return "⚠️ API Virhe: " + (modelsJson.error.message);
+            } catch (e) { return "⚠️ API Virhe: Yhteysvirhe."; }
             const models = modelsJson.models || [];
-
-            const candidates = models
-                .filter(m =>
-                    (m.supportedGenerationMethods || m.supportedMethods || []).includes("generateContent")
-                    && (m.name || "").startsWith("models/")
-                    && (m.name || "").includes("gemini")
-                )
-                .sort((a, b) => {
-                    const an = a.name || "", bn = b.name || "";
-                    const score = (n) => n.includes("flash") ? 0 : n.includes("pro") ? 1 : 2;
-                    return score(an) - score(bn);
-                });
-
-            if (!candidates.length) {
-                return "⚠️ API Virhe: ListModels ei palauttanut yhtään yhteensopivaa Gemini-mallia.";
-            }
-
-            let lastError = "Tuntematon virhe";
+            const candidates = models.filter(m => (m.supportedGenerationMethods || m.supportedMethods || []).includes("generateContent") && (m.name || "").startsWith("models/") && (m.name || "").includes("gemini")).sort((a, b) => { const an = a.name || "", bn = b.name || ""; const score = (n) => n.includes("flash") ? 0 : n.includes("pro") ? 1 : 2; return score(an) - score(bn); });
+            if (!candidates.length) return "⚠️ API Virhe: Ei malleja.";
+            let lastError = "Virhe";
             for (const m of candidates.slice(0, 6)) { 
                 const r = await tryModelGenerate(m.name, prompt);
-                if (r.ok) {
-                    localStorage.setItem("geminiModelName", m.name);
-                    return r.text;
-                }
+                if (r.ok) { localStorage.setItem("geminiModelName", m.name); return r.text; }
                 lastError = r.error || lastError;
             }
-
-            return "⚠️ API Virhe: Mikään listatuista tekoälymalleista ei vastannut. Viimeisin syy: " + lastError;
+            return "⚠️ API Virhe: " + lastError;
         }
 
         async function tryModelGenerate(modelName, prompt) {
             const url = `https://generativelanguage.googleapis.com/v1beta/${modelName}:generateContent?key=${geminiKey}`;
             try {
-                const res = await fetch(url, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
-                });
-
+                const res = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }) });
                 const json = await res.json();
-
-                if (!res.ok || json.error) {
-                    const msg = json?.error?.message || `HTTP ${res.status}`;
-                    return { ok: false, error: msg, isNotFound: (json?.error?.status === "NOT_FOUND" || res.status === 404) };
-                }
-
+                if (!res.ok || json.error) return { ok: false, error: json?.error?.message, isNotFound: (json?.error?.status === "NOT_FOUND" || res.status === 404) };
                 const text = json?.candidates?.[0]?.content?.parts?.[0]?.text;
-                if (!text) return { ok: false, error: "Tyhjä vastaus mallilta." };
-
+                if (!text) return { ok: false, error: "Tyhjä vastaus." };
                 return { ok: true, text };
-            } catch (e) {
-                return { ok: false, error: "Yhteysvirhe generateContent-kutsussa." };
-            }
+            } catch (e) { return { ok: false, error: "Yhteysvirhe." }; }
         }
 
-        // --- UUSI: LOKIN EXPORT (.TXT) ---
         function exportLog() {
             if (logs.length === 0) return alert("Kronikka on tyhjä!");
-            
             let logText = "KAMPANJAN KRONIKKA\n==============================\n\n";
             let tempDiv = document.createElement('div');
-            
-            // Käännetään lokit takaisin aikajärjestykseen (vanhin ensin)
-            let chronologicalLogs = [...logs].reverse();
-            
-            chronologicalLogs.forEach(logHtml => {
-                tempDiv.innerHTML = logHtml.replace(/<br>/g, '\n'); // Säilytetään rivinvaihdot
-                let text = tempDiv.innerText || tempDiv.textContent;
-                logText += text.trim() + "\n\n------------------------------\n\n";
+            [...logs].reverse().forEach(logHtml => {
+                tempDiv.innerHTML = logHtml.replace(/<br>/g, '\n'); 
+                logText += (tempDiv.innerText || tempDiv.textContent).trim() + "\n\n------------------------------\n\n";
             });
-
-            // Luodaan tiedosto ja ladataan se
-            let blob = new Blob([logText], { type: "text/plain;charset=utf-8" });
             let link = document.createElement("a");
-            link.href = URL.createObjectURL(blob);
+            link.href = URL.createObjectURL(new Blob([logText], { type: "text/plain;charset=utf-8" }));
             link.download = `keskimaa_kronikka_${new Date().toISOString().slice(0,10)}.txt`;
             link.click();
         }
 
-        function undoLastPoint() {
-            if (draw.points.length > 0) {
-                draw.points.pop();
-                renderTempPoly();
-            }
-        }
-
+        function undoLastPoint() { if (draw.points.length > 0) { draw.points.pop(); renderTempPoly(); } }
         function setTool(t) { tool=t; document.getElementById('viewport').style.cursor=t==='move'?'grab':'crosshair'; document.querySelectorAll('.controls button').forEach(b=>b.className=''); document.getElementById(t==='move'?'btnMove':t==='fort'?'btnFort':'btnArea').className='active-tool'; document.getElementById('draw-tools').style.display=t==='area'?'flex':'none'; draw.points=[]; renderTempPoly(); }
-        
-        function renderTempPoly() { 
-            let svg=document.getElementById('svg-layer'), old=document.getElementById('temp-poly'); 
-            if(old)old.remove(); 
-            if(draw.points.length){ 
-                let el=document.createElementNS("http://www.w3.org/2000/svg","polyline"); 
-                el.id='temp-poly'; 
-                el.setAttribute("points",draw.points.map(p=>`${p.x},${p.y}`).join(" ")); 
-                el.setAttribute("fill","none"); 
-                el.setAttribute("stroke","#ff3333"); 
-                el.setAttribute("stroke-width","3"); 
-                el.setAttribute("stroke-dasharray","5,5"); 
-                svg.appendChild(el); 
-            } 
-        }
-        
-        function finishPoly() { 
-            if(draw.points.length<3) return; 
-            let name=prompt("Alue:"); 
-            if(name){ 
-                let cx=0,cy=0; 
-                draw.points.forEach(p=>{cx+=p.x;cy+=p.y}); 
-                cx/=draw.points.length; cy/=draw.points.length; 
-                if (!nazguls[currentNaz].territories) nazguls[currentNaz].territories = [];
-                nazguls[currentNaz].territories.push({points:[...draw.points],label:name,cx,cy}); 
-                renderOverlays(); uploadState(); 
-            } 
-            setTool('move'); 
-        }
-        
+        function renderTempPoly() { let svg=document.getElementById('svg-layer'), old=document.getElementById('temp-poly'); if(old)old.remove(); if(draw.points.length){ let el=document.createElementNS("http://www.w3.org/2000/svg","polyline"); el.id='temp-poly'; el.setAttribute("points",draw.points.map(p=>`${p.x},${p.y}`).join(" ")); el.setAttribute("fill","none"); el.setAttribute("stroke","#ff3333"); el.setAttribute("stroke-width","3"); el.setAttribute("stroke-dasharray","5,5"); svg.appendChild(el); } }
+        function finishPoly() { if(draw.points.length<3) return; let name=prompt("Alue:"); if(name){ let cx=0,cy=0; draw.points.forEach(p=>{cx+=p.x;cy+=p.y}); cx/=draw.points.length; cy/=draw.points.length; if (!nazguls[currentNaz].territories) nazguls[currentNaz].territories = []; nazguls[currentNaz].territories.push({points:[...draw.points],label:name,cx,cy}); renderOverlays(); uploadState(); } setTool('move'); }
         function cancelPoly() { setTool('move'); }
         
-        // --- UUSI GM-LUKKO LOGIIKKA ---
         function openSettings() { 
             document.getElementById('settings-overlay').style.display='flex'; 
             document.getElementById('apiKeyInput').value = geminiKey; 
             document.getElementById('loreInput').value = campaignLore; 
-            // Piilotetaan GM-alue aina aluksi
             document.getElementById('gmSecretArea').style.display = 'none';
             document.getElementById('gmUnlockBtn').style.display = 'block';
         }
-        
-        function unlockGM() {
-            let pass = prompt("Anna pelinjohtajan salasana:");
-            // TÄSSÄ ON GM-SALASANA: Voit vaihtaa "mordor" sanan tilalle minkä haluat
-            if (pass === "mordor") {
-                document.getElementById('gmSecretArea').style.display = 'flex';
-                document.getElementById('gmUnlockBtn').style.display = 'none';
-            } else {
-                alert("Väärä salasana. Pysy poissa, kuolevainen.");
-            }
-        }
-
-        function closeSettings() { 
-            document.getElementById('settings-overlay').style.display='none'; 
-        }
-        function saveSettings() { 
-            geminiKey = document.getElementById('apiKeyInput').value; 
-            campaignLore = document.getElementById('loreInput').value; 
-            
-            localStorage.setItem('geminiKey', geminiKey); 
-            localStorage.setItem('campaignLore', campaignLore); 
-            
-            closeSettings(); 
-        }
+        function unlockGM() { if (prompt("Anna pelinjohtajan salasana:") === "mordor") { document.getElementById('gmSecretArea').style.display = 'flex'; document.getElementById('gmUnlockBtn').style.display = 'none'; } else alert("Väärä salasana."); }
+        function closeSettings() { document.getElementById('settings-overlay').style.display='none'; }
+        function saveSettings() { geminiKey = document.getElementById('apiKeyInput').value; campaignLore = document.getElementById('loreInput').value; localStorage.setItem('geminiKey', geminiKey); localStorage.setItem('campaignLore', campaignLore); closeSettings(); }
         
         function renderOverlays() {
             let svg=document.getElementById('svg-layer'), m=document.getElementById('marker-layer'), t=document.getElementById('temp-poly');
@@ -561,33 +474,12 @@ Tehtäväsi:
         function renderLog() { document.getElementById('log').innerHTML=logs.join(""); }
         
         function updateUI() {
-            currentNaz = document.getElementById('nazgulSelect').value; 
-            let n = nazguls[currentNaz];
-            
+            currentNaz = document.getElementById('nazgulSelect').value; let n = nazguls[currentNaz];
             document.getElementById('statsDisplay').innerHTML = `
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:5px;">
-                    <span>💰 Vauraus: ${n.wealth}/10</span>
-                    <div><button class="stat-btn" onclick="adjustStat('wealth', -1)">-</button><button class="stat-btn" onclick="adjustStat('wealth', 1)">+</button></div>
-                </div>
-                <div style="background:#333;height:8px;margin-bottom:5px"><div style="background:#d4af37;height:100%;width:${n.wealth*10}%"></div></div>
-                
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:5px;">
-                    <span>👁️ Uskonto: ${n.religion}/10</span>
-                    <div><button class="stat-btn" onclick="adjustStat('religion', -1)">-</button><button class="stat-btn" onclick="adjustStat('religion', 1)">+</button></div>
-                </div>
-                <div style="background:#333;height:8px;margin-bottom:5px"><div style="background:#9370db;height:100%;width:${n.religion*10}%"></div></div>
-                
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:5px;">
-                    <span>⚔️ Asevoima: ${n.might}/10</span>
-                    <div><button class="stat-btn" onclick="adjustStat('might', -1)">-</button><button class="stat-btn" onclick="adjustStat('might', 1)">+</button></div>
-                </div>
-                <div style="background:#333;height:8px;margin-bottom:5px"><div style="background:#b22222;height:100%;width:${n.might*10}%"></div></div>
-                
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:5px;">
-                    <span>⚖️ Lojaalisuus: ${n.loyalty}/10</span>
-                    <div><button class="stat-btn" onclick="adjustStat('loyalty', -1)">-</button><button class="stat-btn" onclick="adjustStat('loyalty', 1)">+</button></div>
-                </div>
-                <div style="background:#333;height:8px;margin-bottom:5px"><div style="background:#4682b4;height:100%;width:${n.loyalty*10}%"></div></div>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:5px; font-size:0.9em;"><span>💰 Vauraus: ${n.wealth}/10</span><div><button class="stat-btn" onclick="adjustStat('wealth', -1)">-</button><button class="stat-btn" onclick="adjustStat('wealth', 1)">+</button></div></div><div style="background:#333;height:6px;margin-bottom:5px"><div style="background:#d4af37;height:100%;width:${n.wealth*10}%"></div></div>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:5px; font-size:0.9em;"><span>👁️ Uskonto: ${n.religion}/10</span><div><button class="stat-btn" onclick="adjustStat('religion', -1)">-</button><button class="stat-btn" onclick="adjustStat('religion', 1)">+</button></div></div><div style="background:#333;height:6px;margin-bottom:5px"><div style="background:#9370db;height:100%;width:${n.religion*10}%"></div></div>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:5px; font-size:0.9em;"><span>⚔️ Asevoima: ${n.might}/10</span><div><button class="stat-btn" onclick="adjustStat('might', -1)">-</button><button class="stat-btn" onclick="adjustStat('might', 1)">+</button></div></div><div style="background:#333;height:6px;margin-bottom:5px"><div style="background:#b22222;height:100%;width:${n.might*10}%"></div></div>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:5px; font-size:0.9em;"><span>⚖️ Lojaalisuus: ${n.loyalty}/10</span><div><button class="stat-btn" onclick="adjustStat('loyalty', -1)">-</button><button class="stat-btn" onclick="adjustStat('loyalty', 1)">+</button></div></div><div style="background:#333;height:6px;margin-bottom:5px"><div style="background:#4682b4;height:100%;width:${n.loyalty*10}%"></div></div>
             `;
         }
     </script>

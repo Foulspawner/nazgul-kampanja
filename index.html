@@ -2,7 +2,7 @@
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
-    <title>Middle-earth Manager v9.0 (RAG Engine)</title>
+    <title>Middle-earth Manager v8.6 (Ultimate AI GM)</title>
     
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -163,7 +163,6 @@
         let tool = 'move', isDragging = false, draw = { active: false, points: [] }, currentNaz = 0;
         let geminiKey = localStorage.getItem('geminiKey') || "";
         let logs = [];
-        let campaignLore = ""; 
 
         window.onload = function() {
             let imgElement = document.getElementById('game-map');
@@ -260,87 +259,30 @@
             updateUI(); uploadState(); 
         }
 
-        function getMapStateForAI() {
-            let stateInfo = "NYKYINEN KARTTATILANNE:\n";
-            nazguls.forEach(n => {
-                let regions = (n.territories || []).map(t => t.label).join(", ");
-                let forts = (n.markers || []).map(m => m.label).join(", ");
-                if(regions || forts) {
-                    stateInfo += `- ${n.name} hallitsee. Alueet: [${regions}]. Linnoitukset: [${forts}].\n`;
-                }
-            });
-            return stateInfo;
-        }
-
-        // --- UUSI RAG-MOOTTORI LOREN KÄSITTELYYN ---
-        async function fetchAndFilterLore(intent) {
-            try {
-                let response = await fetch('./lore.txt?t=' + new Date().getTime());
-                if(!response.ok) return "";
-                let fullLore = await response.text();
-                
-                // Jos lore on lyhyt, palautetaan koko hoito
-                if(fullLore.length < 2000) return fullLore;
-
-                // RAG-LOGIIKKA alkaa: Pilkotaan otsikoiden (Markdown #) kohdalta tai kappaleittain
-                let chunks = fullLore.split(/(?=^#+ )/m);
-                if (chunks.length <= 1) chunks = fullLore.split(/\n\n/);
-
-                // Poimitaan aikeesta hakusanat (yli 3 kirjainta pitkät sanat)
-                let keywords = intent.toLowerCase().replace(/[.,!?]/g, '').split(/\s+/).filter(w => w.length > 3);
-                
-                let relevantChunks = chunks.filter(chunk => {
-                    let lowerChunk = chunk.toLowerCase();
-                    // Suojellaan aina sääntöjä ja salaisuuksia!
-                    if (lowerChunk.includes("yleis") || lowerChunk.includes("sääntö") || lowerChunk.includes("salais")) return true;
-                    // Etsitään osumia avainsanoilla
-                    return keywords.some(kw => lowerChunk.includes(kw));
-                });
-
-                console.log(`RAG suodatti ${chunks.length} kappaleesta -> ${relevantChunks.length} olennaista kappaletta.`);
-                
-                if (relevantChunks.length === 0) return chunks[0]; // Palautetaan edes alku, jos ei löydy mitään
-                return relevantChunks.join("\n\n");
-
-            } catch (err) {
-                console.log("Lore-haku epäonnistui.");
-                return "";
-            }
-        }
-
         async function askGM() {
             let intent = document.getElementById('intentInput').value;
             if(!intent) return alert("Kirjoita ensin aikeesi tekstikenttään!");
-            if(!geminiKey) { alert("Aseta Gemini API Key asetuksista ensin!"); openSettings(); return; }
+            if(!geminiKey) {
+                alert("Aseta Gemini API Key asetuksista ensin!");
+                openSettings();
+                return;
+            }
 
             let n = nazguls[currentNaz];
             let loadId = "load-"+Date.now();
-            document.getElementById('log').innerHTML = `<div id="${loadId}" style="color:#d4af37">🧙‍♂️ GM selaa arkistoja (RAG active)...</div>` + document.getElementById('log').innerHTML;
+            document.getElementById('log').innerHTML = `<div id="${loadId}" style="color:#d4af37">🧙‍♂️ GM selaa taikakirjojaan...</div>` + document.getElementById('log').innerHTML;
             
-            // Haetaan ja suodatetaan lore (Client-side RAG)
-            let relevantLore = await fetchAndFilterLore(intent);
-
             let prompt = `Olet pelinjohtaja (Game Master) Keskimaahan sijoittuvassa synkässä roolipelissä, joka käyttää Burning Wheel -tyyppistä noppamekaniikkaa.
 Pelaajan hahmo on Nazgûl nimeltä ${n.name}.
-
-${relevantLore ? "KAMPANJAN OLENNAINEN TAUSTATIETO (LORE):\n" + relevantLore + "\n" : ""}
-${getMapStateForAI()}
-
-TÄRKEÄ SÄÄNTÖ (ANTI-SPOILER): Puhu pelaajalle ikään kuin hän olisi ainoastaan kyseinen Nazgûl. Älä koskaan paljasta salaisuuksia, jos ne on merkitty LORESSA salaisuuksiksi (esim. kuka oikeasti johtaa kultteja).
-
 Pelaaja ilmoittaa aikeensa (Intent): "${intent}".
 
 Tehtäväsi:
-1. Kerro 2-3 lauseella lyhyt, tunnelmallinen kuvaus kohteesta hyödyntäen yllä olevaa KAMPANJAN LOREA.
-2. Etsi LORESTA asioita, jotka tekevät tästä aikeesta joko vaikeamman tai helpomman. Listaa nämä FAKTORIT ranskalaisilla viivoilla ja anna niille Ob-muutos (esim. "Vaikeakulkuinen vuoristo: +1 Ob"). Jos alueen tietoja ei löydy loresta, arvioi ne loogisesti.
-3. Laske lopullinen Ob (Obstacle, perusvaikeus 1-6 + faktorit).
+1. Kerro 2-3 lauseella lyhyt, tunnelmallinen kuvaus kohteesta (lore) ja arvioi miksi aie on haastava (tai helppo).
+2. Määritä toiminnalle vaikeustaso eli Ob (Obstacle, luku väliltä 1-6). 
 
-Vastaa tismalleen tässä muodossa:
+Vastaa ytimekkäästi suomeksi muodossa:
 Tarinallinen arvio: [Teksti tähän]
-Faktorit:
-- [Faktori 1]: [+/- X Ob]
-- [Faktori 2]: [+/- X Ob]
-Lopullinen Ob: [Numero]`;
+Ehdottamasi Ob: [Numero]`;
 
             let txt = await callAI(prompt);
             let l = document.getElementById(loadId); if(l) l.remove();
@@ -348,7 +290,7 @@ Lopullinen Ob: [Numero]`;
             if(txt) {
                 let time = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
                 if (txt.startsWith("⚠️")) {
-                     pushLog(`<div class="ai-error">${txt}</div><hr style="border-color:#333">`);
+                     pushLog(`<div class="ai-error">${txt}<br><span style="font-size:0.8em">Varmista API-avain tai kokeile uudelleen.</span></div><hr style="border-color:#333">`);
                 } else {
                      pushLog(`<div><span style="color:#666">[${time}]</span> <b style="color:${n.color}">${n.name} aie:</b> ${intent}</div>
                              <div class="ai-gm"><b>👑 GM vastaa:</b><br>${txt.replace(/\n/g, '<br>')}</div><hr style="border-color:#333">`);
@@ -375,15 +317,10 @@ Lopullinen Ob: [Numero]`;
                 let loadId = "load-"+Date.now();
                 document.getElementById('log').innerHTML = `<div id="${loadId}" style="color:#88ccff">🔮 Kirjataan historiaa...</div>` + document.getElementById('log').innerHTML;
                 
-                let relevantLore = await fetchAndFilterLore(intent);
-
                 let prompt = `Olet pelinjohtaja Keskimaassa. Pelaaja on Nazgûl ${n.name}.
-${relevantLore ? "KAMPANJAN LORE:\n" + relevantLore + "\n" : ""}
 Pelaajan aie oli: "${intent}".
 Käytetty taito/toiminto: ${action}.
 Nopanheiton tulos oli: ${res} (Marginaali vaadittuun: ${margin}).
-
-TÄRKEÄ SÄÄNTÖ: Älä koskaan paljasta nopanheiton lopputuloksessa salaisuuksia, jotka on merkitty salaisiksi LORESSA.
 
 Tehtäväsi:
 1. Kuvaile tapahtumien lopputulos tarinallisesti (max 3 lausetta) ottaen huomioon onnistuiko vai epäonnistuiko yritys.
@@ -401,43 +338,57 @@ Tehtäväsi:
             } else pushLog(`<hr style="border-color:#333">`);
         }
 
+        // --- UUSI DYNAAMINEN AI MALLIN HAKU ---
         async function callAI(prompt) {
             if (!geminiKey) return "⚠️ API Virhe: API-avain puuttuu.";
 
+            // 1) Yritä ensin viimeksi toiminutta mallia (nopea)
             const cached = localStorage.getItem("geminiModelName");
             if (cached) {
                 const r = await tryModelGenerate(cached, prompt);
                 if (r.ok) return r.text;
+                // jos malli ei toiminutkaan (esim. poistettu), poistetaan se muistista
                 if (r.isNotFound) localStorage.removeItem("geminiModelName");
             }
 
+            // 2) Hae ajantasainen mallilista API:sta
             let modelsJson;
             try {
                 const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${geminiKey}`);
                 modelsJson = await res.json();
-                if (modelsJson.error) return "⚠️ API Virhe: " + (modelsJson.error.message || "ListModels epäonnistui");
+                if (modelsJson.error) {
+                    return "⚠️ API Virhe: " + (modelsJson.error.message || "ListModels epäonnistui");
+                }
             } catch (e) {
                 return "⚠️ API Virhe: Yhteysvirhe ListModels-kutsussa.";
             }
 
             const models = modelsJson.models || [];
+
+            // 3) Suodata mallit, jotka oikeasti tukevat generointia ja ovat Gemini-malleja
             const candidates = models
-                .filter(m => (m.supportedGenerationMethods || m.supportedMethods || []).includes("generateContent")
-                          && (m.name || "").startsWith("models/")
-                          && (m.name || "").includes("gemini"))
+                .filter(m =>
+                    (m.supportedGenerationMethods || m.supportedMethods || []).includes("generateContent")
+                    && (m.name || "").startsWith("models/")
+                    && (m.name || "").includes("gemini")
+                )
+                // 4) Priorisoi flash (nopea/halpa)
                 .sort((a, b) => {
                     const an = a.name || "", bn = b.name || "";
                     const score = (n) => n.includes("flash") ? 0 : n.includes("pro") ? 1 : 2;
                     return score(an) - score(bn);
                 });
 
-            if (!candidates.length) return "⚠️ API Virhe: ListModels ei palauttanut yhtään yhteensopivaa Gemini-mallia.";
+            if (!candidates.length) {
+                return "⚠️ API Virhe: ListModels ei palauttanut yhtään yhteensopivaa Gemini-mallia.";
+            }
 
+            // 5) Kokeile listattuja malleja järjestyksessä
             let lastError = "Tuntematon virhe";
             for (const m of candidates.slice(0, 6)) { 
                 const r = await tryModelGenerate(m.name, prompt);
                 if (r.ok) {
-                    localStorage.setItem("geminiModelName", m.name);
+                    localStorage.setItem("geminiModelName", m.name); // Tallennetaan toimiva malli
                     return r.text;
                 }
                 lastError = r.error || lastError;
@@ -447,21 +398,29 @@ Tehtäväsi:
         }
 
         async function tryModelGenerate(modelName, prompt) {
+            // modelName on muotoa "models/gemini-xxxxx"
             const url = `https://generativelanguage.googleapis.com/v1beta/${modelName}:generateContent?key=${geminiKey}`;
             try {
                 const res = await fetch(url, {
-                    method: "POST", headers: { "Content-Type": "application/json" },
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
                 });
+
                 const json = await res.json();
+
                 if (!res.ok || json.error) {
                     const msg = json?.error?.message || `HTTP ${res.status}`;
                     return { ok: false, error: msg, isNotFound: (json?.error?.status === "NOT_FOUND" || res.status === 404) };
                 }
+
                 const text = json?.candidates?.[0]?.content?.parts?.[0]?.text;
                 if (!text) return { ok: false, error: "Tyhjä vastaus mallilta." };
+
                 return { ok: true, text };
-            } catch (e) { return { ok: false, error: "Yhteysvirhe generateContent-kutsussa." }; }
+            } catch (e) {
+                return { ok: false, error: "Yhteysvirhe generateContent-kutsussa." };
+            }
         }
 
         function setTool(t) { tool=t; document.getElementById('viewport').style.cursor=t==='move'?'grab':'crosshair'; document.querySelectorAll('.controls button').forEach(b=>b.className=''); document.getElementById(t==='move'?'btnMove':t==='fort'?'btnFort':'btnArea').className='active-tool'; document.getElementById('draw-tools').style.display=t==='area'?'block':'none'; draw.points=[]; renderTempPoly(); }

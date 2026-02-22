@@ -1193,3 +1193,225 @@ Jokainen paikka: **Tyyppi / Sijainti / Miksi tärkeä / Valta & uskonto / Sotapr
 - **Valta & uskonto:** klaanit; oppaiden “oikeus myydä reittiä”  
 - **Sotaprofiili:** vaikea vartioida laajaa reunaa  
 - **BW:** rajakahakka **Ob 3–5**; rajan läpäisy **Ob 4–6**
+# CHY — VALTAKUNTA (paikkadossier v1.0)
+**Aika:** S.A. 1993  
+**Luonne:** rannikkoinen ja kukkulainen **rajavaltakunta**, joka on puristuksissa kolmen voiman välissä:  
+1) **Cheyn varjo** pohjoisen vuorten takaa,  
+2) **idän jokimaat** (Lodenuly ja Bulchyades),  
+3) **lännen autiomaa** (*Mirror of Fire*) ja sen **Siakanin aavikkoruhtinaiden liittouma**.  
+
+Chy on “porttimaa”: se elää **merestä**, **laaksoista** ja **aavikkokaupan solasta**, mutta maksaa siitä jatkuvalla rajaturvallisuudella.
+
+---
+
+## 1) Valta-arvot (1–10)
+| Arvo | Luku | Tulkinta |
+|---|---:|---|
+| **Vauraus** | **4** | satama + jokikauppa + aavikkoreitti tuovat ylijäämää, mutta rajapaine syö kassan |
+| **Uskonto** | **5** | rannikon ja metsän rituaalit vahvoja; useita virtauksia ja kilpailua |
+| **Asevoima** | **4** | kohtalainen pooli: rannikkovartiot + solajoukot + kevyet ratsut |
+| **Lojaalisuus** | **5** | valtio pysyy kasassa, mutta kauppiaat, klaanit ja rajavartiot vetävät eri suuntiin |
+
+> **Muistutus:** **Asevoima = noppapooli**, joka **summataan liittoutumissa**. Chyn puolustuksen todellinen “kovuus” tulee usein **maastosta (solat/harjanteet), merestä ja huollosta** (OB-faktorit), ei pelkästä poolista.
+
+---
+
+## 2) Pikatunnus
+Chy on rannikon ja kukkulajonojen väliin jäävä valtakunta, jonka lännessä kaksi kukkulajonoa muodostaa **portin autiomaahan** (*Mirror of Fire*). Etelässä valtakuntaa rajaa **meri** ja **suuri metsä**, joka tekee sisämaasta vaikeasti hallittavan mutta suojaa invaasioilta. Idässä kahden joen välissä oleva **Lodenuly** on sekä viljavarasto että kiistakohde. Kaakossa joen takana rannikon **Bulchyades** on kilpailija ja kauppakumppani.
+
+---
+
+## 3) Rajanaapurit (kampanjakehikko)
+- **Pohjoinen:** Cheyn eteläpuolisten vuorten takainen **alistettu kukkulakansa** (Cheyn vasalli / hallinnassa)
+- **Koillinen:** **Vaay**
+- **Itä:** **Lodenuly** (kahden joen välissä)
+- **Kaakko:** joen takana rannikon **Bulchyades**
+- **Etelä:** **meri** + **suuri metsä**
+- **Länsi:** kaksi kukkulajonoa (pohjoinen ja eteläinen); niiden välissä **tasankoaukko** → **Mirror of Fire** → **Siakanin aavikkoruhtinaiden liittouma**
+
+---
+
+## 4) Geografia ja ilmasto
+- **Maasto:** rannikkotasankoa, kukkulaharjanteita, jokilaaksoja ja etelän metsäreuna.
+- **Ilmasto:** kuuma–kuivahko rannikko ja kukkulat; etelässä metsän läheisyys lisää kosteutta ja sumuja.  
+- **Lännen portti:** kahden kukkulajonon välinen “aukko” on strateginen kurkku: kaikki karavaanit ja sotaretket autiomaasta kulkevat sieltä.
+
+### Luonnolliset chokepointit
+- **Aavikon Portti** (tasankoaukko lännessä): ainoa “iso” reitti Mirror of Fireen
+- **Itäiset jokiylitykset:** reitit Lodenulyyn ja Bulchyadesiin (sillat/kahlaamot)
+- **Rannikon satamasalmet:** suojaiset ankkuripaikat ja merirosvouksen kapeikot
+- **Metsäreunan polut:** etelän suuri metsä piilottaa liikettä ja kapinallisia
+
+---
+
+## 5) Hallintomuoto ja valtarakenne
+**Valtioformaatti:** *Rannikkokruunu + solavartiot + kauppahuoneet*  
+Chy on käytännössä kolmen voiman tasapaino:
+1) **Kruunu / ruhtinas** (legitimiteetti ja liittosopimukset)  
+2) **Solavartijat** (lännen portti ja kukkulajonot; “jos portti pettää, kaikki pettää”)  
+3) **Kauppahuoneet** (satama, karavaanit, tullit; rahoittavat sotaa ja ostavat rauhaa)
+
+### Avainhenkilöt ja instituutiot (valmiit softaan)
+- **Chyn Ruhtinas/Ruhtinatar:** tasapainottaa Cheyn painetta ja Siakanin aavikkoruhtinaita
+- **Aavikon Portinvartija:** komentaa lännen aukkoa; todellinen sotilaallinen vipu
+- **Satamakapteenisto:** rannikkovartiot, tullit, merirosvojen torjunta (tai salainen suojelu)
+- **Kauppahuoneiden Neuvosto:** karavaanisopimukset ja velkakirjat; altis lahjonnalle
+- **Metsänrajan Vanhimmat:** etelän metsän tabut ja reitit; pystyvät “sulkemaan” metsäpolut
+
+---
+
+## 6) Uskonto ja “kognitiivinen taistelukenttä”
+Chyssä uskonto on sekä **kaupan etiikkaa** että **rajan turvaa**.
+
+### A) Rannikon ja myrskyn rituaalit (enemmistö)
+- meri, tuuli ja turvallinen paluu; “suola- ja laivavalat”
+- satamakaupungit pitävät yllä rituaaleja, jotka sitovat kauppahuoneita
+
+### B) Metsän tabut ja esi-isät (eteläinen vyöhyke)
+- metsän pyhät paikat, metsästyskiellot, “rajamerkkien” rituaalit
+- tämä luo vahvan paikallisen identiteetin ja vastustaa ulkoa tuotua valtiokulttia
+
+### C) Sauronin vaikutus (kasvava, mutta ei totaalinen)
+- leviää parhaiten **turvan ja järjestyksen lupauksella**: “yksi laki, yksi vero, yksi armeija”
+- Chyssä tämä kohtaa vastarintaa, koska se uhkaa kauppahuoneiden vapautta ja metsän tabuja
+
+### D) Sinisen liekin solut (salainen)
+- näkyy turvapaikkoina metsäreunassa ja “tienviittoina” karavaaneille
+- Nazgûl-näkökulmasta: kapinallinen häiriö, jonka johto on vain “huhuja ja valo idästä”
+
+---
+
+## 7) Talous
+**Peruspilarit:**
+- **satama ja rannikkokauppa** (suola, kala, köydet, tervat, varastot)
+- **karavaanikauppa** Mirror of Fire -portin kautta (kankaat, metallit, mausteet, orjan-/työvoimakauppa jos haluat synkentää)
+- **jokilaaksojen viljelytaskut** (vilja, hedelmät, karja)
+- **tullit**: satama + jokiylitykset + aavikon portti
+
+**Haavoittuvuus:**
+- jos Portinvartija pettää tai Siakanin ruhtinaat sulkevat reitin → kassa kuivuu
+- jos Bulchyades katkaisee rannikkokaupan tai merirosvot voimistuvat → satama köyhtyy
+- jos Chey painostaa pohjoisen kautta → poliittinen tasapaino särkyy
+
+---
+
+## 8) Sotavoima (mitä Chy “oikeasti osaa”)
+**Doktriini:** portin ja rannikon kontrolli. Chy ei halua massiivista kenttäsotaa, vaan:
+- sulkee lännen aukon,  
+- kontrolloi jokiylitykset idässä,  
+- suojaa satamaa ja rannikkoa,  
+- käyttää metsäreunaa harhautukseen.
+
+**Ydinkyvyt:**
+- **solajoukot** (kukkulajonojen vartiointi, sulut, kivivyöryt, väijytykset)
+- **rannikkovartiot** (nopeat alukset, satamasulut, merirosvojen torjunta)
+- **kevyt ratsuväki** (tasangoilla nopea reagointi; karavaanisaattueet)
+- **paikalliset miliisit** (satamakaupungit ja jokilaaksot)
+
+**Heikkoudet:**
+- pooli ei riitä pitkään kaksirintamaiseen sotaan (Chey + Siakan + Bulchyades)
+- kauppahuoneet voivat estää mobilisaation, jos voitot eivät näy kassassa
+- etelän metsä on “oma maailmansa” (vaikea komentaa keskitetysti)
+
+---
+
+## 9) Muinaiskohteet ja muistot (Ensimmäisen ajan “kaikuja”)
+- **Peilijärven Kuollut Lähde:** kivinen allas lähellä aavikon porttia; huhu “tulen peilistä” öisin
+- **Metsän Valkea Porras:** sammaloitunut kiviporras suuren metsän reunassa; tabualue
+- **Rannikon Särkynyt Torni:** vanha merivartio (raunio), jonka juurella kuullaan “merta syvempiä” ääniä myrskyssä
+
+---
+
+## 10) Burning Wheel — OB-faktorit hyökkäyksen arviointiin (Chy-case)
+LLM arvioi tekijät arvolla **0–2**; deterministinen laskuri tuottaa lopullisen OB:n.
+
+**Tekijät:**
+- Maasto: kukkulajonot + porttitasanko (hyökkäys kanavoituu)
+- Lännen uhka: Mirror of Fire / Siakanin liittouma (paine portille)
+- Itäiset joet: ylitykset Lodenulyyn ja Bulchyadesiin (huolto ja reitit)
+- Meri: rannikkosaarto, merirosvot, sataman hallinta
+- Metsäreuna: piiloreitit ja tabut (vaikea kontrolloida)
+- Poliittinen yhtenäisyys: kruunu vs. portinvartija vs. kauppahuoneet (hauras → subvertoitavissa)
+- Ulkoinen interventio: Chey (pohjoinen painostus), Vaay (koillinen), Bulchyades (kaakko), Siakan (länsi)
+
+**Esimerkkiskaala (suuntaa-antava):**
+- Nopea rangaistusretki / ryöstö: **Ob 3–5**
+- Täysimittainen valloitus: **Ob 6–8** (vaatii portin, sataman ja poliittisen murron)
+- Coup / portinvartijan ostaminen / sataman kaappaus: **Ob 4–6**
+
+---
+
+## 11) Chyn avainpaikat (9 kpl) — “karttaneulat”
+Jokainen paikka: **Tyyppi / Sijainti / Miksi tärkeä / Valta & uskonto / Sotaprofiili / BW**
+
+### 1) **Chy-Kor (Suolalinnan Satama)**
+- **Tyyppi:** pääsatama / rannikkokaupunki  
+- **Sijainti:** etelärannikko, suojaisan lahden perällä  
+- **Miksi tärkeä:** tullit, varastot, laivasto ja kauppahuoneiden valta  
+- **Valta & uskonto:** kauppahuoneet + rannikkorituaalit  
+- **Sotaprofiili:** satamasulut, nopeat alukset, palkkavartijat  
+- **BW:** sataman kaappaus **Ob 4–6**; kauppasopimus **Ob 3–5**
+
+### 2) **Aavikon Portti (Peilinsuu)**
+- **Tyyppi:** solalinnoitus / porttitasanko  
+- **Sijainti:** lännessä, kahden kukkulajonon välisessä aukossa  
+- **Miksi tärkeä:** kaikki reitit Mirror of Fireen kulkevat tästä  
+- **Valta & uskonto:** Portinvartija; “porttivalat” ja karavaanirituaalit  
+- **Sotaprofiili:** sulut, kivivyöryt, väijytysmaasto  
+- **BW:** portin pakottaminen **Ob 6–8**; portinvartijan ostaminen **Ob 4–6**
+
+### 3) **Peilin Kaivot (Karavaanien Viimeinen Vesi)**
+- **Tyyppi:** kaivoketju / karavaanisolmu  
+- **Sijainti:** portin länsipuolella, ennen autiomaata  
+- **Miksi tärkeä:** vesi = karavaanin elämä; reitin hallinta  
+- **Valta & uskonto:** kauppahuoneet + porttijoukot; kaivovalat  
+- **Sotaprofiili:** helppo sabotoida, vaikea vartioida laajaa aluetta  
+- **BW:** huollon turvaaminen **Ob 4–7**; sabotaasin torjunta **Ob 4–6**
+
+### 4) **Lodenulyyn Kaksijoki-Silta**
+- **Tyyppi:** jokiylitys / tullipiste  
+- **Sijainti:** idässä, reitillä Lodenulyyn (kahden joen väliseen maahan)  
+- **Miksi tärkeä:** vilja, kauppa, tiedustelu; “idän pulssi”  
+- **Valta & uskonto:** tullimiehet; jokivalat  
+- **Sotaprofiili:** helppo sulkea, vaikea pakottaa  
+- **BW:** pakko-ylitys **Ob 5–7**; lahjonta **Ob 3–5**
+
+### 5) **Bulchyadesin Vastarantavahti**
+- **Tyyppi:** joenrannan vartiopaikka / merireitti  
+- **Sijainti:** kaakossa, joen rannalla Bulchyadesin suuntaan  
+- **Miksi tärkeä:** rajajännite; kauppa tai sota yhdellä päätöksellä  
+- **Valta & uskonto:** rajavartiosto; sotavalat  
+- **Sotaprofiili:** nopeasti vahvistettavissa, mutta altis yllätykselle  
+- **BW:** rajakahakka **Ob 3–5**; ylityksen hallinta **Ob 4–6**
+
+### 6) **Metsän Valkea Porras (tabualue)**
+- **Tyyppi:** pyhä paikka / metsäreunan rituaalipaikka  
+- **Sijainti:** etelässä suuren metsän reunassa  
+- **Miksi tärkeä:** tabut, turvapaikat, “metsän lupa” liikkeelle  
+- **Valta & uskonto:** metsänvanhimmat; vahva rituaalinen kontrolli  
+- **Sotaprofiili:** piiloutumisen alue; vaikea “puhdistaa”  
+- **BW:** kansan kääntäminen **Ob 4–7**; verkoston paljastus **Ob 4–6**
+
+### 7) **Pohjoisen Rajakivet (Cheyn Varjon Linja)**
+- **Tyyppi:** rajaketju / vartioasemat  
+- **Sijainti:** pohjoisreuna, vuorten takaisen alistetun kukkulakansan suuntaan  
+- **Miksi tärkeä:** Cheyn painostus, pakolaiset, panttivaihdot  
+- **Valta & uskonto:** rajavartiot + klaanit  
+- **Sotaprofiili:** hälytysverkko; vähän muureja, paljon partioita  
+- **BW:** rajan läpäisy **Ob 4–6**; vastavakoilu **Ob 4–6**
+
+### 8) **Rannikon Särkynyt Torni (raunio)**
+- **Tyyppi:** muinaistorni / merivartio  
+- **Sijainti:** rannikon kivisellä niemellä  
+- **Miksi tärkeä:** merimerkit, kätköt, myrskyjen enteet  
+- **Valta & uskonto:** rannikkorituaalit; kiistanalainen symboli  
+- **Sotaprofiili:** hyvä tähystykseen, huono puolustukseen ilman varuskuntaa  
+- **BW:** raunion herättäminen **Ob 5–7**; rannikkosaarron tuki **Ob 4–6**
+
+### 9) **Tasankokenttä “Kolmen Lipun”**
+- **Tyyppi:** harjoitus- ja kokoontumiskenttä / miliisin solmu  
+- **Sijainti:** keskinen tasanko sataman ja portin puolivälissä  
+- **Miksi tärkeä:** mobilisaation nopein piste; kauppahuoneet rahoittavat varustuksen  
+- **Valta & uskonto:** kruunu vs. kauppahuoneet (kuka maksaa, kuka määrää)  
+- **Sotaprofiili:** nopea koonti, mutta haavoittuva yllätykselle  
+- **BW:** armeijan kokoaminen **Ob 4–7**; mellakan tukahdutus **Ob 4–6**

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Middle-earth Manager v10.0 (Fate & Mechanics)</title>
+    <title>Middle-earth Manager v10.1 (Smart Fate Logic)</title>
     
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -280,7 +280,6 @@
             
             let target = e.target;
 
-            // --- MUOKKAA TYÖKALU ---
             if(tool === 'edit') {
                 let markerEl = target.closest('.marker');
                 if(markerEl) {
@@ -308,7 +307,6 @@
                 return; 
             }
 
-            // --- TUHOA TYÖKALU ---
             if(tool === 'delete') {
                 let markerEl = target.closest('.marker');
                 if(markerEl) {
@@ -332,7 +330,6 @@
                 return; 
             }
 
-            // --- LIIKUTA, LINNOITUS & ALUE ---
             if (e.touches) {
                 if (e.touches.length === 2) {
                     isDragging = false; 
@@ -443,7 +440,7 @@
             let loadId = "load-"+Date.now();
             document.getElementById('log').innerHTML = `<div id="${loadId}" style="color:#d4af37">🧙‍♂️ GM miettii...</div>` + document.getElementById('log').innerHTML;
             
-            let loreContext = campaignLore ? `\n\n=== KAMPANJAN LORE ===\n${campaignLore}\n======================\n` : "";
+            let loreContext = campaignLore ? `\n\n=== KAMPANJAN LORE ===\n${campaignLore}\n======================\nKäytä tätä maailman taustana.\n` : "";
             let historyContext = getRecentHistoryContext();
 
             let prompt = `Olet pelinjohtaja (Game Master) Keskimaahan sijoittuvassa roolipelissä (Burning Wheel). Pelaaja on Nazgûl ${n.name}.
@@ -467,14 +464,13 @@ Ehdottamasi Ob: [Numero]`;
             }
         }
 
-        // Apufunktio noppien heittämiseen
         function rollDice(num) {
             let r = [];
             for(let i=0; i<num; i++) r.push(Math.floor(Math.random()*6)+1);
             return r;
         }
 
-        // --- PÄIVITETTY TÄYSIN: RÄJÄHTÄVÄT KUUTOSET JA PROSENTTISTATIT ---
+        // --- PÄIVITETTY ÄLYKÄS FATE-LOGIIKKA ---
         async function performAction(action, stat) {
             let d = parseInt(document.getElementById('dice').value)||0, ob = parseInt(document.getElementById('ob').value)||0;
             let intent = document.getElementById('intentInput').value || "Ei määritettyä aietta";
@@ -485,7 +481,6 @@ Ehdottamasi Ob: [Numero]`;
             let sixes = 0;
             let allRolls = [];
             
-            // Perusheitto
             let initialRolls = rollDice(d);
             initialRolls.forEach(r => {
                 allRolls.push(r);
@@ -496,17 +491,17 @@ Ehdottamasi Ob: [Numero]`;
             allRolls.sort((a,b)=>b-a);
             let explodeLog = "";
 
-            // KUUTOSTEN RÄJÄYTTÄMINEN (FATE)
-            if (sixes > 0) {
-                if(confirm(`Heitit nopanheitossa ${sixes} kpl kuutosia!\n\nHaluatko käyttää "Fatea" ja avata (räjäyttää) kuutoset?`)) {
+            // KYSY FATEA VAIN JOS ONNISTUMISET EIVÄT VIELÄ RIITÄ
+            if (sixes > 0 && succ < ob) {
+                if(confirm(`Sait vasta ${succ} onnistumista, mutta tarvitset ${ob} (Ob).\nHeitit kuitenkin ${sixes} kpl kuutosia!\n\nHaluatko käyttää "Fatea" ja avata (räjäyttää) kuutoset?`)) {
                     let currentSixes = sixes;
                     while(currentSixes > 0) {
                         let extraRolls = rollDice(currentSixes);
                         explodeLog += ` 💥[${extraRolls.sort((a,b)=>b-a).join(",")}]`;
-                        currentSixes = 0; // Nollataan uutta kierrosta varten
+                        currentSixes = 0; 
                         extraRolls.forEach(r => {
                             if (r >= 4) succ++;
-                            if (r === 6) currentSixes++; // Uudet kuutoset räjähtävät taas!
+                            if (r === 6) currentSixes++; 
                             allRolls.push(r);
                         });
                     }
@@ -546,13 +541,12 @@ ESIMERKKI: [STAT] {"stat": "might", "change": -1} [/STAT]`;
                 let l = document.getElementById(loadId); if(l) l.remove();
                 
                 if(txt && !txt.startsWith("⚠️")) {
-                    // PARSITAAN STATTIMUUTOS
                     let match = txt.match(/\[STAT\](.*?)\[\/STAT\]/is);
                     let cleanTxt = txt;
                     let statParsed = null;
                     
                     if (match) {
-                        cleanTxt = txt.replace(match[0], '').trim(); // Poistetaan koodi tekstistä
+                        cleanTxt = txt.replace(match[0], '').trim(); 
                         try { statParsed = JSON.parse(match[1].trim()); } catch(e) {}
                     }
 
@@ -562,7 +556,6 @@ ESIMERKKI: [STAT] {"stat": "might", "change": -1} [/STAT]`;
                         let sCurr = n[sKey] !== undefined ? n[sKey] : 1;
                         if(sCurr < 1) sCurr = 1; if(sCurr > 10) sCurr = 10;
                         
-                        // %-taulukot: 1=90/10, 2=80/20, 3=70/30, 4=60/40, 5=50/50, 6=30/40, 7=10/50, 8=5/60, 9=2/95, 10=0/95
                         let chances = {
                             1: {u: 90, d: 10}, 2: {u: 80, d: 20}, 3: {u: 70, d: 30}, 4: {u: 60, d: 40}, 5: {u: 50, d: 50},
                             6: {u: 30, d: 40}, 7: {u: 10, d: 50}, 8: {u: 5, d: 60}, 9: {u: 2, d: 95}, 10: {u: 0, d: 95}

@@ -776,3 +776,211 @@ Jokainen paikka: **Tyyppi / Sijainti / Miksi tärkeä / Valta & uskonto / Sotopr
 - **Valta & uskonto:** rajapäälliköt; sotavalat  
 - **Sotoprofiili:** nopea ratsusota, vähän kiinteitä pisteitä  
 - **BW:** rajan läpäisy **Ob 4–6**; rajakahakan eskalointi **Ob 3–5**
+# ALDURYAKNAR — VALTAKUNTA (paikkadossier v1.0)
+**Aika:** S.A. 1993  
+**Luonne:** pieni mutta vaikeakulkuinen **kukkuloiden ja sademetsän rajavaltakunta**. Alduryaknar on “vihreä solmu”: jokiuomat, rotkot ja tiheä metsä tekevät siitä luonnollisen linnakkeen. Se ei ole suuri noppapooli, mutta se on **kallis vallata** ja **hyvä piiloutumaan**.
+
+---
+
+## 1) Valta-arvot (1–10)
+| Arvo | Luku | Tulkinta |
+|---|---:|---|
+| **Vauraus** | **3** | ylijäämää syntyy erikoistuotteista, mutta mittakaava on pieni |
+| **Uskonto** | **5** | metsänhenget ja jokirituaalit ovat vahvoja; uskonto ohjaa arkea |
+| **Asevoima** | **3** | pieni pooli, mutta maasto tekee puolustuksesta vaarallisen |
+| **Lojaalisuus** | **5** | pienuus + yhteinen uhka pitää yhtenäisenä, mutta klaanit kilpailevat |
+
+> **Muistutus:** **Asevoima = noppapooli**, joka **summataan liittoutumissa**. Alduryaknarin “kovuus” tulee usein **maastosta, taudeista, huollosta ja tiedustelusta** (OB-faktorit).
+
+---
+
+## 2) Pikatunnus
+Alduryaknar sijaitsee tasankojen ja suuren etelän metsän välissä: **pohjoisessa Karyayis Aharin ruohotasangot**, lännessä **Cheyn valtakunta**, idässä **Ralian-joen vesistöt**, ja etelässä **sademetsävyöhyke** (Ibaav/Gaathyykarkan -suunta). Koillisessa on **Burskadekdar**.
+
+Alduryaknarissa politiikka on *vesi + metsäreitit + pienet linnakkeet*. Se on luonnostaan “rajamaan” tyyppinen: läpikulkua valvotaan, eikä mikään ulkoinen armeija liiku siellä nopeasti.
+
+---
+
+## 3) Rajanaapurit (kampanjakehikko)
+- **Pohjoinen:** **Karyayis Ahar** (tasankomaat)
+- **Länsi:** **Cheyn kuningaskunta**
+- **Koillinen:** **Burskadekdar**
+- **Itä:** **Ralian-joen vesistöt** (jokien maa)
+- **Etelä:** metsän takana **Ibaav** ja **Gaathyykarkan**
+
+---
+
+## 4) Geografia ja ilmasto
+- **Maasto:** kukkulat, rotkot, tiheä sademetsä ja joet, joiden varsilla on viljelytaskuja.
+- **Ilmasto:** kuuma ja kostea; rankkasateet, sumut ja jokien äkkitulvat.
+- **Liike:** nopeus katoaa; marssi muuttuu “päivämatkoiksi”, joissa jokainen silta ja kahlaamo on taistelu.
+
+### Luonnolliset chokepointit
+- **Ralian-joen haarat:** ylitykset (kahlaamot/sillat) ja jokisaarteet
+- **Rotkopolut:** vain paikalliset tuntevat (tiedustelu ratkaisee)
+- **Metsänreunan portit:** polut, jotka yhdistävät pohjoisen tasangot etelän sademetsään
+
+---
+
+## 5) Hallintomuoto ja valtarakenne
+**Valtioformaatti:** *Pieni ruhtinaskunta + jokikylien liitto*  
+Alduryaknar on usein “yksi kruunu, monta kylää”: hallitsija pysyy vallassa, jos hän:
+1) hallitsee tärkeimmät **ylitykset ja rotkopolut**  
+2) jakaa **metsän ja joen oikeudet** (kalastus, metsästys, kaskiviljely)  
+3) pitää etelän metsäkansat ja pohjoisen tasankoreitit tasapainossa
+
+### Avainhenkilöt ja instituutiot (valmiit softaan)
+- **Aldur-ruhtinas/ruhtinatar:** sovittelija; pelaa naapureita toisiaan vastaan
+- **Ralianin Vartija:** ylitysten ja jokitiedustelun komentaja
+- **Metsäoikeuden Tuomarit:** päättävät kaskista, metsästyksestä, puusta ja “tabu-alueista”
+- **Yrtti- ja hartsi-kilta:** käytännön talousvalta (lahjonta ja sopimukset)
+- **Varjopolkujen Oppaat:** “oppaiden kilta”, joka voi kääntyä kenen tahansa puolelle
+
+---
+
+## 6) Uskonto ja “kognitiivinen taistelukenttä”
+Alduryaknarin uskonto on vahvaa, koska ympäristö on armoton: *metsä ja joki ovat jumalia arjessa*.
+
+### A) Metsän ja jokien henget (enemmistö)
+- rituaalit: tulvapuhtaus, “metsän lupa”, tabut tietyille puille/paikoille
+- esi-isät sidotaan “puuhun ja virtaan” (sukulinjojen pyhät merkit)
+
+### B) Sauronin vaikutus (hiljainen)
+- leviää parhaiten **kaupan ja turvan** kautta (aseet, suola, “järjestys rotkoihin”)
+- ei vielä hegemoninen valtiokultti; enemmän “sopimusten varjo”
+
+### C) Sinisen liekin solut (salainen)
+- turvapaikat viidakon reunoilla, viestit jokien kautta
+- Nazgûl-näkökulmasta: “häiriötekijä”, jonka johto on vain huhu “valosta idästä”
+
+---
+
+## 7) Talous
+**Peruspilarit:**
+- **erikoistuotteet:** hartsi, väriaineet, lääkekasvit, myrkyt ja vastamyrkyt
+- **jokikauppa:** puu, kala, suola (vaihtona)
+- **kaskiviljelytaskut:** riisi-/hirssi-analogiat, hedelmät ja juuret
+- **opastus ja tullit:** rotkopolkujen “pakolliset” oppaat ja ylitysmaksut
+
+**Haavoittuvuus:**
+- mittakaava pieni; yksi katkennut reitti tai tautiaalto romahduttaa tuotannon
+- altis ulkoiselle “kauppapainostukselle” (Chey / Burskadekdar / tasangon karavaanit)
+
+---
+
+## 8) Sotavoima (mitä Alduryaknar “oikeasti osaa”)
+**Doktriini:** väijytys, katkaise huolto, käytä joet ja taudit, pakota vihollinen eksymään.
+
+**Ydinkyvyt:**
+- **metsäjalkaväki** (kevyet aseet, ansat, myrkytetyt nuolet jos haluat synkentää)
+- **jokipartiot** (kevyet veneet, ylitysten tuhoaminen)
+- **rotkoverkko** (pienet linnakkeet, jotka estävät etenemisen)
+- **tiedustelu-oppaat** (ilman oppaita armeija “katoaa”)
+
+**Heikkoudet:**
+- pieni väestöpohja → pooli pysyy pienenä
+- vaikea käydä hyökkäyssotaa tasangolle; vahvuus on puolustus ja häirintä
+- sisäinen klaanikilpailu voidaan ostaa rikki
+
+---
+
+## 9) Muinaiskohteet ja muistot (Ensimmäisen ajan “kaikuja”)
+- **Ralianin Kivisuu:** joen varrella oleva kiveen hakattu “suun” muotoinen aukko; vesi kuulostaa puheelta
+- **Vihreä Porras (raunio):** sammaloitunut kiviporras syvällä metsässä; johtaa “ei-mihinkään”
+- **Sumun Silmä:** rotkolampi, jonka yllä sumu ei hälvene; siellä nähdään valoja ukkosella
+
+---
+
+## 10) Burning Wheel — OB-faktorit hyökkäyksen arviointiin (Alduryaknar-case)
+LLM arvioi tekijät arvolla **0–2**; deterministinen laskuri tuottaa lopullisen OB:n.
+
+**Tekijät:**
+- Maasto: rotkot + sademetsä (liike hidastuu rajusti)
+- Vesi: tulvat, joet ja ylitykset (huolto ja reitit)
+- Sää/taudit: kuumuus, kosteus, hyönteiset, sairaudet
+- Tiedustelu: oppaat vs. hyökkääjän sokeus
+- Poliittinen yhtenäisyys: pieni ruhtinaskunta (kohtalainen, mutta ostettavissa)
+- Ulkoinen interventio: Chey (länsi), tasanko (pohjoinen), Burskadekdar (koillinen), etelän metsävaltakunnat
+- Uskonnollinen kitka: metsän tabut vs. “järjestyksen lupaus” vs. salaiset solut
+
+**Esimerkkiskaala (suuntaa-antava):**
+- Nopea rangaistusretki / ryöstö: **Ob 4–6**
+- Täysimittainen valloitus: **Ob 6–8** (huolto ja maasto tappavat)
+- Coup / oppaiden ostaminen / ylitysten kaappaus: **Ob 4–6**
+
+---
+
+## 11) Alduryaknarin avainpaikat (9 kpl) — “karttaneulat”
+Jokainen paikka: **Tyyppi / Sijainti / Miksi tärkeä / Valta & uskonto / Sotoprofiili / BW**
+
+### 1) **Aldur-Askelen Hovi**
+- **Tyyppi:** pääpaikka / kukkulalinnoitus  
+- **Sijainti:** kukkuloiden korkeimmalla selänteellä, josta hallitaan rotkoreittejä  
+- **Miksi tärkeä:** ruhtinaan valta, pantit ja sopimukset  
+- **Valta & uskonto:** kruunu + metsäoikeuden tuomarit  
+- **Sotoprofiili:** kapea lähestyminen, vaikea rynnäköidä  
+- **BW:** coup/diplomatia **Ob 4–6**; piiritys **Ob 6–8**
+
+### 2) **Ralianin Suurkahlaamo**
+- **Tyyppi:** joenylitys / tullipiste  
+- **Sijainti:** itäreuna, Ralianin päähaarassa  
+- **Miksi tärkeä:** kauppa ja sotaretket; “kuka hallitsee kahlaamoa, hallitsee maata”  
+- **Valta & uskonto:** Ralianin vartijat; veden valat  
+- **Sotoprofiili:** helppo sulkea, vaikea pakottaa  
+- **BW:** pakko-ylitys **Ob 5–7**; lahjonta/ostaminen **Ob 3–5**
+
+### 3) **Varjopolkujen Portti**
+- **Tyyppi:** rotkopolkujen risteys / oppaiden kilta  
+- **Sijainti:** keskinen metsä–kukkula -raja  
+- **Miksi tärkeä:** ilman oppaita liike pysähtyy  
+- **Valta & uskonto:** Varjopolkujen oppaat; tabuvalat  
+- **Sotoprofiili:** väijytysmaasto  
+- **BW:** oppaiden ostaminen **Ob 3–5**; reitin pakottaminen **Ob 5–7**
+
+### 4) **Yrtti- ja Hartsi-Tori**
+- **Tyyppi:** kauppapaikka / kiltojen keskus  
+- **Sijainti:** jokiuoman vihreässä taskussa  
+- **Miksi tärkeä:** lääkekasvit, väriaineet, myrkyt/vastamyrkyt, raha  
+- **Valta & uskonto:** kauppakilta; Sauronin vaikutus leviää sopimuksilla  
+- **Sotoprofiili:** palkkavartijat, levoton  
+- **BW:** sopimus/liittolaisuus **Ob 3–5**; vastavakoilu **Ob 4–6**
+
+### 5) **Metsänreunan Kolmoisportti**
+- **Tyyppi:** eteläreitin portti (Ibaav/Gaathyykarkan -suunta)  
+- **Sijainti:** eteläisessä metsävyöhykkeessä  
+- **Miksi tärkeä:** kulku sademetsän läpi; pakolaiset ja tiedustelu  
+- **Valta & uskonto:** metsänvanhimmat; tabut  
+- **Sotoprofiili:** helppo piilottaa joukkoja, vaikea vartioida laajaa aluetta  
+- **BW:** rajan läpäisy **Ob 4–6**; verkoston paljastus **Ob 4–6**
+
+### 6) **Tasangon Reunavahti**
+- **Tyyppi:** pohjoinen rajalinna (Karyayis Ahar -suunta)  
+- **Sijainti:** kukkuloiden pohjoisreuna, tasangon portilla  
+- **Miksi tärkeä:** pysäyttää ratsujoukot ja valvoo karavaaneja  
+- **Valta & uskonto:** rajavartiosto; sotavalat  
+- **Sotoprofiili:** pieni mutta terävä linnake  
+- **BW:** rajaryöstön torjunta **Ob 4–6**; yllätyshyökkäys **Ob 4–6**
+
+### 7) **Ralianin Kivisuu (muinaiskohde)**
+- **Tyyppi:** outo kiviraunio joen varressa  
+- **Sijainti:** itäinen jokimutka  
+- **Miksi tärkeä:** “puhuva vesi”; valat ja pelko  
+- **Valta & uskonto:** rituaalinen paikka; kilpailevat tulkinnat  
+- **Sotoprofiili:** ei linnoitus, mutta psykologinen vaikutus  
+- **BW:** kansan kääntäminen **Ob 4–7**; pelon hallinta **Ob 4–7**
+
+### 8) **Sumun Silmä**
+- **Tyyppi:** varjopaikka / rotkolampi  
+- **Sijainti:** syvässä rotkossa metsävyöhykkeellä  
+- **Miksi tärkeä:** katoamisia, valoja ukkosella, salaisia kokoontumisia  
+- **Valta & uskonto:** paikalliset karttavat; verkostot voivat käyttää  
+- **Sotoprofiili:** erikoisoperaatioiden paikka  
+- **BW:** kulun pakottaminen **Ob 5–7**; vastavakoilu **Ob 4–6**
+
+### 9) **Vihreä Porras (raunio)**
+- **Tyyppi:** sammaloitunut kiviporras / First Age -kaiku  
+- **Sijainti:** syvä metsä, vaikea löytää  
+- **Miksi tärkeä:** kätköjä, merkkejä, “vanhan valon” huhu  
+- **Valta & uskonto:** kiistapaikka (metsänhenget vs. salaiset solut)  
+- **Sotoprofiili:** piiloutumisen ja rituaalien paikka  
+- **BW:** raunion herättäminen **Ob 5–7**; hallinta **Ob 4–6**

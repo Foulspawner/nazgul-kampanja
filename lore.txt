@@ -357,3 +357,422 @@ Jokainen paikka on muotoa: **Tyyppi / Sijainti / Miksi tärkeä / Valta & uskont
 - Kuvaa aina alueet **geografian kautta** (solat, joet, huolto, sää).
 - Pidä “sininen liekki” ja “Tûronielin lapset” **näkyvinä tekoina**, mutta **älä paljasta johtoa**.
 - Asevoima = **pooli**; puolustuksen vaikeus tulee usein **maastosta** (OB-faktorit), ei “isosta numerosta”.
+# DALPYYIS — VALTAKUNTA (paikkadossier v1.0)
+**Aika:** S.A. 1993  
+**Luonne:** metsäinen ja harjuinen **rajavaltakunta**, joka elää **puusta, turkiksista ja jokireiteistä**. Dalpyyis on enemmän **kylien ja klaanien liitto** kuin yhtenäinen byrokratia. Se on vaikea vallata, koska maa nielee armeijat (metsät, suot, huonot tiet), vaikka sen “noppapooli” ei ole suuri.
+
+---
+
+## 1) Valta-arvot (1–10)
+| Arvo | Luku | Tulkinta |
+|---|---:|---|
+| **Vauraus** | **3** | riittää elämään ja käymään kauppaa, mutta ylijäämä rajallinen |
+| **Uskonto** | **5** | arjen rituaalit vahvoja; useita kilpailevia virtauksia |
+| **Asevoima** | **4** | pieni pooli, mutta erittäin terävä omassa maastossa (sissipuolustus) |
+| **Lojaalisuus** | **4** | klaanit tottelevat, kun se hyödyttää; keskushallinto neuvottelee jatkuvasti |
+
+> **Muistutus:** Asevoima = **noppapooli**, joka **summataan liitoissa**. Dalpyyisin puolustuksen vaikeus tulee ensisijaisesti **maastosta ja tiedustelusta** (OB-faktorit), ei isosta numerosta.
+
+---
+
+## 2) Pikatunnus
+Dalpyyis on **Relmetherin luoteinen/ läntinen naapuri** ja osa samaa “pohjoisen joivyöhykkeen” ekologiaa, mutta Dalpyyis ei ole jokilaakson kaupunkivaltio — se on **metsä- ja harjuvyöhyke**, jossa asutus on hajautunutta ja jossa **jokien ylityspaikat ja metsäreitit** merkitsevät enemmän kuin muurit.
+
+---
+
+## 3) Rajanaapurit (kampanjakehikko)
+- **Kaakko / Itä:** **Relmether** (joivyöhyke, kahlaamot, vilja)
+- **Etelä:** Khûrash-joen suunta ja sen takana **Cheyn vaikutuspiiri** (liikkeet, verotuspaine, sotilasretket)
+- **Koillinen:** rajaseutu kohti arojen reunoja (hevostie ja ryöstöpaine)
+- **Länsi / Luode:** “vanhat metsät” ja hajanaiset rajayhteisöt (ei välttämättä yhtenäistä valtiota)
+
+---
+
+## 4) Geografia ja ilmasto
+- **Maasto:** tiheät metsät, harjut, kivikot, suot ja jokiuomat.  
+- **Tieverkko:** heikko; **metsäreitit** ja jokilaivat ovat tärkeämpiä kuin maantiet.
+- **Strateginen maasto:**  
+  - 1–2 isoa **jokisilmukkaa** (lauttapaikat / sillat)  
+  - 2–3 **harjanneketjua**, jotka toimivat luonnollisina puolustuslinjoina  
+  - laajoja **soita**, jotka katkaisevat marssit ja huollon
+
+### Luonnolliset chokepointit
+- “Pitkäsuo” (marssin tappaja): pakottaa kiertoreiteille  
+- “Harjukäytävät”: vain muutama reitti kulkee kuivaa maata pitkin  
+- “Lauttasalmet”: jokiylitykset, joita paikalliset kontrolloivat
+
+---
+
+## 5) Hallintomuoto ja valtarakenne
+**Valtioformaatti:** *Klaaniliitto + Metsäkruunu*  
+Dalpyyisin “kuningas/ylipäällikkö” on enemmän **sovittelija ja panttien jakaja** kuin absoluuttinen hallitsija.
+
+### Ruhtinaan/kuninkaan valta nojaa:
+1) **metsäoikeuksiin** (puiset varastot, metsästys, tervakauppa)  
+2) **reittien suojeluun** (lautat, harjukäytävät)  
+3) **klaanien välisen väkivallan hallintaan** (verikoston rajoittaminen)
+
+### Avainhenkilöt ja instituutiot (valmiit softaan)
+- **Metsäkruunu (hallitsija):** pitää liiton kasassa “lahjoilla ja lupauksilla”
+- **Harjuvahti (Warden of the Ridges):** komentaa väijytysjoukkoja ja rajapartioita
+- **Lauttamestari:** kontrolloi kriittistä ylitystä; vaikutusvalta kasvaa sodassa
+- **Suopapit / Metsänvanhimmat:** rituaalinen valta; määrittävät “oikean” ja “saastuneen” maan
+- **Kauppasuku (Puu & Turkis):** käy kauppaa Relmetherin ja etelän kanssa; altis korruptiolle
+
+---
+
+## 6) Uskonto ja “kognitiivinen taistelukenttä”
+Dalpyyisissä uskonto on **vahvasti paikallista** ja sidottu maastoon.
+
+### A) Vanha Dalpyyis (enemmistö)
+- Metsän ja suon henget, esi-isät, rajakivet ja lähteet  
+- Rituaalit liittyvät metsästykseen, suojeluun ja “reittien puhdistamiseen”
+
+### B) Vanhojen jumalten muistot (pieni, sitkeä vähemmistö)
+- Harva, mutta symbolisesti vahva: vanhoja valoja ja “lupauksia lännestä” koskeva perinne
+
+### C) Sinisen liekin solut (salainen)
+- Näkyy käytännössä **turvapaikkoina**, viestiketjuina ja kapinallisina saarikkeina  
+- Nazgûl-näkökulmasta: “ärsyttävä verkosto”, joka tekee metsistä vaarallisia ja sekoittaa lojaalisuutta
+
+### D) Sauronin vaikutus (heikko mutta kasvava)
+- Ei vielä temppelivaltaa, mutta **kauppareittien**, lahjonnan ja “järjestyksen lupauksen” kautta voi juurtua
+
+---
+
+## 7) Talous
+**Peruspilarit:**
+- **puu, terva, piki** (rakentaminen, laivat, linnoitukset)  
+- **turkikset, metsästys, hunaja, yrtit** (vaihtotalous ja kauppatavara)  
+- **jokikuljetukset** (pienimuotoinen mutta elintärkeä)  
+- **rajatullit** (lautta- ja reittimaksut)
+
+**Haavoittuvuus:** jos Relmether tai Chey sulkee kaupan ja jos suot “syttyvät” (sodassa poltetaan reittejä), Dalpyyis köyhtyy nopeasti.
+
+---
+
+## 8) Sotavoima (mitä Dalpyyis “oikeasti osaa”)
+**Doktriini:** sissipuolustus, väijytykset, harhautus, huollon katkaisu. Välttelee avointa kenttäsotaa.
+
+**Ydinkyvyt:**
+- **metsäjalkaväki** (jouset, keihäät, ansat)  
+- **harjupartiointi** (nopeat siirtymät kuivilla harjuilla)  
+- **lauttatiedustelu** (jokireitit + piilolautat)  
+- **suosodankäynti** (hyökkääjä eksyy, sairastuu, nälkiintyy)
+
+**Heikkoudet:**
+- pieni väestöpohja → pooli ei kasva nopeasti  
+- klaaniriidat → ulkoinen toimija voi ostaa yhden klaanin ja murtaa rintaman  
+- linnoituksia vähän → jos pääreitit menetetään, pääkaupunki voi kaatua nopeasti
+
+---
+
+## 9) Muinaiskohteet ja muistot (Ensimmäisen ajan “kaikuja”)
+- **Valkohavun Vartio (raunio):** sammuneen valon torni metsän keskellä; sen lähellä pimeä “ei viihdy”  
+- **Suon Kivettynyt Kehto:** kivikehä, jonka alla kerrotaan olevan vanha vala tai kirous  
+- **Harjanteen Särky (halkeama):** paikka, jossa maa “muistaa” vanhan sodan; ääniä ja valoja öisin
+
+---
+
+## 10) Burning Wheel — OB-faktorit hyökkäyksen arviointiin (Dalpyyis-case)
+LLM arvioi arvot **0–2**; deterministinen laskuri tuottaa lopullisen OB:n.
+
+**Tekijät:**
+- Maasto: tiheä metsä + suot + harjut (marssin ja muodostelmien vaikeus)
+- Tieverkko: heikko (huolto romahtaa)
+- Tiedustelu: paikalliset tuntevat reitit; hyökkääjä on sokea
+- Linnoitteet: vähän (helpottaa “pääkaupunkiin asti”, jos reitit avataan)
+- Poliittinen yhtenäisyys: klaanit (hauras → ostettavissa)
+- Ulkoinen interventio: Relmether (kauppa/ylitykset) ja etelän paine (Chey) voivat muuttaa tilanteen
+- Uskonnollinen kitka: vanhat henget vs. salaiset solut vs. kasvava “järjestyskultti”
+
+**Esimerkkiskaala (suuntaa-antava):**
+- Nopea rangaistusretki / ryöstö: **Ob 3–5**
+- Täysimittainen valloitus: **Ob 5–7**
+- Coup / klaanin ostaminen / “reittien kaappaus”: **Ob 4–6**
+
+---
+
+## 11) Dalpyyisin avainpaikat (9 kpl) — “karttaneulat”
+Jokainen paikka: **Tyyppi / Sijainti / Miksi tärkeä / Valta & uskonto / Sotaprofiili / BW**
+
+### 1) **Dalpyr-Hovi (Metsäkruunun Harju)**
+- **Tyyppi:** pääpaikka / puinen harjulinna  
+- **Sijainti:** korkein harjanne, josta nähdään reittiverkko  
+- **Miksi tärkeä:** klaanipanttien ja sopimusten keskus  
+- **Valta & uskonto:** kruunu + metsänvanhimmat  
+- **Sotoprofiili:** nopea evakuointi, vaikea piirittää (metsä suojaa)  
+- **BW:** diplomatia/coup **Ob 4–6**; “kruunun legitimiteetti” **Ob 4–6**
+
+### 2) **Pitkäsuo (Marssin Nielu)**
+- **Tyyppi:** luonnonlinnoitus / suoalue  
+- **Sijainti:** keski–eteläinen vyöhyke reittien välissä  
+- **Miksi tärkeä:** pakottaa kiertoon, syö huollon  
+- **Valta & uskonto:** suopapit vartioivat “puhdasta reittiä”  
+- **Sotoprofiili:** väijytysparatiisi  
+- **BW:** huollon läpivienti **Ob 5–7**; väijytys **Ob 4–6**
+
+### 3) **Kaksilautta (Suurylitys)**
+- **Tyyppi:** lauttapaikka / jokiylitys  
+- **Sijainti:** reitti Relmetheriin päin  
+- **Miksi tärkeä:** kauppa ja sotaretket kulkevat tästä  
+- **Valta & uskonto:** lauttamestari; valat ja maksut  
+- **Sotoprofiili:** helppo sulkea, vaikea pakottaa  
+- **BW:** pakko-ylitys **Ob 5–7**; lahjonta/ostaminen **Ob 3–5**
+
+### 4) **Harjukäytävä (Kuiva Tie)**
+- **Tyyppi:** harjureitti / logistinen selkäranka  
+- **Sijainti:** pohjois–eteläsuuntainen kuiva reitti soiden ohi  
+- **Miksi tärkeä:** ainoa “varma” maareitti raskaille kuormille  
+- **Valta & uskonto:** harjuvahti ja partioverkko  
+- **Sotoprofiili:** ansat ja sulut  
+- **BW:** reitin kaappaus **Ob 4–6**; saattueen suojaus **Ob 4–6**
+
+### 5) **Turkistori (Kauppasuvun Piha)**
+- **Tyyppi:** markkinapaikka / kauppakylä  
+- **Sijainti:** läntinen reuna, turvallisempi metsävyöhyke  
+- **Miksi tärkeä:** turkikset, piki, hunaja; ulkoinen vaikutus sisään  
+- **Valta & uskonto:** kauppasuku; “järjestyksen lupaus” leviää tätä kautta  
+- **Sotoprofiili:** palkkavartijat, levoton  
+- **BW:** sopimus/liittolaisuus **Ob 3–5**; vastavakoilu **Ob 4–6**
+
+### 6) **Valkohavun Vartio (raunio)**
+- **Tyyppi:** muinaiskohde / valotorni  
+- **Sijainti:** syvä metsä, vanhan reitin päässä  
+- **Miksi tärkeä:** symbolinen suojapaikka; huhu “valosta, joka ei sammu”  
+- **Valta & uskonto:** kiistapaikka (vanhat henget vs. salaiset solut)  
+- **Sotoprofiili:** pieni varuskunta; psykologinen merkitys suuri  
+- **BW:** raunion herättäminen **Ob 5–7**; hallinta **Ob 4–6**
+
+### 7) **Suon Kivettynyt Kehto**
+- **Tyyppi:** kivikehä / rituaalipaikka  
+- **Sijainti:** suon laidalla, harjulta näkyvässä notkossa  
+- **Miksi tärkeä:** valat, kiroukset, klaanirauhan “pyhä paikka”  
+- **Valta & uskonto:** suopapit ja vanhimmat  
+- **Sotoprofiili:** ei linnoitus, mutta tabualue  
+- **BW:** rituaalinen pakotus **Ob 4–6**; kansan kääntäminen **Ob 4–7**
+
+### 8) **Harjanteen Särky**
+- **Tyyppi:** varjopaikka / halkeama  
+- **Sijainti:** luoteinen harjuvyöhyke  
+- **Miksi tärkeä:** katoamisia ja outoja merkkejä; salareittejä  
+- **Valta & uskonto:** paikalliset pelkäävät; ulkoinen taho voi käyttää  
+- **Sotoprofiili:** erikoisoperaatioiden paikka  
+- **BW:** kulun pakottaminen **Ob 5–7**; pelon hallinta **Ob 4–7**
+
+### 9) **Rajapölkyt (Eteläinen Vartio)**
+- **Tyyppi:** rajapiste / vartiokylien ketju  
+- **Sijainti:** eteläinen reuna kohti Cheyn vaikutusta  
+- **Miksi tärkeä:** ensimmäinen kitka ja ensimmäiset yhteenotot  
+- **Valta & uskonto:** klaanit + partioverkko; salaiset turvapaikat  
+- **Sotoprofiili:** nopea hälytys, mutta heikot muurit  
+- **BW:** rajan läpäisy **Ob 4–6**; sabotaasi **Ob 4–6**
+# KARYAYIS AHAR — TASANKOVALTAKUNTA (paikkadossier v1.0)
+**Aika:** S.A. 1993  
+**Luonne:** laaja ruohotasankojen maa Cheystä itään. Karyayis Ahar on **tasankoheimojen liitto**, suuri mutta **hajanainen**: nopea liikkeessä, arvaamaton politiikassa, vahva ratsuväessä — mutta heikko keskushallinnossa.
+
+---
+
+## 1) Valta-arvot (1–10)
+| Arvo | Luku | Tulkinta |
+|---|---:|---|
+| **Vauraus** | **4** | karjasta ja hevosista syntyy ylijäämää, mutta hajanaisuus syö “valtiokassaa” |
+| **Uskonto** | **4** | rituaalit ovat vahvoja, mutta pirstaleisia (ei hegemonista valtiokulttia) |
+| **Asevoima** | **5** | suuri ratsupotentiaali; pooli kasvaa nopeasti, jos heimot yhdistyvät |
+| **Lojaalisuus** | **3** | liitto on herkkä hajoamaan; lojaalisuus on ensisijaisesti heimolle, ei “valtakunnalle” |
+
+> **Muistutus:** **Asevoima = noppapooli**, joka **summataan liittoutumissa**. Karyayis Aharin Asevoima 5 kuvaa *potentiaalia* (ratsuväen massa), ei pysyvää “kenttäarmeijaa”.
+
+---
+
+## 2) Pikatunnus
+Karyayis Ahar on **suuri ruohotasankojen valtakunta**, ilmastoltaan “kuuma tasanko” (analogiana Pohjois-Intian sisämaat tai Arizonan avoin kuiva vyöhyke): kuumat kaudet, kuivat tuulet, paikoin rankkoja ukkosia. Vesi ja laidun reitittävät kaiken politiikan.
+
+Karyayis Aharin ydinkysymys: **kuka saa kutsua heimot sotaan — ja miksi heimot vastaisivat?**
+
+---
+
+## 3) Rajanaapurit (kampanjakehikko)
+- **Länsi:** **Cheyn kuningaskunta**
+- **Etelä:** **Vaay**
+- **Kaakko:** **Alduryaknar**, **Gaathyykarkan**
+- **Pohjoinen:** **Dalpyyis**, **Rycolis**, **Daldunairin järvivaltakunta**
+- **Itä:** **Lyggar Kraw**, **Burskadekdar**
+
+---
+
+## 4) Geografia ja ilmasto
+- **Maasto:** laajat ruohotasangot, matalat kumpareet, kuivuvat jokiuomat ja kausittaiset “vihreät käytävät”.
+- **Vesi:** lähteet, kaivot ja järvien/joenreunojen kaistat ovat todellisia “linnoituksia” — ilman vettä ei ole sotaa.
+- **Liike:** tasangolla liike on nopeaa; yllätys syntyy etäisyyksistä ja harhautuksesta, ei maaston esteistä.
+
+### Luonnolliset chokepointit
+- **Vesiketjut:** kaivo–lähde–jokiuoma -verkostot (hallinta = valta)
+- **Karavaaniristeykset:** suola, vilja, nahat, hevoset
+- **Rajaportit:** lännessä Cheyhin, etelässä Vaayhin, pohjoisessa järvialueelle johtavat reitit
+
+---
+
+## 5) Hallintomuoto ja valtarakenne
+**Valtioformaatti:** *Heimoliitto (“Aharin Kutsu”) + valittu sotajohtaja*  
+Karyayis Aharissa “kuningas” on useimmiten **valittu sotajohtaja**, jonka valta kestää niin kauan kuin:
+1) hän jakaa saaliin ja laidun-/vesioikeudet “oikeudenmukaisesti”  
+2) hän voittaa nopeasti (pitkä sota hajottaa liiton)  
+3) hän hallitsee panttijärjestelmää (avioliitot, kasvattipojat, lupaukset)
+
+### Avainhenkilöt ja instituutiot (valmiit softaan)
+- **Aharin Kutsuja (valittu sotajohtaja):** liiton kasvot; valta sidottu menestykseen
+- **Heimokäräjät (ratsupäälliköt):** todellinen päätösvalta; voi kaataa Kutsujan
+- **Vesivahti (kaivoketjujen vartijat):** käytännön valta; voi pysäyttää armeijan “kuivattamalla” reitin
+- **Sotasaaliin Jakaja:** politiikan hermokeskus; jakaa hevoset, aseet, vangit
+- **Laulajat ja tietäjät:** legitimiteetti; luovat maineen, kiroukset ja valat
+
+---
+
+## 6) Uskonto ja “kognitiivinen taistelukenttä”
+Karyayis Aharissa uskonto on vahvasti **taivaan, tuulen ja esi-isien** ympärillä, mutta **ei keskitettyä**.
+
+### A) Vanha Ahar (enemmistö)
+- Taivas/tuuli/ukkonen, esi-isäketjut, hevosvalat
+- Rituaalit: sotaanlähtö, kaivon puhdistus, hevosen siunaus, rajakivien “uudelleen sitominen”
+
+### B) Sauronin vaikutus (epäsuora)
+- ei “Mordor-tyyppinen” temppelivalta, vaan vaikutus **lahjoina, aseina, lupauksina ja pelkona**
+- toimii parhaiten, kun heimot ovat riidoissa ja kaipaavat “järjestystä”
+
+### C) Sinisen liekin solut (salainen)
+- toimii tasangolla viestiketjuina ja turvapaikkoina; voi kääntää heimoja “pimeää vastaan”
+- Nazgûl-näkökulmasta: hämärä liike, jonka johto on “huhuja ja valo idästä”
+
+---
+
+## 7) Talous
+**Peruspilarit:**
+- hevoset ja karja (nahat, liha, maito, suolaus)
+- suola ja kuivatut tuotteet (pitkien reittien elinehto)
+- karavaanikauppa (Chey, Vaay, järvivaltakunta, itäiset tasangot)
+- ryöstö/“rajavero” (liiton “pimeä” tulomuoto, jos rauhan kauppa ei riitä)
+
+**Haavoittuvuus:**
+- kuivuus (vesiketjut katkeavat)
+- sisäinen pirstaleisuus (kauppa ei muutu “valtiokassaksi”)
+- ulkoinen saarto (Chey/Vaay voivat katkaista länsi–eteläreitit)
+
+---
+
+## 8) Sotavoima (mitä Karyayis Ahar “oikeasti osaa”)
+**Doktriini:** nopeus, harhautus, massoitettu ratsuisku, saartaminen ja huollon katkaisu. Välttelee pitkiä piirityksiä.
+
+**Ydinkyvyt:**
+- **kevyt ratsuväki** (tiedustelu, nuolisade, koukkaus)
+- **keskiraskas ratsuväki** (läpäisy, takaa-ajo)
+- **vaunukunnat / kuormastot** (liike ja huolto sidottu vesiketjuihin)
+- **rajaryöstöt** (Chey/Vaay-linjat) ja vastaryöstöt
+
+**Heikkoudet:**
+- heimojen yhteinen mobilisaatio on epävarmaa
+- “yksi tappio” voi hajottaa liiton (maine ja saalis)
+- riippuvuus kaivoista ja laidunreiteistä
+
+---
+
+## 9) Muinaiskohteet ja muistot (Ensimmäisen ajan “kaikuja”)
+- **Aharin Kivitähdet:** kivikehät tasangolla; yöllä tähdet “asettuvat niihin” (rituaalinen legitimiteetti)
+- **Tuulen Urat:** maahan painuneet vanhat vaunujäljet, joiden sanotaan johtavan “ennen aikaan”
+- **Kuiva Valo (haudattu pylväs):** hiekan alta pilkottava pylväs; sen lähellä kuullaan ääniä ukkosella
+
+---
+
+## 10) Burning Wheel — OB-faktorit hyökkäyksen arviointiin (Karyayis Ahar-case)
+LLM arvioi tekijät arvolla **0–2**; deterministinen laskuri tuottaa lopullisen OB:n.
+
+**Tekijät:**
+- Maasto: avoin tasanko (liike nopeaa; yllätys syntyy etäisyyksistä)
+- Vesiketjut: kaivot/lähteet (huolto ja marssit)
+- Poliittinen yhtenäisyys: heimoliitto (erittäin hauras → subvertoitavissa)
+- Tiedustelu: ratsupartioverkko vs. hyökkääjän sokeus
+- Ulkoinen interventio: Chey/Vaay (länsi/etelä), järvialue (pohjoinen), itäiset valtakunnat
+- Uskonnollinen kitka: vanhat valat vs. “järjestyksen lupaus” vs. salaiset solut
+- Sää: kuumuus, pölymyrskyt, ukkosrintamat (taistelun rytmi)
+
+**Esimerkkiskaala (suuntaa-antava):**
+- Nopea rangaistusretki / ryöstö: **Ob 3–5**
+- Täysimittainen valloitus: **Ob 6–8** (vaatii poliittisen murron, ei vain sotaa)
+- Coup / heimojohtajien ostaminen / vesiketjujen kaappaus: **Ob 4–6**
+
+---
+
+## 11) Karyayis Aharin avainpaikat (9 kpl) — “karttaneulat”
+Jokainen paikka: **Tyyppi / Sijainti / Miksi tärkeä / Valta & uskonto / Sotoprofiili / BW**
+
+### 1) **Aharin Käräjäkenttä (Kutsun Tasanko)**
+- **Tyyppi:** liittokokous / rituaalikenttä  
+- **Sijainti:** keskinen tasanko, suuri kivikehä (“Kivitähdet”)  
+- **Miksi tärkeä:** heimot kokoontuvat, sotaretki julistetaan, valat sidotaan  
+- **Valta & uskonto:** laulajat ja tietäjät antavat legitimiteetin  
+- **Sotoprofiili:** ei linnoitus, mutta poliittinen “pääkaupunki”  
+- **BW:** liiton kokoaminen **Ob 4–7**; legitimiteettiriitti **Ob 4–6**
+
+### 2) **Suurkaivoketju (Vesivahdin Renkaat)**
+- **Tyyppi:** kaivo–lähde -verkoston solmupiste  
+- **Sijainti:** keskinen/eteläinen vyöhyke (reitit Vaayhin ja Cheyhin)  
+- **Miksi tärkeä:** kuka hallitsee vettä, hallitsee armeijan  
+- **Valta & uskonto:** Vesivahti + kaivorituaalit  
+- **Sotoprofiili:** helppo sabotoida, vaikea suojata laajalla alueella  
+- **BW:** huollon turvaaminen **Ob 4–7**; vesiketjun kaappaus **Ob 4–6**
+
+### 3) **Länsiportti (Cheyn Tie)**
+- **Tyyppi:** rajatori / karavaaniristeys  
+- **Sijainti:** länsireuna kohti Cheytä  
+- **Miksi tärkeä:** kauppa ja ryöstöretket; diplomaattiset panttivaihdot  
+- **Valta & uskonto:** ratsupäälliköt + kauppiaat  
+- **Sotoprofiili:** nopea mobilisaatio, haavoittuva yllätykselle  
+- **BW:** rajaryöstö **Ob 3–5**; liittosopimus **Ob 3–5**
+
+### 4) **Etelän Laidunportaat (Vaayn Reuna)**
+- **Tyyppi:** laidunrajat / kulkureitti  
+- **Sijainti:** eteläreuna Vaayhin päin  
+- **Miksi tärkeä:** laidunkiistat, karjavarastot, kausimuutto  
+- **Valta & uskonto:** laidun- ja vesituomarit; “hevosen valat”  
+- **Sotoprofiili:** jatkuvat kahakat, partioverkko  
+- **BW:** alueen hallinta **Ob 4–6**; mellakan tukahdutus **Ob 4–6**
+
+### 5) **Pohjoinen Järvitie (Daldunairin Suunta)**
+- **Tyyppi:** kauppareitti / vesiraja  
+- **Sijainti:** pohjoisreuna, reitti järvivaltakuntaan  
+- **Miksi tärkeä:** suola, kala, vilja; diplomatia Rycolisin ja järvialueen kanssa  
+- **Valta & uskonto:** kauppasuvut + heimopäälliköt  
+- **Sotoprofiili:** pitkät etäisyydet; huolto vaikea  
+- **BW:** karavaanisaattue **Ob 4–6**; liittolaisuuden rakentaminen **Ob 4–6**
+
+### 6) **Karyayisin Ratsumarsalkan Leiri**
+- **Tyyppi:** sotaleiri / liikkuva päämaja  
+- **Sijainti:** vaihteleva; seuraa vesiketjuja  
+- **Miksi tärkeä:** mobilisaation todellinen keskus  
+- **Valta & uskonto:** sotasaaliin jakaja ja marsalkka  
+- **Sotoprofiili:** nopea iskeä ja kadota  
+- **BW:** armeijan kokoaminen **Ob 4–7**; harhautusoperaatio **Ob 4–6**
+
+### 7) **Arojen Kuiva Valo (muinaispylväs)**
+- **Tyyppi:** muinaiskohde / “kaiku”  
+- **Sijainti:** keskinen tasanko, hiekan peittämä  
+- **Miksi tärkeä:** ukkosella merkit ja äänet; pelko tai pyhyys  
+- **Valta & uskonto:** laulajat tulkitsevat; heimot kiistelevät merkityksestä  
+- **Sotoprofiili:** ei linnoitus, mutta psykologinen vaikutus suuri  
+- **BW:** kansan kääntäminen **Ob 4–7**; pelon hallinta **Ob 4–7**
+
+### 8) **Itäiset Kaksoismarkkinat (Lyggar–Burska)**
+- **Tyyppi:** rajamarkkinat / vaihtopaikka  
+- **Sijainti:** itäreuna, reitit Lyggar Krawiin ja Burskadekdariin  
+- **Miksi tärkeä:** aseet, hevoset, tiedustelu, panttivaihto  
+- **Valta & uskonto:** kauppiaat + päälliköt; lahjonta yleistä  
+- **Sotoprofiili:** levoton, palkkavartijoita  
+- **BW:** tietojen ostaminen **Ob 3–5**; vakoilun torjunta **Ob 4–6**
+
+### 9) **Kaakkoiset Ruohokummut (Aldury–Gaathin Reuna)**
+- **Tyyppi:** rajakumpareet / partioalue  
+- **Sijainti:** kaakko, kohti Alduryaknaria ja Gaathyykarkania  
+- **Miksi tärkeä:** rajapaine, ryöstöt, liittoumat; ensimmäinen “kipinä” suurille sodille  
+- **Valta & uskonto:** rajapäälliköt; sotavalat  
+- **Sotoprofiili:** nopea ratsusota, vähän kiinteitä pisteitä  
+- **BW:** rajan läpäisy **Ob 4–6**; rajakahakan eskalointi **Ob 3–5**

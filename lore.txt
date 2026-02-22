@@ -1415,3 +1415,215 @@ Jokainen paikka: **Tyyppi / Sijainti / Miksi tärkeä / Valta & uskonto / Sotapr
 - **Valta & uskonto:** kruunu vs. kauppahuoneet (kuka maksaa, kuka määrää)  
 - **Sotaprofiili:** nopea koonti, mutta haavoittuva yllätykselle  
 - **BW:** armeijan kokoaminen **Ob 4–7**; mellakan tukahdutus **Ob 4–6**
+# Sotaprofiili: Chiefdom of Khand (Uvathan suurkaanikunta)
+
+## Ydinmääritelmä
+**Khand** on Harnen-joen varaan rakentunut **heimoimperiumi**: ratsastavien aroheimojen, jokilaaksojen viljelijöiden, kukkula- ja vuoristokansojen sekä jokikaupunkien (Amrûn, Feah) muodostama liitto. Valta on keskitetty **Uvathalle** (suurkaani; yksi tulevista **Nazgûl** ja yksi pelaajahmoista), mutta todellinen koossapitävä voima on **saaliin jako, panttivankijärjestelmä, avioliitot ja sotaretken rytmi**.
+
+Khandin rakenne ja sotakulttuuri pohjautuvat vahvasti **Tsingis-kaanin aikaiseen mongolivaltakuntaan**: kurultai-henkinen yläeliitin kokous, desimaalinen sotajärjestelmä ja “yasaq”-tyyppinen käytännön laki (järjestys ennen kaikkea).
+
+---
+
+## Maantiede ja maakunnat (valtasuhteet)
+
+### Ala-Khand (Lower Khand) — “Sydän”
+- **Pääkaupunki: Sturlursta Khand** (Harnen-joen varressa).
+- Valtakunnan hallinnollinen ja logistinen ydin: veronkanto, varastot, sotaväen kokoaminen.
+- Suurkaanin **ordu** (liikkuva hovi/leiri) kiertää alueella.
+
+### Ylä-Khand (Upper Khand) ja Gap of Khand — “Portti”
+- **Khandin aukko (Gap of Khand)**: strateginen reitti ja tullisolmukohta.
+- **Obamarl**: Ylä-Khandin päällikön keskus; hallitsee portin vartiointia ja tulleja.
+- Lojaalisuus on usein ehdollista (“tullit ja sotaväki vastaan kurultain tuki”).
+
+### Ammu Khand — “Rauta ja sopimukset”
+- Itärajalla lähellä Cheytä; **tiiviit suhteet itäisten vuorten kaivosherroihin**.
+- Valtakunnan seppä- ja varustekeskus (lamellipanssarit, nuolenkärjet, satulat, aseet).
+- Eliitti on “kauppasotureita”: kirjanpitoa, panttausjuridiikkaa, sopimuksia.
+
+### Kajbah (luode) — “Kukkulakapina”
+- Vuoristoinen/kukkulainen rajamaakunta: **aina kapinassa tai hauraassa liitossa**.
+- Kajbah on **ostettu liittoon** (lahjat, avioliitot, laidun- ja kauppaoikeudet).
+- Heikko lenkki, mutta myös puskurialue Harondorin villimaille.
+
+### Chelkar (pohjoisluode) — “Alistettu lääni”
+- Suuren Harnen-sivuhaaran pohjoispuolella; Mordorin etelävuorten alarinteillä.
+- **Alistettu sodalla useaan kertaan** → pysyvä katkeruus ja kapinapotentiaali.
+- **Pääkaupunki: Korb Chelkar** (linnoitettu varuskunta- ja panttivankisolmu).
+
+### Pezarsan (etelä) — “Sulttaanin peili”
+- Harnenin eteläpuolella; **ainoa kaupunki: Feah**.
+- Sulttaani on **juonitteleva ja opportunistinen**; etsii aina hyötyä Khandin ja Haruzanin ristiriidasta.
+- Feah on mausteiden, suolan, väriaineiden ja orjakaupan solmukohta.
+
+### Lurmsakûn (etelä) — “Hauras liitto”
+- Khandin eteläpuolinen valtakunta **hauraassa liitossa** Khandin kanssa.
+- Liitto on käytännössä: aselepo + avioliittosopimukset + kauppareittien turva.
+- Pelkää sekä Khandin ratsuväkeä että Pezarsanin juonia.
+
+### Amrûn (länsiraja) — “Tuhannen ja yhden yön jokikaupunki”
+- Suuri jokikaupunki (Baghdadin kaltainen): vauraus, basaarit, kirjuri- ja kääntäjäverkostot.
+- **Maksaa veroa Khandin kaanille**.
+- Historiallinen symboli: Amrûn oli **Haruzanin vanha pääkaupunki**.
+
+### Haruzan (lännessä) — “Ikuinen piikki”
+- Nykyinen pääkaupunki: **Thihja Peh**.
+- Haruzanin sulttaani on vannonut **ottavansa Amrûnin takaisin**.
+- Rauha on vain “paperirauha”: kestää niin kauan kuin kummallakin on kiireisempi vihollinen.
+
+### Emyn Imladrim (luode) — “Kielletyt kukkulat”
+- Harvoin nähdyt haltiat ja kukkulaheimot; villi maa Harondorin alueella.
+- **Imlad Carnen**: raunioitunut haltia-asutus; Sauronin tuhoama aiemmissa sodissa.
+- Alue on pelote, mahdollisuus ja myyttinen tabu (kätköt, vanhat tiet, kiroukset).
+
+### Pohjoinen: Nurn ja Mordor
+- Pohjoisessa vuoret ja **Nurn**, Sauronin valtakunta.
+- Uvatha on Sauronin palvelija, mutta monet kaanit suhtautuvat alistussuhteeseen varauksella.
+- Sauron antaa Khandille “vapaat kädet laajentua” → houkutus, mutta myös kahle.
+
+---
+
+## Khandilaiset: yhteiskuntakerrokset ja identiteetti
+Khand ei ole yksi kansa vaan liittouma:
+1. **Aroheimojen ratsastajaklaanit** (ydin): hevosjalostus, jousi/keihäs, liikkuvat leirit.
+2. **Jokilaakson väestö** (Ala-Khand): viljely, padot, varastot, veneet.
+3. **Kukkula- ja vuoristokansat** (Kajbah, Chelkar): jalkaväki, linnoitukset, metsästys.
+4. **Kaupunkiväki ja kauppiaat** (Amrûn, Feah): raha, kirjuri- ja käännöstaidot, kontaktiverkot.
+
+**Kunnia** mitataan: hevosten määrä, sotasaalis, valat, avioliittositeet ja panttivankijärjestelmä.
+
+---
+
+## Hallintomalli: Uvatha, kurultai ja “Uvathan yasaq”
+
+### Suurkaani Uvatha
+Uvathan valta perustuu:
+- **saaliin jakoon** (kulta, hevoset, oikeudet),
+- **sotaretken rytmiin** (liitto pidetään liikkeessä),
+- **avioliittoihin** (klaanit sidotaan verisitein),
+- **panttivankeihin** (päälliköiden lapset “vieraana” Sturlurstassa),
+- **arbanien uudelleenjaon** logiikkaan (lojaalisuuksia sekoitetaan).
+
+### Kurultai (yläeliitin kokous)
+- Vahvistaa suurkaanin linjan ja sotaretket.
+- On myös mekanismi syrjäyttää heikko hallitsija (lojaalisuus muuttuu ehdoiksi).
+
+### “Uvathan yasaq” (käytännön laki)
+- Laki palvelee sotakoneen huoltoa: kuri, verotus, varastot, karkuruus, ryöstön jako.
+- Tyypillisiä pykäliä:
+  - sotasaaliin jako (suurkaani ottaa “mustan osuuden”: parhaat hevoset/aseet),
+  - karkuruuden ja kapinan kollektiivirangaistukset,
+  - tullien ja veron standardointi (Amrûn ja Feah maksavat “joen hopeaa”),
+  - klaanien verivastuu ja sovittelurituaalit.
+
+---
+
+## Sotajärjestelmä: desimaalinen kone
+Khandin sotajärjestelmä noudattaa desimaalirakennetta:
+- **arban** (10)
+- **jaghun** (100)
+- **mingghan** (1000)
+- **tümen** (10 000)
+
+Tarkoitus:
+- skaalautuva käskyketju,
+- klaaniuskollisuuden rikkominen sekoittamalla yksiköitä,
+- nopea mobilisaatio jokilaaksoista ja aroilta.
+
+### Taistelutapa
+- **kevyt ratsuväki**: harhautus, koukkaus, nuolisade, näennäinen perääntyminen
+- **raskas ratsuväki** (Ammu Khandin lamellit): ratkaiseva isku
+- **jalkaväki** (Kajbah/Chelkar): joenylitykset, sillat, linnoitukset, leirit
+
+Symboliikka:
+- musta lippu = valta/sota
+- valkoinen lippu = sovinto/kurultai
+- rummut ja torvet = komento
+
+---
+
+## Viestintä ja kontrolli: posti- ja kuriiriverkko
+Khand pysyy koossa **kuriiriverkolla**:
+- jokivarren posti-asemat (hevoset, rehu, vartio)
+- kuriirien etuoikeusmerkit (paiza-idea): oikeus vaatia hevosia ja muonaa asemilta
+- järjestelmä on samalla sortokone → väärinkäyttö synnyttää kapinoita (erityisesti Kajbahissa)
+
+---
+
+## Talous: hevoset, vilja, metalli, tullit
+Khandin perusarvo:
+- **hevoset** (rotulinjat Sturlurstan ympärillä)
+- **vilja ja varastot** (Ala-Khand)
+- **metalli** (Ammu Khand + kaivosherrat)
+- **tullit** (Gap of Khand, Amrûn, Feah)
+- **orjat ja panttivangit** (sotaretket ja rajakonfliktit)
+
+Amrûn rahoittaa osin Khandin sotaretkiä maksamalla veroa ja “ostamalla rauhaa”.
+
+---
+
+## Uskonto ja maailmankuva: taivas, henget ja Sauronin varjo
+Perinne:
+- taivas/kohtalo (“sininen taivas”)
+- esi-isät ja klaanin pyhät paikat
+- joenhenget (Harnen), tulenhenget (leiri)
+
+Sauronin vaikutus:
+1. **pelko** Mordorin voimasta
+2. **hyöty**: vapaat kädet laajentua
+3. **korruptio**: lahjat, neuvonantajat, rituaalit “voiton varmistamiseksi”
+
+Uvatha käyttää Sauronia vipuna, mutta moni kaani ajattelee:
+> “Parempi ratsastaa varjon reunalla kuin jäädä sen alle.”
+
+---
+
+## Sisäpolitiikan jänniteakselit (pelikelpoiset)
+
+### 1) Sauron-suhde
+- “Mordorin tuki” vs “alistaa sielu”
+- mustan lipun kaanit vs arojen vanhat kaanit
+
+### 2) Kajbahin ongelma
+Kajbah kapinoi, kun:
+- tullit kasvavat
+- kuriirietuoikeuksia väärinkäytetään
+- panttivankeja kohdellaan huonosti
+- Haruzan tarjoaa paremman diilin
+
+### 3) Chelkarin katkeruus
+- hallittavissa sotilaallisesti, myrkyllinen poliittisesti
+- odottaa hetkeä, jolloin Uvathan huomio on pohjoisessa tai lännessä
+
+### 4) Pezarsanin opportunismi
+- Feah myy tietoa ja testaa liittoja
+- pyrkii sitomaan Lurmsakûnin itseensä Khandin kustannuksella
+
+### 5) Amrûn–Haruzan-haava
+- jokainen verovuosi on Haruzanille häpeä
+- Haruzan etsii “oikeaa hetkeä” (nälkä, rutto, kurultain riita, Sauronin vaatimukset)
+
+---
+
+## Uvathan hallintotyyli (Nazgûl-polku)
+Uvatha voi olla sekä yhdistäjä että tyranni. Sormuksen vaikutus tekee “helpot ratkaisut” houkutteleviksi:
+- pelolla voi voittaa kurultain
+- varjolla voi murtaa Kajbahin
+- noituudella voi hiljentää Haruzanin
+
+Hinta: Khand muuttuu heimojen liitosta **yksinvaltiaan vankilaksi**.
+
+---
+
+## Kampanjakoukut (suoraan pöytään)
+1. **Kurultai Sturlurstassa**: Obamarl vaatii tullien korotusta ja oman tümenin vahvistusta; Chelkar vihjaa kapinasta.
+2. **Ammu Khandin kaivosdiili**: kaivosherrat tarjoavat “uuden metallin” vastineeksi vartijoista Sturlurstassa.
+3. **Amrûnin verokapina**: Amrûn maksaa vain puolet (tulvat tekosyynä); Haruzan rahoittaa sabotaasia.
+4. **Imlad Carnenin raunio**: löydetään esine/sinetti; Sauron haluaa sen, Kajbah haluaa myydä.
+5. **Pezarsanin tarjous**: Feah lupaa viljaa ja suolaa, jos Khand “turvaa” Lurmsakûnin rajan — todellisuudessa Pezarsan vetää Khandin sotaan.
+
+---
+
+## Audit-trail
+- **Maantiede, maakunnat, kaupungit, naapurit, valtapolitiikka**: käyttäjän kuvauksen perusteella (Sturlursta Khand, Gap of Khand/Upper Khand/Obamarl, Ammu Khand, Lower Khand, Kajbah, Chelkar/Korb Chelkar, Pezarsan/Feah, Lurmsakûn, Amrûn, Haruzan/Thihja Peh, Emyn Imladrim/Imlad Carnen, Nurn/Sauron).
+- **Mongolivaikutteinen malli**: kurultai, desimaalinen sotajärjestelmä, yasaq/Yassa-henkinen käytännön laki, paiza-tyyppinen kuriirietuoikeus (yleinen historiallinen inspiraatio).

@@ -984,3 +984,212 @@ Jokainen paikka: **Tyyppi / Sijainti / Miksi tärkeä / Valta & uskonto / Sotopr
 - **Valta & uskonto:** kiistapaikka (metsänhenget vs. salaiset solut)  
 - **Sotoprofiili:** piiloutumisen ja rituaalien paikka  
 - **BW:** raunion herättäminen **Ob 5–7**; hallinta **Ob 4–6**
+# GAATHYYKARKAN — VALTAKUNTA (paikkadossier v1.0)
+**Aika:** S.A. 1993  
+**Luonne:** sademetsän ja jokisuistojen **rajavaltakunta**, jossa valta kulkee **jokireittejä**, **kauppapaikkoja** ja **heimo-/kyläliittoja** pitkin. Gaathyykarkan on rikas erikoistuotteista, mutta vaikeasti hallittava ja vielä vaikeampi vallata.
+
+---
+
+## 1) Valta-arvot (1–10)
+| Arvo | Luku | Tulkinta |
+|---|---:|---|
+| **Vauraus** | **5** | erikoistuotteet ja jokikauppa tuovat ylijäämää, mutta järjestelmä vuotaa hajanaisuuden takia |
+| **Uskonto** | **6** | metsän ja veden rituaalit ovat voimakas yhteiskuntaliima; temppelivalta on todellinen |
+| **Asevoima** | **4** | pieni–keskisuuri pooli; erittäin vaarallinen omassa maastossa (joki + viidakko) |
+| **Lojaalisuus** | **4** | lojaalisuus on ensisijaisesti klaanille/kylälle/temppelille, ei “valtakunnalle” |
+
+> **Muistutus:** **Asevoima = noppapooli**, joka **summataan liittoutumissa**. Gaathyykarkanin puolustuksen vaikeus syntyy tyypillisesti **maastosta, taudeista, tiedustelusta ja huollosta** (OB-faktorit), ei pelkästä poolin koosta.
+
+---
+
+## 2) Pikatunnus
+Gaathyykarkan sijaitsee **tasankojen ja sademetsän rajavyöhykkeessä**: pohjoisessa kuivat ja nopealiikkeiset maat (Karyayis Ahar), lännessä kukkulamaat (Vaay), luoteessa Cheyn reuna, ja etelässä syvenevä metsävyöhyke (Ibaav-suunnat). Valtakunnan “selkäranka” on **jokiverkosto**, jota pitkin liikkuvat tavara, sotajoukot, huhu ja kultti.
+
+---
+
+## 3) Rajanaapurit (kampanjakehikko)
+- **Länsi:** **Vaay**
+- **Luode / Länsiluode:** **Cheyn valtakunta** (reuna-alueiden kautta)
+- **Pohjoinen / Luode:** **Karyayis Ahar**
+- **Luode / Pohjoinen:** **Alduryaknar** (metsän ja kukkuloiden välivyöhyke)
+- **Etelä:** **Ibaav** (metsän takana / syvempi sademetsä)
+
+> Jos haluat myöhemmin tarkentaa: “mistä kohtaa Chey koskettaa Gaathyykarkania” (suora raja vs. kapea kulma), voin säätää avainpaikkojen sijaintilogiikan.
+
+---
+
+## 4) Geografia ja ilmasto
+- **Maasto:** tiheä sademetsä, mangrovemaiset jokisuot, kuivatummat metsänreunat ja jokien vihreät “käytävät”.
+- **Ilmasto:** kuuma ja kostea; rankkasateet ja ukkosrintamat; äkkitulvat ja seisova vesi.
+- **Liike:** maitse hidas ja vaarallinen; **joet ovat tiet**, ja jokien ylitykset ovat “linnoituksia”.
+
+### Luonnolliset chokepointit
+- **Suisto ja jokisilmukat:** veneiden pakolliset käännökset ja tullipisteet
+- **Harjanne–metsä -portit:** pohjoisesta tasangolta tulevat reitit kapenevat metsänreunaan
+- **Kuivat selänteet:** ainoat “varmat” maareitit raskaille kuormille
+
+---
+
+## 5) Hallintomuoto ja valtarakenne
+**Valtioformaatti:** *Jokikaupunkien liitto + temppelivalta + klaanipäälliköt*  
+Gaathyykarkan on käytännössä “kolmen vallan” järjestelmä:
+1) **Temppelit** (rituaalit, tabut, legitimiteetti)  
+2) **Jokikaupungit** (kauppa, tullit, varastot)  
+3) **Klaanit** (miesvoima, oppaat, maastotieto)
+
+### Avainhenkilöt ja instituutiot (valmiit softaan)
+- **Suurtemppelin Ääni (ylipappi/-papitar):** voi pysäyttää sodan yhdellä tabulla
+- **Jokikruunu (kaupunkiliiton johtaja):** kerää tullit ja sopimukset; altis lahjonnalle
+- **Suiston Vartija:** hallitsee pääväylää; valta käytännössä “lukitsee” pääkaupan
+- **Yrtti- ja värikilta:** kontrolloi erikoistuotteita (hartsi, väriaineet, lääkkeet)
+- **Oppaiden ja lauttureiden veljeskunta:** ilman heitä kukaan ei liiku turvallisesti
+
+---
+
+## 6) Uskonto ja “kognitiivinen taistelukenttä”
+Gaathyykarkanissa uskonto ei ole pelkkää uskoa — se on **kartta**, **laki** ja **turvallisuusjärjestelmä**.
+
+### A) Metsän ja veden henget (enemmistö)
+- rituaalit: tulvapuhtaus, metsästysluvat, “jokivalat”, tabualueiden rajat
+- uskonto ylläpitää järjestystä: rikkomus = “metsä ottaa takaisin”
+
+### B) Sauronin vaikutus (kaupan varjo)
+- leviää **sopimusten, aseiden, suolan ja velkojen** kautta
+- toimii parhaiten, kun kaupunkiliitto ja temppeli riitelevät (järjestyksen lupaus)
+
+### C) Sinisen liekin solut (salainen)
+- turvapaikkoja metsän syvyydessä ja viestiverkko jokien varrella
+- Nazgûl-näkökulmasta: sitkeä kapina, jonka johto on vain “huhuja ja valo idästä”
+
+---
+
+## 7) Talous
+**Peruspilarit:**
+- **erikoistuotteet:** hartsi, väriaineet, lääkekasvit, mausteet, eksoottipuu
+- **jokikauppa:** varastot, tullit, lautturit, veneet
+- **kalastus ja suistoviljelytaskut:** ruokaturva jokien varsilla
+- **opastus ja turvallisuusmaksut:** reitit “myydään” kulkijoille
+
+**Haavoittuvuus:**
+- taudit ja tulvat (katkaisevat tuotannon ja liikkeen)
+- sisäinen valtakamppailu (temppelit vs. kauppiaat vs. klaanit)
+- ulkoinen painostus: pohjoisen tasankojen ryöstöt tai lännen (Chey/Vaay) kauppasaarto
+
+---
+
+## 8) Sotavoima (mitä Gaathyykarkan “oikeasti osaa”)
+**Doktriini:** väijytys, jokisulut, huollon katkaisu, vihollisen eksyttäminen ja sairastuttaminen (tahallisesti tai luonnon kautta). Välttelee avointa kenttäsotaa.
+
+**Ydinkyvyt:**
+- **jokipartiot ja nopeat veneet** (tiedustelu, isku, sulku)
+- **metsäjalkaväki** (ansat, harhautus, yölliset iskut)
+- **suistolinnoitukset** (paalutukset, ketjut, tulimerkit)
+- **opasverkko** (vihollinen ilman oppaita “katoaa”)
+
+**Heikkoudet:**
+- pieni väestöpohja verrattuna suurvaltioihin
+- vaikea koordinoida laajoja operaatioita (hajautunut valta)
+- jos temppelivalta murtuu, myös moraali ja järjestys heikkenevät nopeasti
+
+---
+
+## 9) Muinaiskohteet ja muistot (Ensimmäisen ajan “kaikuja”)
+- **Vihreän Kiven Portaat:** sammaloitunut kivitasanne metsässä; yöaikaan “valo kulkee askelmia”
+- **Suiston Musta Paasi:** veden alle jäävä monoliitti; tulva paljastaa merkit
+- **Käärmeen Vanha Uoma:** kuivunut jokiuoma, jonka varrella on kivisiä kammioita (tabualue)
+
+---
+
+## 10) Burning Wheel — OB-faktorit hyökkäyksen arviointiin (Gaathyykarkan-case)
+LLM arvioi tekijät arvolla **0–2**; deterministinen laskuri tuottaa lopullisen OB:n.
+
+**Tekijät:**
+- Maasto: sademetsä + suot (liike hidastuu, väijytysmaasto)
+- Vesi: jokisulut, suisto, äkkitulvat (reitit ja huolto)
+- Sää/taudit: kuumuus, kosteus, hyönteiset, sairaudet
+- Tiedustelu: oppaat vs. hyökkääjän sokeus
+- Poliittinen yhtenäisyys: temppelit/kaupungit/klaanit (hauras → subvertoitavissa)
+- Ulkoinen interventio: Karyayis Ahar (pohjoinen), Vaay/Chey (länsi/luode), Ibaav (etelä), Alduryaknar (pohjoinen metsäportti)
+- Uskonnollinen kitka: tabut vs. “järjestyksen lupaus” vs. salaiset solut
+
+**Esimerkkiskaala (suuntaa-antava):**
+- Nopea rangaistusretki / ryöstö: **Ob 4–6**
+- Täysimittainen valloitus: **Ob 6–8** (huolto + taudit + reitit)
+- Coup / temppelin kaappaus / oppaiden ostaminen: **Ob 4–6**
+
+---
+
+## 11) Gaathyykarkanin avainpaikat (9 kpl) — “karttaneulat”
+Jokainen paikka: **Tyyppi / Sijainti / Miksi tärkeä / Valta & uskonto / Sotaprofiili / BW**
+
+### 1) **Gaath-Koro (Jokikruunun Satama)**
+- **Tyyppi:** pääsatama / jokikaupunki  
+- **Sijainti:** pääjoen keskijuoksulla, reittien risteys  
+- **Miksi tärkeä:** tullit, varastot, ulkomaankauppa  
+- **Valta & uskonto:** kauppaliitto; temppeli valvoo tabuja  
+- **Sotaprofiili:** jokisulut, palisadit, palkkavartijat  
+- **BW:** kauppasopimus/liittolaisuus **Ob 3–5**; vallankaappaus **Ob 4–6**
+
+### 2) **Suiston Ketjuportti**
+- **Tyyppi:** suistolinnoitus / ketjusulku  
+- **Sijainti:** jokisuistossa, pakollinen käännös  
+- **Miksi tärkeä:** kuka hallitsee porttia, hallitsee jokiliikennettä  
+- **Valta & uskonto:** Suiston Vartija; veden valat  
+- **Sotaprofiili:** ketjut, paalutukset, tulimerkit  
+- **BW:** pakko-läpikulku **Ob 5–7**; sabotaasi **Ob 4–6**
+
+### 3) **Suurtemppeli “Veden Kielto”**
+- **Tyyppi:** temppelikompleksi  
+- **Sijainti:** metsäjoen varrella, pyhä lähde  
+- **Miksi tärkeä:** legitimiteetti, tabut, rauhansopimusten “sidonta”  
+- **Valta & uskonto:** Suurtemppelin Ääni määrää suunnan  
+- **Sotaprofiili:** pyhä alue; fanatismi mahdollinen  
+- **BW:** legitimiteettiriitti **Ob 4–6**; kansan kääntäminen **Ob 4–7**
+
+### 4) **Värikillan Puutarhat**
+- **Tyyppi:** tuotantoalue / kiltojen suojamaat  
+- **Sijainti:** kosteiden notkojen vyöhyke  
+- **Miksi tärkeä:** väriaineet, lääkkeet, myrkyt ja vastamyrkyt  
+- **Valta & uskonto:** kilta + temppelin valvonta  
+- **Sotaprofiili:** vartijat, ansat, tulipalon pelko  
+- **BW:** resurssien kaappaus **Ob 4–6**; suojelu/saattue **Ob 4–6**
+
+### 5) **Metsäportti (Pohjoinen Reuna)**
+- **Tyyppi:** rajaportti / polkusolmu  
+- **Sijainti:** pohjoisessa, kohti Karyayis Aharin tasankoja  
+- **Miksi tärkeä:** kaikki pohjois–etelä -liike kanavoituu tähän  
+- **Valta & uskonto:** klaanit + oppaat  
+- **Sotaprofiili:** väijytysmaasto, nopea sulkea  
+- **BW:** rajan läpäisy **Ob 4–6**; väijytys **Ob 4–6**
+
+### 6) **Alduryn Varjokahlaus**
+- **Tyyppi:** joenylitys / rajakontakti  
+- **Sijainti:** luoteinen reuna, yhteys Alduryaknariin  
+- **Miksi tärkeä:** vakoilu, liittolaisuudet, salareitit  
+- **Valta & uskonto:** oppaiden veljeskunta  
+- **Sotaprofiili:** helppo katkaista, vaikea pakottaa  
+- **BW:** verkoston paljastus **Ob 4–6**; pakko-ylitys **Ob 5–7**
+
+### 7) **Käärmeen Vanha Uoma (tabualue)**
+- **Tyyppi:** muinaisuoma / rituaalivyöhyke  
+- **Sijainti:** metsäsyvyydessä  
+- **Miksi tärkeä:** pelko ja pyhyys; salaisia kammioita ja kätköjä  
+- **Valta & uskonto:** temppeli tulkitsee; klaanit kiistelevät  
+- **Sotaprofiili:** erikoisoperaatioiden paikka  
+- **BW:** pelon hallinta **Ob 4–7**; kulun pakottaminen **Ob 5–7**
+
+### 8) **Vihreän Kiven Portaat (raunio)**
+- **Tyyppi:** muinaiskohde / First Age -kaiku  
+- **Sijainti:** syrjäinen selänne metsässä  
+- **Miksi tärkeä:** huhu “vanhasta valosta”; kätköt  
+- **Valta & uskonto:** kiistapaikka (tabut vs. salaiset solut)  
+- **Sotaprofiili:** piiloutumisen ja rituaalien alue  
+- **BW:** raunion herättäminen **Ob 5–7**; hallinta **Ob 4–6**
+
+### 9) **Ibaavin Reunan Kolmoispolut**
+- **Tyyppi:** etelärajan polkusolmu  
+- **Sijainti:** etelässä, kohti Ibaavia  
+- **Miksi tärkeä:** pakolaiset, kauppa, ryöstöt ja vastaryöstöt  
+- **Valta & uskonto:** klaanit; oppaiden “oikeus myydä reittiä”  
+- **Sotaprofiili:** vaikea vartioida laajaa reunaa  
+- **BW:** rajakahakka **Ob 3–5**; rajan läpäisy **Ob 4–6**

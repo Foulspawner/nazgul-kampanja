@@ -2,7 +2,7 @@
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
-    <title>Middle-earth Manager v8.7 (Draw Tools Update)</title>
+    <title>Middle-earth Manager v9.1 (Auto-Lore Fetch)</title>
     
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -39,17 +39,19 @@
         .region-text { position: absolute; transform: translate(-50%, -50%); font-family: serif; font-weight: bold; font-size: 24px; text-shadow: 0 0 5px #000; pointer-events: none; z-index: 50; text-align: center; }
         
         .controls { display: flex; gap: 5px; margin-bottom: 10px; }
-        button, select, input { background: #333; color: #fff; border: 1px solid #555; padding: 10px; width: 100%; cursor: pointer; border-radius: 4px; }
+        button, select, input, textarea { background: #333; color: #fff; border: 1px solid #555; padding: 10px; width: 100%; cursor: pointer; border-radius: 4px; font-family: sans-serif; }
         button:hover { background: #444; }
-        input[type="text"] { background: #222; border: 1px solid #d4af37; font-size: 14px; }
+        input[type="text"], textarea { background: #222; border: 1px solid #d4af37; font-size: 14px; cursor: text; }
         .active-tool { background: #d4af37; color: #000; font-weight: bold; }
         
         .stat-btn { width: 30px; padding: 2px 0; margin-left: 5px; font-weight: bold; font-size: 16px; background: #444; border: 1px solid #666; border-radius: 4px; }
         .stat-btn:hover { background: #d4af37; color: #000; }
         
         #log { background: #000; border: 1px solid #333; flex-grow: 1; padding: 10px; overflow-y: auto; font-family: monospace; font-size: 0.85em; color: #ccc; margin-bottom: 10px; min-height: 200px; }
-        #settings-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .box { border: 2px solid #d4af37; padding: 40px; border-radius: 10px; background: #222; text-align: center; max-width: 400px; }
+        #settings-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        
+        .box { border: 2px solid #d4af37; padding: 30px; border-radius: 10px; background: #222; text-align: left; width: 80%; max-width: 600px; display: flex; flex-direction: column; gap: 10px; }
+        
         #map-tools, #draw-tools { position: absolute; z-index: 1000; display: none; gap: 10px; }
         #map-tools { bottom: 20px; left: 20px; }
         #draw-tools { top: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.9); padding: 10px; border: 1px solid #d4af37; display: flex; align-items: center;}
@@ -68,10 +70,18 @@
     <div id="viewport">
         <div id="settings-overlay" style="display:none;">
             <div class="box">
-                <h2>Asetukset</h2>
-                <input type="password" id="apiKeyInput" placeholder="Gemini API Key...">
-                <button onclick="saveSettings()" style="background:#28a745; margin-top:10px;">Tallenna & Sulje</button>
-                <button onclick="closeSettings()" style="background:#442222; margin-top:5px;">Peruuta</button>
+                <h2 style="margin-top:0; text-align:center;">Asetukset & Kampanjan Lore</h2>
+                
+                <label style="color:#aaa; font-size:0.9em;">Gemini API Key:</label>
+                <input type="password" id="apiKeyInput" placeholder="Liitä API-avain tähän...">
+                
+                <label style="color:#aaa; font-size:0.9em; margin-top:10px;">Kampanjan Lore (Ladataan automaattisesti lore.txt tiedostosta):</label>
+                <textarea id="loreInput" placeholder="Lore latautuu tähän..." style="height: 200px; resize: vertical;"></textarea>
+                
+                <div style="display:flex; gap:10px; margin-top:15px;">
+                    <button onclick="saveSettings()" style="background:#28a745; flex:2;">Tallenna & Sulje</button>
+                    <button onclick="closeSettings()" style="background:#442222; flex:1;">Peruuta</button>
+                </div>
             </div>
         </div>
 
@@ -124,7 +134,7 @@
         
         <div class="section-title">Toiminnot & Tekoäly-GM</div>
         <div class="controls">
-            <input type="text" id="intentInput" placeholder="Kirjoita aie (esim. 'Hyökkään Dalpyysiin')">
+            <input type="text" id="intentInput" placeholder="Kirjoita aie (esim. 'Hyökkään Relmetheriin')">
         </div>
         <div class="controls">
             <button onclick="askGM()" style="background:#5c3a21; border-color:#d4af37;">🔮 1. Kysy GM:ltä arvio (Lore & Ob)</button>
@@ -147,7 +157,7 @@
         <div id="log"></div>
         <div style="display:flex; gap:5px;">
             <button onclick="clearLog()" style="background:#442222; font-size:0.8em;">Tyhjennä historia</button>
-            <button onclick="openSettings()" style="background:#333; font-size:0.8em;">⚙️ API Key</button>
+            <button onclick="openSettings()" style="background:#333; font-size:0.8em;">⚙️ Asetukset / Lore</button>
         </div>
     </div>
 
@@ -163,14 +173,33 @@
         let view = { x: 0, y: 0, scale: 1 };
         let tool = 'move', isDragging = false, draw = { active: false, points: [] }, currentNaz = 0;
         let geminiKey = localStorage.getItem('geminiKey') || "";
+        let campaignLore = localStorage.getItem('campaignLore') || ""; 
         let logs = [];
 
-        window.onload = function() {
+        window.onload = async function() {
+            // Ladataan kartta
             let imgElement = document.getElementById('game-map');
             imgElement.onload = function() { startMap(imgElement); };
             imgElement.onerror = function(e) { document.getElementById('manual-upload-box').style.display = 'block'; };
             imgElement.src = "./kartta.jpg?t=" + Date.now();
 
+            // UUSI: Ladataan lore.txt automaattisesti GitHubista
+            try {
+                let loreRes = await fetch('./lore.txt?t=' + Date.now());
+                if (loreRes.ok) {
+                    let text = await loreRes.text();
+                    // Jos sivu on olemassa mutta se on esim. 404 HTML-sivu, varmistetaan että se on oikeaa tekstiä
+                    if (!text.includes("<!DOCTYPE html>")) {
+                        campaignLore = text;
+                        document.getElementById('loreInput').value = text;
+                        pushLog("<div style='color:#88ccff; font-style:italic;'>📚 Kampanjan lore.txt ladattu automaattisesti!</div>");
+                    }
+                }
+            } catch (err) {
+                console.log("lore.txt tiedostoa ei voitu hakea automaattisesti.", err);
+            }
+
+            // Ladataan tila Firebasesta
             setTimeout(() => {
                 if(window.db) {
                     window.dbOnValue(window.dbRef(window.db, 'gameState'), (snapshot) => {
@@ -235,7 +264,7 @@
         }
 
         function onMouseDown(e) {
-            if(e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT') return;
+            if(e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
             if(tool === 'move') { isDragging = true; }
             else if(tool === 'fort') {
                 let c = getWorldCoords(e), name = prompt("Linnoituksen nimi:");
@@ -271,14 +300,16 @@
 
             let n = nazguls[currentNaz];
             let loadId = "load-"+Date.now();
-            document.getElementById('log').innerHTML = `<div id="${loadId}" style="color:#d4af37">🧙‍♂️ GM selaa taikakirjojaan...</div>` + document.getElementById('log').innerHTML;
+            document.getElementById('log').innerHTML = `<div id="${loadId}" style="color:#d4af37">🧙‍♂️ GM tutkii kampanjan muistiinpanoja...</div>` + document.getElementById('log').innerHTML;
             
+            let loreContext = campaignLore ? `\n\n=== KAMPANJAN VIRALLINEN LORE (KÄYTÄ TÄTÄ EHDOTTOMASTI ENSISIJAISESTI) ===\n${campaignLore}\n========================================================================\nÄlä keksi omia maantieteellisiä yksityiskohtia (kuten sademetsiä), jotka ovat ristiriidassa yllä olevan loren kanssa. Keskity dossierin tietoihin.\n` : "";
+
             let prompt = `Olet pelinjohtaja (Game Master) Keskimaahan sijoittuvassa synkässä roolipelissä, joka käyttää Burning Wheel -tyyppistä noppamekaniikkaa.
 Pelaajan hahmo on Nazgûl nimeltä ${n.name}.
 Pelaaja ilmoittaa aikeensa (Intent): "${intent}".
-
+${loreContext}
 Tehtäväsi:
-1. Kerro 2-3 lauseella lyhyt, tunnelmallinen kuvaus kohteesta (lore) ja arvioi miksi aie on haastava (tai helppo).
+1. Kerro 2-3 lauseella lyhyt, tunnelmallinen kuvaus kohteesta (noudata kampanjan lorea tarkasti!) ja arvioi miksi aie on haastava (tai helppo).
 2. Määritä toiminnalle vaikeustaso eli Ob (Obstacle, luku väliltä 1-6). 
 
 Vastaa ytimekkäästi suomeksi muodossa:
@@ -318,13 +349,15 @@ Ehdottamasi Ob: [Numero]`;
                 let loadId = "load-"+Date.now();
                 document.getElementById('log').innerHTML = `<div id="${loadId}" style="color:#88ccff">🔮 Kirjataan historiaa...</div>` + document.getElementById('log').innerHTML;
                 
+                let loreContext = campaignLore ? `\nHuomioi vastauksessa tämä kampanjan taustatieto:\n${campaignLore}\n` : "";
+
                 let prompt = `Olet pelinjohtaja Keskimaassa. Pelaaja on Nazgûl ${n.name}.
 Pelaajan aie oli: "${intent}".
 Käytetty taito/toiminto: ${action}.
 Nopanheiton tulos oli: ${res} (Marginaali vaadittuun: ${margin}).
-
+${loreContext}
 Tehtäväsi:
-1. Kuvaile tapahtumien lopputulos tarinallisesti (max 3 lausetta) ottaen huomioon onnistuiko vai epäonnistuiko yritys.
+1. Kuvaile tapahtumien lopputulos tarinallisesti (max 3 lausetta) ottaen huomioon onnistuiko vai epäonnistuiko yritys. Pysy uskollisena annetulle lorelle.
 2. Ehdota selkeästi lopuksi, miten pelaajan resurssit (Vauraus, Asevoima, Uskonto, Lojaalisuus) muuttuvat tuloksen myötä. (Esimerkiksi: "Suositellut muutokset: Asevoima -1, Vauraus +1"). Vastaa suomeksi.`;
 
                 let txt = await callAI(prompt);
@@ -416,17 +449,15 @@ Tehtäväsi:
             }
         }
 
-        // --- UUSI FUNKTIO: KUMOA PISTE ---
         function undoLastPoint() {
             if (draw.points.length > 0) {
-                draw.points.pop(); // Poistaa viimeisen pisteen listalta
-                renderTempPoly();  // Piirtää viivan uudestaan
+                draw.points.pop();
+                renderTempPoly();
             }
         }
 
         function setTool(t) { tool=t; document.getElementById('viewport').style.cursor=t==='move'?'grab':'crosshair'; document.querySelectorAll('.controls button').forEach(b=>b.className=''); document.getElementById(t==='move'?'btnMove':t==='fort'?'btnFort':'btnArea').className='active-tool'; document.getElementById('draw-tools').style.display=t==='area'?'flex':'none'; draw.points=[]; renderTempPoly(); }
         
-        // --- PÄIVITETTY VÄRI ---
         function renderTempPoly() { 
             let svg=document.getElementById('svg-layer'), old=document.getElementById('temp-poly'); 
             if(old)old.remove(); 
@@ -435,7 +466,7 @@ Tehtäväsi:
                 el.id='temp-poly'; 
                 el.setAttribute("points",draw.points.map(p=>`${p.x},${p.y}`).join(" ")); 
                 el.setAttribute("fill","none"); 
-                el.setAttribute("stroke","#ff3333"); // Kirkkaan punainen väri
+                el.setAttribute("stroke","#ff3333"); 
                 el.setAttribute("stroke-width","3"); 
                 el.setAttribute("stroke-dasharray","5,5"); 
                 svg.appendChild(el); 
@@ -457,9 +488,24 @@ Tehtäväsi:
         }
         
         function cancelPoly() { setTool('move'); }
-        function openSettings() { document.getElementById('settings-overlay').style.display='flex'; document.getElementById('apiKeyInput').value=geminiKey; }
-        function closeSettings() { document.getElementById('settings-overlay').style.display='none'; }
-        function saveSettings() { geminiKey=document.getElementById('apiKeyInput').value; localStorage.setItem('geminiKey',geminiKey); closeSettings(); }
+        
+        function openSettings() { 
+            document.getElementById('settings-overlay').style.display='flex'; 
+            document.getElementById('apiKeyInput').value = geminiKey; 
+            document.getElementById('loreInput').value = campaignLore; 
+        }
+        function closeSettings() { 
+            document.getElementById('settings-overlay').style.display='none'; 
+        }
+        function saveSettings() { 
+            geminiKey = document.getElementById('apiKeyInput').value; 
+            campaignLore = document.getElementById('loreInput').value; 
+            
+            localStorage.setItem('geminiKey', geminiKey); 
+            localStorage.setItem('campaignLore', campaignLore); 
+            
+            closeSettings(); 
+        }
         
         function renderOverlays() {
             let svg=document.getElementById('svg-layer'), m=document.getElementById('marker-layer'), t=document.getElementById('temp-poly');

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Middle-earth Manager v9.3 (Mobile Fix)</title>
+    <title>Middle-earth Manager v9.4 (Pinch-to-Zoom)</title>
     
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -26,11 +26,10 @@
     </script>
 
     <style>
-        body { background-color: #202020; color: #d4af37; font-family: sans-serif; margin: 0; display: flex; height: 100vh; overflow: hidden; }
+        body { background-color: #202020; color: #d4af37; font-family: sans-serif; margin: 0; display: flex; height: 100vh; overflow: hidden; touch-action: none; }
         #viewport { flex: 3; position: relative; background: #111; overflow: hidden; cursor: grab; display: flex; align-items: center; justify-content: center; }
         #sidebar { flex: 1; min-width: 400px; background: #1a1a1a; border-left: 2px solid #444; padding: 20px; display: flex; flex-direction: column; z-index: 200; overflow-y: auto; }
         
-        /* MOBIILI-ASSETTELU (Alle 800px ruudut, esim. puhelin pystyssä) */
         @media (max-width: 800px) {
             body { flex-direction: column; }
             #viewport { flex: 1; height: 50vh; }
@@ -181,7 +180,11 @@
 
         let view = { x: 0, y: 0, scale: 1 };
         let tool = 'move', isDragging = false, draw = { active: false, points: [] }, currentNaz = 0;
-        let lastTouch = {x: 0, y: 0}; // Mobiiliraahausta varten
+        
+        // Mobiilitouch muuttujat
+        let lastTouch = {x: 0, y: 0}; 
+        let initialPinchDist = null;
+
         let geminiKey = localStorage.getItem('geminiKey') || "";
         let campaignLore = localStorage.getItem('campaignLore') || ""; 
         let logs = [];
@@ -242,12 +245,8 @@
 
         function zoomIn() { view.scale *= 1.3; updateTransform(); }
         function zoomOut() { view.scale /= 1.3; updateTransform(); }
-        
-        function getCoords(e) {
-            if(e.touches && e.touches.length > 0) return {x: e.touches[0].clientX, y: e.touches[0].clientY};
-            return {x: e.clientX, y: e.clientY};
-        }
 
+        // --- PÄIVITETTY KOSKETUS- JA HIIREN HALLINTA ---
         function setupListeners() {
             let vp = document.getElementById('viewport');
             
@@ -256,12 +255,11 @@
             window.addEventListener('mousemove', onDragMove);
             window.addEventListener('mouseup', onDragEnd);
             
-            // Kosketusnäyttö
+            // Kosketusnäyttö (passive: false jotta preventDefault toimii ja estää vierityksen)
             vp.addEventListener('touchstart', onDragStart, {passive: false});
             vp.addEventListener('touchmove', onDragMove, {passive: false});
             vp.addEventListener('touchend', onDragEnd);
             
-            // Rullaus
             vp.addEventListener('wheel', (e) => {
                 e.preventDefault();
                 let z = e.deltaY > 0 ? 0.9 : 1.1, rect = vp.getBoundingClientRect();
@@ -270,7 +268,6 @@
                 updateTransform();
             }, {passive: false});
 
-            // TÄMÄ KORJAA JUMITTUMISEN PUHELIMEN KÄÄNTYESSÄ
             window.addEventListener('resize', () => {
                 clearTimeout(window.resizeTimer);
                 window.resizeTimer = setTimeout(fitToScreen, 200);
@@ -278,25 +275,76 @@
         }
 
         function onDragStart(e) {
-            if(e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT') return;
-            if(tool === 'move') { 
-                isDragging = true; 
-                lastTouch = getCoords(e);
-            }
-            else if(tool === 'fort') {
-                let c = getWorldCoords(e), name = prompt("Linnoituksen nimi:");
-                if(name) { 
-                    if (!nazguls[currentNaz].markers) nazguls[currentNaz].markers = [];
-                    nazguls[currentNaz].markers.push({x: c.x, y: c.y, label: name}); 
-                    renderOverlays(); uploadState(); 
+            if(e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            
+            // Jos kyseessä on kosketusnäyttö
+            if (e.touches) {
+                if (e.touches.length === 2) {
+                    // PINCH-ZOOM ALKAA (kaksi sormea)
+                    isDragging = false; 
+                    initialPinchDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+                } else if (e.touches.length === 1) {
+                    // NORMAALI KOSKETUS (yksi sormi)
+                    initialPinchDist = null;
+                    if(tool === 'move') {
+                        isDragging = true;
+                        lastTouch = {x: e.touches[0].clientX, y: e.touches[0].clientY};
+                    } else if(tool === 'fort') {
+                        let c = getWorldCoords(e), name = prompt("Linnoituksen nimi:");
+                        if(name) { 
+                            if (!nazguls[currentNaz].markers) nazguls[currentNaz].markers = [];
+                            nazguls[currentNaz].markers.push({x: c.x, y: c.y, label: name}); 
+                            renderOverlays(); uploadState(); 
+                        }
+                    } else if(tool === 'area') { draw.points.push(getWorldCoords(e)); renderTempPoly(); }
                 }
-            } else if(tool === 'area') { draw.points.push(getWorldCoords(e)); renderTempPoly(); }
+            } else {
+                // Hiiri
+                if(tool === 'move') { 
+                    isDragging = true; 
+                    lastTouch = {x: e.clientX, y: e.clientY};
+                }
+                else if(tool === 'fort') {
+                    let c = getWorldCoords(e), name = prompt("Linnoituksen nimi:");
+                    if(name) { 
+                        if (!nazguls[currentNaz].markers) nazguls[currentNaz].markers = [];
+                        nazguls[currentNaz].markers.push({x: c.x, y: c.y, label: name}); 
+                        renderOverlays(); uploadState(); 
+                    }
+                } else if(tool === 'area') { draw.points.push(getWorldCoords(e)); renderTempPoly(); }
+            }
         }
         
         function onDragMove(e) { 
-            if(isDragging && tool === 'move') { 
-                if (e.type === 'touchmove' && e.cancelable) e.preventDefault(); // Estää sivun rullautumisen mobiilissa!
-                let c = getCoords(e);
+            if (e.touches && e.touches.length === 2) {
+                // PINCH-ZOOM LIIKE
+                if (e.cancelable) e.preventDefault(); // Estää selaimen oman zoomin
+                
+                let currentDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+                if (initialPinchDist) {
+                    let zoomFactor = currentDist / initialPinchDist;
+                    
+                    // Lasketaan sormien keskipiste (mihin zoom kohdistuu)
+                    let cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+                    let cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+                    
+                    let vp = document.getElementById('viewport');
+                    let rect = vp.getBoundingClientRect();
+                    let mx = cx - rect.left;
+                    let my = cy - rect.top;
+                    
+                    view.x = mx - (mx - view.x) * zoomFactor;
+                    view.y = my - (my - view.y) * zoomFactor;
+                    view.scale *= zoomFactor;
+                    
+                    updateTransform();
+                }
+                initialPinchDist = currentDist; // Päivitetään etäisyys seuraavaa framea varten
+            } 
+            else if(isDragging && tool === 'move') { 
+                // NORMAALI RAAHAUS
+                if (e.type === 'touchmove' && e.cancelable) e.preventDefault();
+                let c = e.touches ? {x: e.touches[0].clientX, y: e.touches[0].clientY} : {x: e.clientX, y: e.clientY};
                 view.x += c.x - lastTouch.x; 
                 view.y += c.y - lastTouch.y; 
                 lastTouch = c;
@@ -304,14 +352,25 @@
             } 
         }
         
-        function onDragEnd() { isDragging = false; }
+        function onDragEnd(e) { 
+            // Palautetaan raahaus siististi, jos yksi sormi nostetaan pois pinch-zoomista
+            if (e.touches && e.touches.length === 1) {
+                lastTouch = {x: e.touches[0].clientX, y: e.touches[0].clientY};
+                isDragging = (tool === 'move');
+                initialPinchDist = null;
+            } else if (!e.touches || e.touches.length === 0) {
+                isDragging = false; 
+                initialPinchDist = null;
+            }
+        }
         
         function getWorldCoords(e) { 
-            let c = getCoords(e);
+            let c = (e.touches && e.touches.length > 0) ? {x: e.touches[0].clientX, y: e.touches[0].clientY} : {x: e.clientX, y: e.clientY};
             let r = document.getElementById('world').getBoundingClientRect(); 
             return { x: (c.x - r.left) / view.scale, y: (c.y - r.top) / view.scale }; 
         }
 
+        // --- MUU LOGIIKKA (ENNALLAAN) ---
         function uploadState() { if(window.db) window.dbSet(window.dbRef(window.db, 'gameState/nazguls'), nazguls); }
         function pushLog(h) { logs.unshift(h); renderLog(); if(window.db) window.dbPush(window.dbRef(window.db, 'gameState/logs'), h); }
         function clearLog() { if(confirm("Tyhjennä historia?")) { logs=[]; renderLog(); if(window.db) window.dbSet(window.dbRef(window.db, 'gameState/logs'), null); } }

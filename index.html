@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Middle-earth Manager v10.1 (Smart Fate Logic)</title>
+    <title>Middle-earth Manager v10.1 (Test Mode)</title>
     
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -70,6 +70,9 @@
         .ai-gm { color: #d4af37; font-style: normal; border-left: 3px solid #d4af37; padding-left: 10px; margin: 10px 0; background: #1a1a1a; padding: 10px; border-radius: 0 4px 4px 0;}
         .ai-result { color: #88ccff; font-style: italic; border-left: 3px solid #88ccff; padding-left: 10px; margin: 10px 0; background: #112233; padding: 10px; border-radius: 0 4px 4px 0;}
         .ai-error { color: #ff6666; border-left: 3px solid #ff6666; padding-left: 10px; margin: 10px 0; background: #331111; padding: 10px; border-radius: 0 4px 4px 0;}
+        
+        /* Testitilan laatikko */
+        .test-log-box { border-left: 4px solid #ff8800; margin: 10px 0; background: #2a1a00; padding: 10px; border-radius: 0 4px 4px 0; }
         
         .file-upload-box { background: #2a2a2a; border: 1px dashed #d4af37; padding: 10px; text-align: center; margin-bottom: 15px; font-size: 0.9em; display: none; }
         .section-title { font-size: 0.9em; text-transform: uppercase; color: #888; margin: 10px 0 5px 0; letter-spacing: 1px; }
@@ -145,6 +148,13 @@
         <hr style="border-color:#444;">
         
         <div class="section-title">Tekoäly-GM & Toiminnot</div>
+        
+        <div class="controls" style="margin-bottom: 5px;">
+            <label style="display:flex; align-items:center; cursor:pointer; font-size:0.9em; background:#2a1a00; padding:10px; border-radius:4px; border:1px solid #ff8800; width:100%; color:#ffaa00; font-weight:bold;">
+                <input type="checkbox" id="testMode" style="width:auto; margin-right:10px; transform: scale(1.2);"> 🧪 Testitila (ei tallennu historiaan)
+            </label>
+        </div>
+
         <div class="controls">
             <input type="text" id="intentInput" placeholder="Aie (esim. 'Hyökkään')">
         </div>
@@ -190,7 +200,9 @@
 
         let geminiKey = localStorage.getItem('geminiKey') || "";
         let campaignLore = localStorage.getItem('campaignLore') || ""; 
-        let logs = [];
+        
+        let logs = []; // Varsinaiset tietokantaan menevät lokit
+        let testLogs = []; // Paikalliset testilokit, jotka pyyhkiytyvät refreshissä
 
         window.onload = async function() {
             let imgElement = document.getElementById('game-map');
@@ -409,8 +421,32 @@
         }
 
         function uploadState() { if(window.db) window.dbSet(window.dbRef(window.db, 'gameState/nazguls'), nazguls); }
-        function pushLog(h) { logs.unshift(h); renderLog(); if(window.db) window.dbPush(window.dbRef(window.db, 'gameState/logs'), h); }
-        function clearLog() { if(confirm("Tyhjennä koko kronikan historia?")) { logs=[]; renderLog(); if(window.db) window.dbSet(window.dbRef(window.db, 'gameState/logs'), null); } }
+        
+        // --- UUSI LOKIEN HALLINTA ---
+        function pushLog(h) { 
+            logs.unshift(h); 
+            renderLog(); 
+            if(window.db) window.dbPush(window.dbRef(window.db, 'gameState/logs'), h); 
+        }
+        
+        function pushTestLog(h) {
+            testLogs.unshift(`<div class="test-log-box"><span style="color:#ffaa00; font-size:0.8em; font-weight:bold; letter-spacing:1px;">🧪 TESTITILA</span><br>${h}</div>`);
+            renderLog();
+        }
+
+        function renderLog() { 
+            // Tulostetaan aina testit ensin ylös, sitten oikea historia
+            document.getElementById('log').innerHTML = testLogs.join("") + logs.join(""); 
+        }
+
+        function clearLog() { 
+            if(confirm("Tyhjennä koko kronikan historia? (Myös testit poistuvat)")) { 
+                logs=[]; 
+                testLogs=[];
+                renderLog(); 
+                if(window.db) window.dbSet(window.dbRef(window.db, 'gameState/logs'), null); 
+            } 
+        }
 
         function adjustStat(stat, amount) {
             let n = nazguls[currentNaz]; n[stat] += amount;
@@ -436,12 +472,14 @@
             if(!intent) return alert("Kirjoita ensin aikeesi tekstikenttään!");
             if(!geminiKey) { alert("Aseta Gemini API Key asetuksista ensin!"); openSettings(); return; }
 
+            let isTest = document.getElementById('testMode').checked;
             let n = nazguls[currentNaz];
+            
             let loadId = "load-"+Date.now();
             document.getElementById('log').innerHTML = `<div id="${loadId}" style="color:#d4af37">🧙‍♂️ GM miettii...</div>` + document.getElementById('log').innerHTML;
             
             let loreContext = campaignLore ? `\n\n=== KAMPANJAN LORE ===\n${campaignLore}\n======================\nKäytä tätä maailman taustana.\n` : "";
-            let historyContext = getRecentHistoryContext();
+            let historyContext = getRecentHistoryContext(); // Lukee vain oikeat lokit!
 
             let prompt = `Olet pelinjohtaja (Game Master) Keskimaahan sijoittuvassa roolipelissä (Burning Wheel). Pelaaja on Nazgûl ${n.name}.
 Aie (Intent): "${intent}".
@@ -459,8 +497,14 @@ Ehdottamasi Ob: [Numero]`;
             
             if(txt) {
                 let time = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
-                if (txt.startsWith("⚠️")) pushLog(`<div class="ai-error">${txt}</div><hr style="border-color:#333">`);
-                else pushLog(`<div><span style="color:#666">[${time}]</span> <b style="color:${n.color}">${n.name} aie:</b> ${intent}</div><div class="ai-gm"><b>👑 GM vastaa:</b><br>${txt.replace(/\n/g, '<br>')}</div><hr style="border-color:#333">`);
+                if (txt.startsWith("⚠️")) {
+                    if(isTest) pushTestLog(`<div class="ai-error">${txt}</div>`);
+                    else pushLog(`<div class="ai-error">${txt}</div><hr style="border-color:#333">`);
+                } else {
+                    let msg = `<div><span style="color:#666">[${time}]</span> <b style="color:${n.color}">${n.name} aie:</b> ${intent}</div><div class="ai-gm"><b>👑 GM vastaa:</b><br>${txt.replace(/\n/g, '<br>')}</div><hr style="border-color:#333">`;
+                    if(isTest) pushTestLog(msg);
+                    else pushLog(msg);
+                }
             }
         }
 
@@ -470,12 +514,12 @@ Ehdottamasi Ob: [Numero]`;
             return r;
         }
 
-        // --- PÄIVITETTY ÄLYKÄS FATE-LOGIIKKA ---
         async function performAction(action, stat) {
             let d = parseInt(document.getElementById('dice').value)||0, ob = parseInt(document.getElementById('ob').value)||0;
             let intent = document.getElementById('intentInput').value || "Ei määritettyä aietta";
             if(!d || !ob) return alert("Aseta Nopat ja Ob!");
             
+            let isTest = document.getElementById('testMode').checked;
             let n = nazguls[currentNaz];
             let succ = 0;
             let sixes = 0;
@@ -491,7 +535,7 @@ Ehdottamasi Ob: [Numero]`;
             allRolls.sort((a,b)=>b-a);
             let explodeLog = "";
 
-            // KYSY FATEA VAIN JOS ONNISTUMISET EIVÄT VIELÄ RIITÄ
+            // FIKSU FATE: Kysytään vain, jos onnistumiset EIVÄT riitä vaadittuun Ob:hen.
             if (sixes > 0 && succ < ob) {
                 if(confirm(`Sait vasta ${succ} onnistumista, mutta tarvitset ${ob} (Ob).\nHeitit kuitenkin ${sixes} kpl kuutosia!\n\nHaluatko käyttää "Fatea" ja avata (räjäyttää) kuutoset?`)) {
                     let currentSixes = sixes;
@@ -513,8 +557,10 @@ Ehdottamasi Ob: [Numero]`;
             let col = margin >= 0 ? "#4f4" : "#f44";
             
             let time = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
-            pushLog(`<div><span style="color:#666">[${time}]</span> <b style="color:${n.color}">${n.name}</b>: ${action} (Ob ${ob})<br>🎲 [${initialRolls.join(",")}]${explodeLog} -> Yhteensä ${succ} onnistumista. <span style="color:${col}">${res}</span></div>`);
-            uploadState();
+            let msgDice = `<div><span style="color:#666">[${time}]</span> <b style="color:${n.color}">${n.name}</b>: ${action} (Ob ${ob})<br>🎲 [${initialRolls.join(",")}]${explodeLog} -> Yhteensä ${succ} onnistumista. <span style="color:${col}">${res}</span></div>`;
+            
+            if (isTest) pushTestLog(msgDice);
+            else { pushLog(msgDice); uploadState(); }
 
             if(geminiKey) {
                 let loadId = "load-"+Date.now();
@@ -575,7 +621,11 @@ ESIMERKKI: [STAT] {"stat": "might", "change": -1} [/STAT]`;
 
                         if (isSuccess) {
                             logMsg += `<span style="color:#4f4; font-weight:bold;">TOTEUTUU!</span>`;
-                            adjustStat(sKey, sVal);
+                            if(!isTest) {
+                                adjustStat(sKey, sVal);
+                            } else {
+                                logMsg += ` <i style="color:#ffaa00;">(Testitila: statteja ei oikeasti muutettu)</i>`;
+                            }
                         } else {
                             logMsg += `<span style="color:#f44; font-weight:bold;">EI TOTEUDU.</span> Arvo pysyy samana.`;
                         }
@@ -583,11 +633,16 @@ ESIMERKKI: [STAT] {"stat": "might", "change": -1} [/STAT]`;
                         
                         cleanTxt += logMsg;
                     }
-                    pushLog(`<div class="ai-result"><b>📜 Lopputulos:</b><br>${cleanTxt.replace(/\n/g, '<br>')}</div><hr style="border-color:#333">`);
+                    
+                    let finalMsg = `<div class="ai-result"><b>📜 Lopputulos:</b><br>${cleanTxt.replace(/\n/g, '<br>')}</div><hr style="border-color:#333">`;
+                    if(isTest) pushTestLog(finalMsg);
+                    else pushLog(finalMsg);
+                    
                 } else if (txt) {
-                    pushLog(`<div class="ai-error">${txt}</div><hr style="border-color:#333">`);
+                    if(isTest) pushTestLog(`<div class="ai-error">${txt}</div>`);
+                    else pushLog(`<div class="ai-error">${txt}</div><hr style="border-color:#333">`);
                 }
-            } else pushLog(`<hr style="border-color:#333">`);
+            } else if(!isTest) { pushLog(`<hr style="border-color:#333">`); }
         }
 
         async function callAI(prompt) {
@@ -687,7 +742,6 @@ ESIMERKKI: [STAT] {"stat": "might", "change": -1} [/STAT]`;
                 });
             });
         }
-        function renderLog() { document.getElementById('log').innerHTML=logs.join(""); }
         
         function updateUI() {
             currentNaz = document.getElementById('nazgulSelect').value; let n = nazguls[currentNaz];

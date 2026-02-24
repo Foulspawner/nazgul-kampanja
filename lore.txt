@@ -1,3 +1,5 @@
+MAP:khand.jpg = khand, upper khand, lower khand, gap of khand, sturlursta khand, chelkar, korb chelkar, kajbah, ammu khand, obamarl, lurmsakun, lurmsakûn, pezarsan, feah, haruzan, thihja peh, amrun, amrûn, harondor, emyn imladrim, imlad carnen, nen umbar, glinfalas, ethir harnen, harnen, nurn, mordor
+MAP:kartta.jpg = chey sart, relmether, dalpyyis, karyayis ahar, alduryaknar, oryothraath, vaay, gaathyykarkan, acaana, chy, clyan, lodenuly, hel aaran, ered harmol, ibav, burskadekdar, nurad, bulchyades, kykurian kyn, rycolis, daldunair, uster kryl, lyyar kraw, aigvaly, haen, kael, goak, helcar sael, wom shryac, curvac womaw, helcarth, moak, thuriac codya
 # NAZGÛL-KAMPANJA — LORE (S.A. 1993)
 Tämä tiedosto on **LLM:n** ja **pelinjohtajan** käyttöön kampanjan downtime-vaiheissa.  
 Pelaajat ovat Nazgûleita (vielä ihmisinä), Sauronin puolella. Downtime = ~50–100 vuotta / päätöskierros.

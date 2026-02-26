@@ -1803,3 +1803,183 @@ Tämä on **ennen Gondorin syntyä**: ei yhtenäistä valtakuntaa, vaan kyliä, 
 - Drúedainin pukel-merkit ovat osin **todellisia varoituksia** (esim. myrkkykaasut, sortuvat rantapenkereet), osin psykologista kontrollia (“älä kulje tästä”).
 - Porosin kahlaamoiden “tullijärjestelmä” on oikeasti **panttivankijärjestelmä**.
 - Edhellondin haltioiden opetus ei ollut vain hyvyyttä: he myös **ohjasivat suiston väkeä pois tietyiltä reiteiltä**, jotka johtavat vanhoihin, vaarallisiin paikkoihin.
+MAP:umbar.jpeg = amakarni, an-karagmir, an-karagmir tribes, ankharmen, ardinur, azrubel, azrubêl, bay of umbar, bul-dumun, bûl-dûmûn, calphir, castamurien, erag, idria, kairaman, kairaman tribes, kor, kôr, mardil, minulben, minulbên, pellardur, rath-khand, tol glingal, umbar, urustamo
+
+# Sotaprofiili: Umbarin luonnonsatama ja sen rannikkoseutu (Bay of Umbar)
+Aika: S.A. 2043 (Toinen aika)  
+Status: Esivaltiollinen rannikkovyöhyke; kalastajakylien verkosto + heimoalueita; Númenórean tiedustelu käynnissä (ei vielä satamakaupungin rakentamista).
+
+## 1) Strateginen tiivistelmä
+Umbarin alue on **syvän luonnonsataman** ympärille rakentunut rannikkokokonaisuus, jonka arvo syntyy kolmesta tekijästä:
+1) **Merellinen suoja**: laaja lahti ja sitä suojaavat niemekkeet/saarimuodostelmat tekevät paikasta ankkuripaikan, johon voi jäädä myös huonolla säällä.  
+2) **Sisämaan portti**: jokiuomat ja kuivien tasankojen polut yhdistävät lahden **heimoalueisiin** (Kairaman, An-Karagmir, Amakarni) sekä **inland-reitteihin** (kohti aavikkoa ja itäisiä kauppapolkuja).  
+3) **Tiedustelun kohde**: Númenórealaiset ovat jo havainneet sataman “strategisen inevitabiliteetin”: *jos joskus rakennetaan suuri eteläinen satama*, tämä paikka on luonnollinen kandidaatti.
+
+S.A. 2043: **“Umbar” on vielä paikka ja lahti, ei kaupunki.** Se on nimetty ankkuripaikan mukaan, mutta valta on hajautunut kalastajakylien, metsä- ja jokiväen sekä heimojohtajien kesken.
+
+## 2) Aikakausikonteksti (S.A. 2043)
+- Númenor on aloittanut kolonialisaation länsirannoilla ja muodostaa **kauppa- ja tiedustelupisteitä** (lahjat, kartoitus, sopimukset paikallisten kanssa).
+- Umbarin kohdalla nähdään tyypillinen “0-vaiheen” läsnäolo:
+  - pieniä rantautumisia,
+  - laivojen piilolaitureita,
+  - kartoituspartioita ja tulkkeja,
+  - paikallispäälliköiden “ostamista” (teräs, suola, kangas, viini/öljy).
+- Samalla alueen heimot ymmärtävät, että satama on **tulevaisuuden valta**: nyt käydään kamppailua siitä, *kuka saa ensimmäisenä “nimensä” sataman ympärille*.
+
+## 3) Maantiede ja alajaot (kartta-ankkurit)
+### 3.1 Bay of Umbar — “Syvälahti”
+- Lahden vedet ovat syvät ja rantaviiva rikkonainen → erinomainen ankkurointi ja huolto.
+- Lahden sisäosissa on matalia rantoja ja ruovikoita; ulompana kalliimpia niemiä ja suojaisia poukamia.
+
+### 3.2 Tol Glingal — “Vartiosaari”
+- Saarike/luotojen ketju lahden sisällä: luonnollinen tähystyspaikka ja merimerkkien alue.
+- Paikalliset pitävät saarta **tabuna** (vanhat haaksirikkotarinat, “merta lepyttävät” kivikasat).
+
+### 3.3 Minulbên — “Rannikon vihreä vyö”
+- Lahden etelärannan metsäinen/tiheä kasvuvyöhyke: puu, piki, köydet, veneenrakennus, metsästys.
+- Tarjoaa myös piiloreittejä lahden ympärillä (salakuljetus, väijytykset, piilotetut varastot).
+
+### 3.4 Umbar (paikka, ei kaupunki)
+- “Umbar” tarkoittaa käytännössä **luonnonsataman ydinankkuripaikkaa**: rannassa on kalastajakylien laiturirykelmä, suolauskatoksia ja varastokuoppia.
+- Paikalliset puhuvat “Umbarista” kuin markkinapaikasta: *sinne mennään, siellä vaihdetaan, sieltä palataan.*
+
+### 3.5 Ankharmen ja Rath-Khand — “Itäinen portti”
+- Lahden itäpuolen polut johtavat sisämaahan: täällä kulkee heimojen, karavaanien ja partioiden liikenne.
+- Rath-Khand toimii **rajamerkkinä/vahtipaikkana** (ei kivinen linna vaan harjanne, johon on kasattu paaluvarustuksia ja merkkitulia).
+
+### 3.6 Bul-Dûmûn ja Castamurien — “Kivinen rannikko & jokireitti”
+- Bul-Dûmûn on rannikon kivinen uloke/”mustakallio”, jonka lähellä on hyvät kalavedet mutta vaaralliset virtaukset.
+- Castamurien viittaa jokilaakson/vesireitin asutukseen: pienet viljelytaskut, lähteet ja karjalaumat.
+
+### 3.7 Pellardur, Ardinur, Calphir, Idria, Erag, Mardil, Kor/Kôr — “Kyläketjut ja heimoalueiden reunat”
+- Nämä ovat **pienalueita ja kyliä** (tai heimokeskuksia), joiden identiteetti syntyy:
+  - lähteistä ja kaivoista,
+  - suolapelloista,
+  - laidunpaikoista,
+  - sekä siitä, kuka “verottaa” kulkuoikeuksia satamaan.
+- Kor/Kôr on usein mainittu **kallioharjanteen** tai “kivikylän” nimityksenä (kivipihdit, kivikehät, varoitusmerkinnät).
+
+### 3.8 Azrubêl ja Urustamo — “Kuivan maan reunavyöhyke”
+- Sisämaan kuivempi seutu: harvat puut, avoimet tasangot, kausittaiset purot.
+- Urustamo toimii **karavaanien levähdyksenä** (vesi + laidun).
+- Azrubêl on paikallinen “kylmä nimi”: liittyy usein suolaan, kivipölyyn tai vanhoihin hautakumpuihin (paikalliset tarinat pitävät aluetta levottomana).
+
+### 3.9 Amakarni, Kairaman, An-Karagmir — “Heimot ja niiden maat”
+- **Kairaman tribes**: rannikon ja sisämaan välinen “välittäjäheimo” (oppaat, kauppa, suojelurahat).
+- **An-Karagmir tribes**: kivisemmän sisämaan ja harjanteiden väki (karja, paalutukset, soturit).
+- **Amakarni**: usein liitetään pohjoisempaan rannikkokaistaan ja saarien suuntaan (kalastus + merimerkit + haaksirikkosaaliit).
+
+## 4) Väestö ja kulttuuri
+### 4.1 Kalastajakylät (lahden rengas)
+- Pienet laiturikylät, suolaus- ja savustuskatokset, verkkoaitat.
+- “Merilaki”: veneet, verkot ja ankkurit ovat arvokkaampia kuin maa.
+- Kylien väliset riidat koskevat:
+  - parhaita ankkuripaikkoja,
+  - suolalähteitä,
+  - “kuka saa myydä ulkomaalaisille”.
+
+### 4.2 Rannikon metsä- ja jokiväki (Minulbên)
+- Puu, piki, purjekangas, köysi, veneiden rungot.
+- Näkee kalastajat “velallisina”, koska ilman puuta ei ole laivoja eikä varastoja.
+
+### 4.3 Heimot (Kairaman / An-Karagmir / Amakarni)
+- Heimojen arvovalta perustuu:
+  - ratsuihin ja karjaan,
+  - kaivoihin,
+  - sotureihin (saattueet),
+  - ja siihen, kuka saa “päättää” sataman tullista.
+- Heimojen sisäinen politiikka on jatkuvaa sopimista: **avioliitot, panttivangit, lahjat**.
+
+## 5) Valta-asetelma (S.A. 2043)
+### 5.1 “Sataman neuvosto” (epävirallinen)
+- Ei virallista hallintoa; käytännössä 5–9 vaikutusvaltaista kylävanhinta ja heimojohtajaa määrittää:
+  - missä ulkomaalaiset saavat rantautua,
+  - kenen kautta kauppa kulkee,
+  - ja mitä tietoa myydään.
+
+### 5.2 Númenórean tiedustelijat (0-vaiheen läsnäolo)
+- Tavoitteet:
+  - kartoittaa syvyydet ja virtaukset,
+  - löytää makean veden lähteet,
+  - tunnistaa heimoriidat (ketä kannattaa tukea),
+  - selvittää, kuka kykenee tarjoamaan työvoimaa ja suojan tulevaisuuden rakennusprojektille.
+- Keinot:
+  - lahjat (terästyökalut, suola, lasihelmet, kangas),
+  - tulkit ja “kauppiaat” peitetarinana,
+  - merkit ja mittaukset öisin (ettei herätä pelkoa).
+
+### 5.3 Varjon mahdollinen kosketus (heikko mutta olemassa)
+- Etäinen, epäsuora: mustan kaupan verkosto voi ulottua tänne asti, mutta S.A. 2043:ssa se on **huhujen ja yksittäisten agenttien tasolla**, ei avoin hallinta.
+- Varjo hyödyntää:
+  - heimoriitoja,
+  - velkakierteitä,
+  - sekä pelkoa “ulkoa tulevasta herruudesta”.
+
+## 6) Talous ja resurssit
+- Kala, simpukat, merisuola; savustus ja suolaus (vaihdon perusta).
+- Puu ja piki (Minulbên) → veneenrakennus, varastot, köydet.
+- Karja ja suola-kaivot sisämaassa (Kairaman/An-Karagmir).
+- Vaihtotavarat Númenóreasta (näkyvät jo):
+  - terästyökalut ja naulat,
+  - kankaat,
+  - säilytysastiat,
+  - harvinaiset mausteet/öljyt (statustuotteet heimojohtajille).
+
+## 7) Liikkuminen ja infrastruktuuri
+- Mereltä: suojaisat poukamat + Tol Glingalin “sisämeri”.
+- Maalta: polkuverkko itäportin (Ankharmen/Rath-Khand) kautta kaivoille ja heimoalueille.
+- Kriittiset pisteet:
+  - makean veden lähteet (Urustamo),
+  - rantautumispaikat (Umbarin ankkurialue),
+  - varastokuopat ja suolapannat (Minulbênin reuna).
+
+## 8) Turvallisuuskuva
+### 8.1 Luonnonuhat
+- Merivirrat Bul-Dûmûnin kohdalla; myrskyt lahden suulla.
+- Kuivuus sisämaassa: kaivot = valta.
+
+### 8.2 Ihmisuhat
+- Rantaryöstäjät ja “haaksirikkosaalistajat” (Amakarniin liitetyt tarinat).
+- Heimoväijytykset itäporteilla, tullit muuttuvat ryöstöiksi.
+- Númenórealaisten läsnäolo kiristää tilannetta: “kuka myi heille tiedon?”
+
+## 9) Avainpaikat (pelikäyttöön)
+1. **Umbarin ankkuripoukama** – syvä vesi, luonnollinen suoja; kalastajakylien “markkina”.
+2. **Tol Glingal** – merimerkit, vartiointi, tabu; erinomainen salainen signaalipaikka.
+3. **Minulbênin pihkalehto** – veneenrakennuksen sydän; myös piilovarastojen vyöhyke.
+4. **Rath-Khandin merkkituli** – itäreitin kuristuspiste; “tulli tai veri”.
+5. **Urustamon kaivot** – karavaanien ja heimojen kohtaus; diplomatian ja petoksen näyttämö.
+6. **Bul-Dûmûn** – vaarallinen rannikko; haaksirikkojen aarre ja kirous.
+7. **Azrubêlin kumpukenttä** – vanhat haudat / kivikehät; heimot välttelevät öisin.
+
+## 10) Keskeiset NPC:t (valmiit)
+- **Nîrath “Verkkovanhin”** (Umbarin kalastajakylät): hallitsee suolauksen ja varastojen rytmin; pelkää menettävänsä sataman “omistuksen”.
+- **Kairamanin Saattaja-Khaan, Lûmak** (Kairaman tribes): myy turvaa ja opastusta; neuvottelee ensimmäisenä Númenórean kanssa.
+- **An-Karagmîrin Kivisoturi, Gorzad** (An-Karagmir tribes): pitää itäporttia; vihaa “meren kansaa” ja ulkomaisia mittamiehiä.
+- **Amakarnin Merimerkkien Nainen, Saphra** (Amakarni): tuntee virtaukset ja Tol Glingalin; tietää myös haaksirikkojen salaisuudet.
+- **“Kauppias” Vardamir** (Númenórean tiedustelu-upseeri peiteroolissa): kartoittaa syvyyksiä ja lähteitä; rakentaa riippuvuussuhteita lahjoilla.
+- **Pellardurin Suolamestari, Edrûk**: kontrolloi suolapannuja; voi kaataa koko alueen talouden yhdellä päätöksellä.
+- **Bul-Dûmûnin Hiljainen Pappi, Kôrûn**: ylläpitää tabuja ja pelkoa; hänen “meriuhrinsa” voivat olla myös poliittisia murhia.
+
+## 11) Seikkailukoukut (10)
+1. **Yömittaukset**: Númenórealaiset mittaavat lahden syvyyksiä salaa — heimot luulevat kyseessä olevan noituus.
+2. **Kaivo myrkytetty**: Urustamon vesi saastuu; Kairaman syyttää An-Karagmîria (tai päinvastoin).
+3. **Haaksirikko Bul-Dûmûnissa**: arvotavaraa rantautuu; kuka ehtii ensin — kalastajat, Amakarni vai “kauppias” Vardamir?
+4. **Tol Glingalin tabu**: joku yöpyy saarella ja katoaa; jäljelle jää vain merimerkki, joka osoittaa *väärään suuntaan*.
+5. **Sataman tulli**: “Sataman neuvosto” yrittää yhtenäistää tullin — syntyy sisällissota kylien välillä.
+6. **Ankharmenin reitti**: uusi polku sisämaahan löytyy; se ohittaa Rath-Khandin → vartijat raivostuvat.
+7. **Pihkalehdon palo**: Minulbênin veneenrakennus uhkaa tuhoutua; syyllinen voi olla kilpailija tai varjokauppias.
+8. **Avioliittosopimus**: Kairaman tarjoaa liittoa kalastajakylälle; hinta on panttivanki (PC:t väliin).
+9. **Kartta katoaa**: Númenórean piirtämä rannikkokartta varastetaan; sen palauttaminen estää tulevan rakennusprojektin.
+10. **Azrubêlin ääni**: kumpukentältä löytyy “puhuva kivi” (tai hyvin rakennettu huijaus), joka muuttaa heimojen päätöksiä.
+
+## 12) GM-salaisuudet (pidä piilossa)
+- Númenórealaisten “0-vaiheen” ryhmä on jo jakanut alueen kolmeen vyöhykkeeseen: **satama – puu/piki – vesi/kaivot**. He eivät rakenna vielä mitään, mutta valmistelu on alkanut.
+- Sataman neuvostossa on yksi jäsen, joka on jo “myyty” (teräs + velkakirja) ja ohjaa päätöksiä kohti ulkoista valvontaa.
+- Tol Glingalin tabu perustuu osin todelliseen vaaraan: saariston kohdalla on **petollinen sisävirtaus**, joka on upottanut veneitä — ja joku käyttää myyttiä suojellakseen omaa salareittiään.
+- Bul-Dûmûnissa on vanha kivikaiverrus/merkintä, joka on tärkeä myöhemmälle Umbarin rakentamiselle (mittalinja, kompassisuunta, ankkurikivi).
+- Azrubêlin “levottomuus” voi olla luonnollista (kaasupäästöjä, sortuvaa maata) tai jonkun ylläpitämää psykologista kontrollia, jotta alue pysyy tyhjänä.
+
+## 13) Audit-trail
+- Kartta-ankkurit (paikat ja nimet): käyttäjän toimittama lista + umbar-kartan paikannimet (esim. Bay of Umbar, Tol Glingal, Minulbên, Rath-Khand, Ankharmen, Urustamo, Azrubêl, Bul-Dûmûn jne.).
+- Aikakausikonteksti: käyttäjän määrittely S.A. 2043; “Umbarin kaupunkia ei vielä ole”, mutta Númenórean tiedustelu on havainnut luonnonsataman arvon.

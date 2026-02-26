@@ -1631,3 +1631,166 @@ Hinta: Khand muuttuu heimojen liitosta **yksinvaltiaan vankilaksi**.
 ## Audit-trail
 - **Maantiede, maakunnat, kaupungit, naapurit, valtapolitiikka**: käyttäjän kuvauksen perusteella (Sturlursta Khand, Gap of Khand/Upper Khand/Obamarl, Ammu Khand, Lower Khand, Kajbah, Chelkar/Korb Chelkar, Pezarsan/Feah, Lurmsakûn, Amrûn, Haruzan/Thihja Peh, Emyn Imladrim/Imlad Carnen, Nurn/Sauron).
 - **Mongolivaikutteinen malli**: kurultai, desimaalinen sotajärjestelmä, yasaq/Yassa-henkinen käytännön laki, paiza-tyyppinen kuriirietuoikeus (yleinen historiallinen inspiraatio).
+MAP:gondor.jpg = anduinin suisto, anduin, lebennin, etelä-ithilien, south ithilien, sirith, poros, gilrain, valkoiset vuoret, ered nimrais, harondor, porosjoen ylitykset, anduin delta
+
+# Sotaprofiili: Anduinin suisto (Lebennin – Etelä-Ithilien – Porosjoen rajamaa)
+Aika: S.A. 2043 (Toinen aika)  
+Status: Esivaltiollinen rajaseutu; Númenórean merikaupan varhaiset etuasemat; Mordorin varjo pohjoisessa.
+
+## 1) Strateginen tiivistelmä
+Anduinin suisto on **jokivaltainen ekosysteemi ja logistinen solmukohta**, jossa:
+- **Suuri Anduin** haarautuu useiksi uomiksi, ruokkii ruovikoita, kalavesiä ja matalia saaristoja.
+- **Lebennin** on länsirannan hedelmällinen jokitasanko ja jokisuiston “leipäkori”.
+- **Etelä-Ithilien** on itärannan metsäinen reunamaa, jossa Mordorin varjo tuntuu ensimmäisenä (partiot, tiedustelu, katoamiset).
+- **Poros-joki** määrittää etelässä rajalinjan Harondorin suuntaan: kauppa, salakuljetus, heimojen välinen kitka.
+- **Valkoiset vuoret (Ered Nimrais)** sulkevat pohjoisen; vuoripurot (mm. **Sirith**) luovat kulkureittejä ja kuristuspisteitä.
+
+Tämä on **ennen Gondorin syntyä**: ei yhtenäistä valtakuntaa, vaan kyliä, päälliköitä, jokikauppiaita ja ulkoisten toimijoiden (Númenórealaisten ja Sauronin) etupiirejä.
+
+## 2) Aikakausikonteksti (S.A. 2043)
+- Númenor on aloittanut **järjestelmällisen kolonialisaation ja kauppaverkkojen rakentamisen** länsirannoilla.
+- Eteläisillä rannikoilla ja suurten jokien suilla näkyy **varhainen merenkulkijoiden “eturintama”**: ankkuroidut laivat, vaihtoasemat, lahjatalous, paikallisten päälliköiden “sopimussuhteet”.
+- Sauron on voimissaan pohjoisessa: varjo ei vielä ole “armeijojen rautaesirippu”, vaan **hiljainen painostus ja tiedustelu**, joka muokkaa paikallista käyttäytymistä.
+
+## 3) Maantiede ja luonnonpiirteet
+### 3.1 Suuri Anduin ja suisto
+- Leveä, hidasvirtaisempi alaosa, jossa uomat erkanevat; tulvakausina suisto “liikkuu”.
+- Ruovikot, matalat saaristot, mutapenkereet, suolamatalikot.
+- Veneillä liikkuminen on helppoa paikallisille, vaikeaa ulkopuolisille: suisto on **luonnollinen labyrintti**.
+
+### 3.2 Lebennin (länsiranta)
+- Jokitasankoja, niittyjä, viljelysaarekkeita, kalastajakyliä.
+- Läntisenä rajana **Gilrain-joki** (ja sen rantaniityt): “toinen suunta merelle”, vähemmän varjon alla.
+
+### 3.3 Etelä-Ithilien (itäinen reunamaa)
+- Metsäisempi, jyrkempi reuna, enemmän piilopaikkoja ja metsästysreittejä.
+- Pohjoista kohti varjo tihenee: vahtitornien raunioita, vanhoja polkuja, vaarallisia notkoja.
+
+### 3.4 Valkoiset vuoret, Sirith ja kulkureitit
+- Ered Nimrais syöttää jokilaakson puroilla ja koskilla.
+- **Sirith** on yksi tärkeimmistä: se avaa käytännössä “portin” vuorilta suistoon.
+- Solat ja harjanteet ovat **vuorikansan hallussa** (tullit, opastus, väijytykset).
+
+### 3.5 Poros-joki (Etelä-Ithilienin ja Harondorin raja)
+- Rajajoki, jonka ylityspaikat (kahlaamot, lauttapaikat) ovat geopoliittisia napoja.
+- Harondorin suunnasta tulee karavaaneja, palkkasotureita, rosvojoukkoja ja “hyödyllisiä valeuutisia”.
+
+## 4) Ilmasto ja vuodenkulku
+- Kevät: tulvat, sumut, jokisaukon ja lintujen sesonki; liikkuminen vaikeaa ulkopuolisille.
+- Kesä: hyttyset ja “suistokuumeet”; kalastus huipussaan; kauppalaivat uskaltavat suistoon.
+- Syksy: myrskyt mereltä; suolapannujen ja savustamisen aika.
+- Talvi: vuorilta kylmää; suisto ei yleensä jäädy täysin, mutta uomat hidastuvat ja sumut tihenevät.
+
+## 5) Väestö ja yhteiskunta
+### 5.1 Suiston kalastajat (“ruokokansat”)
+- Asuvat paalutaloissa ja kelluvissa laitureissa; liikkuvat kapeilla ruuhilla.
+- Perimätieto: “joki muistaa” (kartoitus laulujen ja tarinoiden kautta).
+- He ovat saaneet **kalastus- ja veneentekotekniikoita Edhellondin haltioilta**: verkot, solmut, suolauksen ja savustuksen standardit.
+
+### 5.2 Lebenninin peltokylät
+- Viljely, karja, jokikuljetus; maksavat “jokiveroa” (ruokaa ja suolaa) suiston vahvimmille päälliköille.
+- Riidat koskevat uomien siirtymistä ja niittyjen omistusta.
+
+### 5.3 Etelä-Ithilienin metsäyhteisöt
+- Metsästäjiä, yrttien kerääjiä, mehiläistarhaajia; osa toimii oppaina.
+- Osa on jo “varjokaupan” piirissä: myy tietoa, ruokaa ja turvaa pohjoisen kulkijoille.
+
+### 5.4 Vuorikansa (Ered Nimrais)
+- Vuohipaimenet, kivimiehet, solien vartijat.
+- He eivät muodosta valtakuntaa, vaan klaaniverkon: “sola on oma lakinsa”.
+- Hallitsevat tärkeimmät reitit Sirithin latvoille ja niistä alas.
+
+### 5.5 Drúedain / Púkel-miehet (mystinen väestö)
+- Valkoisten vuorten itäpään pohjoispuolella pieniä, piiloutuneita yhteisöjä.
+- He tekevät kivisiä “pukel-merkkejä” ja varoituksia; eivät käy kauppaa avoimesti.
+- Heidän maineensa: “näkevät sumun läpi” (toisille tarua, toisille totisinta totta).
+
+## 6) Valta, toimijat ja jännitteet
+### 6.1 Paikalliset päälliköt
+- Suistoa hallitaan käytännössä **uomien, lauttapaikkojen ja suolapannujen** kautta.
+- “Kuningas” on se, joka hallitsee veneitä ja varastoja, ei se joka omistaa maata.
+
+### 6.2 Númenórean etuasemat (varhainen vaihe)
+- Ei vielä suuria kivikaupunkeja; pikemminkin:
+  - ankkuroituja laivoja,
+  - varastotaloja jokisuun suojaisissa paikoissa,
+  - lahja- ja sopimusverkkoja paikallispäälliköiden kanssa.
+- He tarjoavat terästä, lasia, suolaa ja kankaita; ottavat vastineeksi kalaa, viljaa, puuta ja tietoa.
+
+### 6.3 Sauronin varjo (hiljainen eskalaatio)
+- Tuntuu Etelä-Ithilienissä ensin:
+  - katoamiset,
+  - outo “tuhkapöly” tietyissä notkoissa,
+  - vieraat, jotka kyselevät solista ja lauttapaikoista.
+- Varjo käyttää paikallisia ristiriitoja: velkoja, panttivankeja, mustaa kauppaa.
+
+### 6.4 Harondorin rajapaine
+- Porosin suunnasta tulee sekä kauppaa että ryöstöä.
+- Harondor voi sytyttää suiston palamaan yhdellä huhulla: “Númenórealaiset vievät lapsesi”, “Varjo maksaa paremmin”, “Joki vaihtaa puolta”.
+
+## 7) Talous ja resurssit
+- Kala, ankerias, jokirapua vastaavat äyriäiset; suolaus ja savustus (vientitavaraa).
+- Ruoko, pajukuidut, veneet, köydet, verkot.
+- Lebenninin vilja ja karja.
+- Vuorten kivi, kalkki, rautaesineiden korjaus (pienimuotoinen).
+- Vaihtotavarat Númenóreasta: terätyökalut, naulat, lasihelmet, hieno kangas, viini/öljy.
+
+## 8) Liikkuminen ja infrastruktuuri
+- Jokireitit ovat valtateitä: lautta- ja kahlaamapaikat ovat “linnoituksia ilman muureja”.
+- Maareitit:
+  - Lebenninin niittypolut (nopeat ratsain kuivaan aikaan),
+  - Ithilienin metsäpolut (vain oppaiden kanssa),
+  - vuoristosolat (vuorikansa kontrolloi).
+- Signaalointi:
+  - vuoristossa tulimerkit,
+  - suistossa “lintukoodit” (kalastajien vihellykset ja liput).
+
+## 9) Turvallisuuskuva (uhkat ja mahdollisuudet)
+### 9.1 Luonnonuhat
+- Tulvat, sumu, suistokuume (tauti), hyönteisparvet, myrskyt mereltä.
+- Suisto “syö” huolimattomat: väärä uoma = päivä hukassa.
+
+### 9.2 Ihmisuhat
+- Rajarosvot Porosilta, varjokauppiaat, panttivankien ryöstö.
+- Vuorikansan solatullit voivat muuttua väijytyksiksi.
+
+### 9.3 Varjovaikutus
+- Tiedustelu, sabotaasi, lahjonta, pelon levitys.
+- Etelä-Ithilienin “metsävelat”: jos otat varjon rahan, metsä ei päästä irti.
+
+## 10) Avainpaikat
+1. **Sirithin suun ankkuripaikka** – suojainen poukama/varasto; mahdollinen “proto-haven”.
+2. **Ruokotorit** – suiston sisäiset markkinat kelluvilla laitureilla.
+3. **Kolmen uoman saari** – luonnollinen solmukohta; siellä vaihdetaan oppaita ja panttivankeja.
+4. **Porosin kahlaamot** – rajapiste; huhuista tulee totta.
+5. **Vuoriporras** – kivinen reitti Sirithin latvoille; vuorikansa perii maksun.
+6. **Pukel-kivet** – Drúedainin varoitus- ja rajamerkit (jotkut “liikkuvat” sumussa).
+7. **Gilrainin rantaniityt** – rauhallisempi länsireuna; hyvä piilopaikka ja salainen maihinnousu.
+
+## 11) Keskeiset NPC:t (valmiit pelikäyttöön)
+- **Kapteeni Ardamir** (Númenórean merikapteeni): “kauppa on rauhaa, rauha on valtaa” – rakentaa asemaa Sirithin suulle.
+- **Laeglin** (Edhellondin haltia, kalastuksen opettaja): ilmestyy harvoin; jättää verkkomalleja ja varoituksia.
+- **Márun “Ruokokuningas”** (suiston päällikkö): hallitsee varastoja ja lauttapaikkoja; pelkää menettävänsä asemansa Númenórealaisille.
+- **Hara Vuohikuningatar** (vuoriklaanin johtaja): pitää solia hallussaan; vihaa varjokauppaa, mutta myy opastusta.
+- **Sírion-poika Narn** (Etelä-Ithilienin metsäopas): tietää reitit Porosille; hänen veljensä on kadonnut pohjoiseen.
+- **Zabâr of Poros** (rajaferrymies): pelaa molempiin suuntiin; tietää jokaisen ylityksen “todellisen hinnan”.
+- **Tuhkan Kirjuri** (Sauronin agentti): ostaa tietoa, kirjaa velkoja, tekee ihmisistä “näkymättömiä”.
+
+## 12) Seikkailukoukut (10)
+1. **Tulva vie varastot** – Ruokokuningas syyttää Númenórealaista varastoa padon rikkomisesta.
+2. **Pukel-kivi ilmestyy laiturille** – Drúedainin varoitus: “älä avaa tätä uomaa”.
+3. **Porosin kahlaamo suljetaan** – Harondorin joukkio vaatii tullia; suisto nälkiintyy viikossa.
+4. **Kapteeni Ardamir tarjoaa terästä** – vastineeksi hän haluaa “kartat Ithilienin poluista”.
+5. **Kadonnut metsästäjä** – löytyy vain hänen jousensa; tuhkaa nuolenkärjissä.
+6. **Gilrainin rannalla outo maihinnousu** – mereltä tulee laiva ilman lippuja.
+7. **Vuorisola pettää** – opas johdattaa väärin; oliko se onnettomuus vai myyty reitti?
+8. **Suistokuume leviää** – parannus vaatii yrttiä, jota kasvaa vain varjon rajan tuntumassa.
+9. **Veneet varastetaan** – ilman veneitä suisto on ansa; jäljet johtavat Porosille.
+10. **Haltian viesti** – Laeglin pyytää: “polttakaa tietyt varastokirjat ennen kuin ne luetaan”.
+
+## 13) GM-salaisuudet (pidä piilossa)
+- “Proto-haven” Sirithin suulla on jo **kahden Númenórean linjan** kiistakapula (kauppa vs. valta).
+- Tuhkan Kirjuri ei tapa itse; hän tekee ihmisistä velallisia ja **kääntää heidät toisiaan vastaan**.
+- Drúedainin pukel-merkit ovat osin **todellisia varoituksia** (esim. myrkkykaasut, sortuvat rantapenkereet), osin psykologista kontrollia (“älä kulje tästä”).
+- Porosin kahlaamoiden “tullijärjestelmä” on oikeasti **panttivankijärjestelmä**.
+- Edhellondin haltioiden opetus ei ollut vain hyvyyttä: he myös **ohjasivat suiston väkeä pois tietyiltä reiteiltä**, jotka johtavat vanhoihin, vaarallisiin paikkoihin.

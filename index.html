@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Middle-earth Manager v11.2 (Strict Lore Enforcement)</title>
+    <title>Middle-earth Manager v11.3 (Color Palette & Strict Lore)</title>
     
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -64,7 +64,7 @@
         
         #map-tools, #draw-tools { position: absolute; z-index: 1000; display: none; gap: 10px; }
         #map-tools { bottom: 20px; left: 20px; }
-        #draw-tools { top: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.9); padding: 10px; border: 1px solid #d4af37; display: flex; align-items: center;}
+        #draw-tools { top: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.9); padding: 10px; border: 1px solid #d4af37; display: flex; align-items: center; border-radius: 8px;}
         .float-btn { width: auto; padding: 10px 15px; background: rgba(0,0,0,0.8); border: 1px solid #888; font-size: 16px;}
         
         .ai-gm { color: #d4af37; font-style: normal; border-left: 3px solid #d4af37; padding-left: 10px; margin: 10px 0; background: #1a1a1a; padding: 10px; border-radius: 0 4px 4px 0;}
@@ -74,6 +74,20 @@
         
         .file-upload-box { background: #2a2a2a; border: 1px dashed #d4af37; padding: 10px; text-align: center; margin-bottom: 15px; font-size: 0.9em; display: none; }
         .section-title { font-size: 0.9em; text-transform: uppercase; color: #888; margin: 10px 0 5px 0; letter-spacing: 1px; }
+        
+        /* Värivalitsimen tyyli */
+        input[type="color"] {
+            -webkit-appearance: none;
+            border: 2px solid #555;
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            border-radius: 4px;
+            cursor: pointer;
+            background: none;
+        }
+        input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
+        input[type="color"]::-webkit-color-swatch { border: none; border-radius: 2px; }
     </style>
 </head>
 <body>
@@ -103,10 +117,11 @@
         </div>
 
         <div id="draw-tools">
-            <span style="color:#fff; margin-right:10px; display:none;">Piirretään...</span>
-            <button onclick="undoLastPoint()" style="width:auto; background:#ff8800; color:#fff;">↩️</button>
-            <button onclick="finishPoly()" style="width:auto; background:#28a745;">✔</button>
-            <button onclick="cancelPoly()" style="width:auto; background:#dc3545;">❌</button>
+            <input type="color" id="polyColor" title="Valitse alueen peiteväri">
+            <div style="width: 2px; height: 30px; background: #555; margin: 0 5px;"></div>
+            <button onclick="undoLastPoint()" style="width:auto; background:#ff8800; color:#fff;" title="Kumoa edellinen piste">↩️</button>
+            <button onclick="finishPoly()" style="width:auto; background:#28a745;" title="Hyväksy alue">✔</button>
+            <button onclick="cancelPoly()" style="width:auto; background:#dc3545;" title="Peruuta">❌</button>
         </div>
 
         <div id="world">
@@ -353,7 +368,6 @@
             return text === "" ? "" : `\n\n=== VIIMEAIKAISET TAPAHTUMAT ===\n${text}================================\n`;
         }
 
-        // --- HARDCODED LORE INJECTION (OHITTAA TEKOÄLYN TOLKIEN-VINOUMAN) ---
         const HARDCODED_RULE = `\n\nEHDOTON SÄÄNTÖ: Kampanja sijoittuu Toiseen Aikaan (S.A. 2043). GONDORIA, ROHANIA TAI ARNORIA EI OLE OLEMASSA. Pelargiria, Osgiliathia, Minas Tirithiä tai Minas Ithiliä EI OLE OLEMASSA. Alueella on vain varhaisia númenórealaisten kauppa-asemia, kalastajia ja heimoja. JOS MAINITSET GONDORIN, PELARGIRIN TAI MYÖHEMMÄT VALTAKUNNAT, EPÄONNISTUT TEHTÄVÄSSÄSI. Pysy tiukasti esivaltiollisessa rajaseututeemassa!`;
 
         async function askGM() {
@@ -493,24 +507,88 @@ Laita loppuun TÄSMÄLLEEN tämä koodirivi. Jos ei muutosta, laita change 0:
         }
 
         function undoLastPoint() { if (draw.points.length > 0) { draw.points.pop(); renderTempPoly(); } }
-        function setTool(t) { tool = t; document.getElementById('viewport').style.cursor = t === 'move' ? 'grab' : (t === 'delete' || t === 'edit') ? 'pointer' : 'crosshair'; document.querySelectorAll('#map-tool-btns button').forEach(b => b.classList.remove('active-tool')); document.getElementById(t === 'move' ? 'btnMove' : t === 'fort' ? 'btnFort' : t === 'area' ? 'btnArea' : t === 'edit' ? 'btnEdit' : 'btnDelete').classList.add('active-tool'); document.getElementById('draw-tools').style.display = t === 'area' ? 'flex' : 'none'; draw.points = []; renderTempPoly(); }
-        function renderTempPoly() { let svg=document.getElementById('svg-layer'), old=document.getElementById('temp-poly'); if(old)old.remove(); if(draw.points.length){ let el=document.createElementNS("http://www.w3.org/2000/svg","polyline"); el.id='temp-poly'; el.setAttribute("points",draw.points.map(p=>`${p.x},${p.y}`).join(" ")); el.setAttribute("fill","none"); el.setAttribute("stroke","#ff3333"); el.setAttribute("stroke-width","3"); el.setAttribute("stroke-dasharray","5,5"); svg.appendChild(el); } }
-        function finishPoly() { if(draw.points.length<3) return; let name=prompt("Alue:"); if(name){ let cx=0,cy=0; draw.points.forEach(p=>{cx+=p.x;cy+=p.y}); cx/=draw.points.length; cy/=draw.points.length; if (!nazguls[currentNaz].territories) nazguls[currentNaz].territories = []; nazguls[currentNaz].territories.push({points:[...draw.points],label:name,cx,cy}); renderOverlays(); uploadState(); } setTool('move'); }
+        
+        // Päivitetty setTool värin asettamiseen
+        function setTool(t) { 
+            tool = t; 
+            document.getElementById('viewport').style.cursor = t === 'move' ? 'grab' : (t === 'delete' || t === 'edit') ? 'pointer' : 'crosshair'; 
+            document.querySelectorAll('#map-tool-btns button').forEach(b => b.classList.remove('active-tool')); 
+            document.getElementById(t === 'move' ? 'btnMove' : t === 'fort' ? 'btnFort' : t === 'area' ? 'btnArea' : t === 'edit' ? 'btnEdit' : 'btnDelete').classList.add('active-tool'); 
+            
+            // Näytetään tai piilotetaan piirtotyökalut
+            if (t === 'area') {
+                document.getElementById('draw-tools').style.display = 'flex';
+                // Laitetaan värivalitsimen oletukseksi valitun Nazgulin väri
+                document.getElementById('polyColor').value = nazguls[currentNaz].color;
+            } else {
+                document.getElementById('draw-tools').style.display = 'none';
+            }
+            
+            draw.points = []; 
+            renderTempPoly(); 
+        }
+        
+        // Päivitetty renderTempPoly hakemaan väri valitsimesta
+        function renderTempPoly() { 
+            let svg=document.getElementById('svg-layer'), old=document.getElementById('temp-poly'); 
+            if(old)old.remove(); 
+            if(draw.points.length){ 
+                let el=document.createElementNS("http://www.w3.org/2000/svg","polyline"); 
+                el.id='temp-poly'; 
+                el.setAttribute("points",draw.points.map(p=>`${p.x},${p.y}`).join(" ")); 
+                el.setAttribute("fill","none"); 
+                
+                // Haetaan väri värivalitsimesta
+                let activeColor = document.getElementById('polyColor').value;
+                el.setAttribute("stroke", activeColor); 
+                el.setAttribute("stroke-width","3"); 
+                el.setAttribute("stroke-dasharray","5,5"); 
+                svg.appendChild(el); 
+            } 
+        }
+        
+        // Päivitetty finishPoly tallentamaan valittu väri
+        function finishPoly() { 
+            if(draw.points.length<3) return; 
+            let name=prompt("Alueen nimi:"); 
+            if(name){ 
+                let cx=0,cy=0; draw.points.forEach(p=>{cx+=p.x;cy+=p.y}); 
+                cx/=draw.points.length; cy/=draw.points.length; 
+                
+                // Otetaan talteen värivalitsimen väri
+                let chosenColor = document.getElementById('polyColor').value;
+                
+                if (!nazguls[currentNaz].territories) nazguls[currentNaz].territories = []; 
+                nazguls[currentNaz].territories.push({points:[...draw.points], label:name, cx, cy, color: chosenColor}); 
+                renderOverlays(); uploadState(); 
+            } 
+            setTool('move'); 
+        }
+        
         function cancelPoly() { setTool('move'); }
         function openSettings() { document.getElementById('settings-overlay').style.display='flex'; document.getElementById('apiKeyInput').value = geminiKey; document.getElementById('loreInput').value = campaignLore; document.getElementById('gmSecretArea').style.display = 'none'; document.getElementById('gmUnlockBtn').style.display = 'block'; }
         function unlockGM() { if (prompt("Salasana:") === "mordor") { document.getElementById('gmSecretArea').style.display = 'flex'; document.getElementById('gmUnlockBtn').style.display = 'none'; } else alert("Väärä salasana."); }
         function closeSettings() { document.getElementById('settings-overlay').style.display='none'; }
         function saveSettings() { geminiKey = document.getElementById('apiKeyInput').value; campaignLore = document.getElementById('loreInput').value; localStorage.setItem('geminiKey', geminiKey); localStorage.setItem('campaignLore', campaignLore); closeSettings(); }
         
+        // Päivitetty renderOverlays piirtämään alue sen omalla värillä
         function renderOverlays() {
             let svg=document.getElementById('svg-layer'), m=document.getElementById('marker-layer'), t=document.getElementById('temp-poly');
             svg.innerHTML=''; m.innerHTML=''; if(t)svg.appendChild(t);
             nazguls.forEach((n, nIndex)=>{
                 (n.territories||[]).forEach((te, teIndex)=>{
                     let p=document.createElementNS("http://www.w3.org/2000/svg","polygon");
-                    p.setAttribute("points",te.points.map(pt=>`${pt.x},${pt.y}`).join(" ")); p.setAttribute("fill",n.color); p.setAttribute("fill-opacity","0.25"); p.setAttribute("stroke",n.color); p.setAttribute("stroke-width","2");
+                    p.setAttribute("points",te.points.map(pt=>`${pt.x},${pt.y}`).join(" ")); 
+                    
+                    // Käytetään alueeseen tallennettua väriä, tai oletuksena Nazgulin väriä, jos alue on tehty aiemmalla versiolla
+                    let polyColor = te.color || n.color;
+                    
+                    p.setAttribute("fill", polyColor); 
+                    p.setAttribute("fill-opacity","0.25"); 
+                    p.setAttribute("stroke", polyColor); 
+                    p.setAttribute("stroke-width","2");
                     p.setAttribute("data-naz", nIndex); p.setAttribute("data-ter", teIndex); p.setAttribute("class", "map-polygon"); svg.appendChild(p);
-                    let txt=document.createElement('div'); txt.className='region-text'; txt.innerText=te.label; txt.style.left=te.cx+'px'; txt.style.top=te.cy+'px'; txt.style.color=n.color; m.appendChild(txt);
+                    let txt=document.createElement('div'); txt.className='region-text'; txt.innerText=te.label; txt.style.left=te.cx+'px'; txt.style.top=te.cy+'px'; txt.style.color=polyColor; m.appendChild(txt);
                 });
                 (n.markers||[]).forEach((mk, mkIndex)=>{
                     let el=document.createElement('div'); el.className='marker'; el.style.left=mk.x+'px'; el.style.top=mk.y+'px';
@@ -528,6 +606,12 @@ Laita loppuun TÄSMÄLLEEN tämä koodirivi. Jos ei muutosta, laita change 0:
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-top:5px; font-size:0.9em;"><span>⚔️ Asevoima: ${n.might}/10</span><div><button class="stat-btn" onclick="adjustStat('might', -1)">-</button><button class="stat-btn" onclick="adjustStat('might', 1)">+</button></div></div><div style="background:#333;height:6px;margin-bottom:5px"><div style="background:#b22222;height:100%;width:${n.might*10}%"></div></div>
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-top:5px; font-size:0.9em;"><span>⚖️ Lojaalisuus: ${n.loyalty}/10</span><div><button class="stat-btn" onclick="adjustStat('loyalty', -1)">-</button><button class="stat-btn" onclick="adjustStat('loyalty', 1)">+</button></div></div><div style="background:#333;height:6px;margin-bottom:5px"><div style="background:#4682b4;height:100%;width:${n.loyalty*10}%"></div></div>
             `;
+            
+            // Päivitetään myös värivalitsin jos Alue-työkalu on aktiivinen ja käyttäjä vaihtaa Nazgulia
+            if (tool === 'area') {
+                document.getElementById('polyColor').value = n.color;
+                renderTempPoly();
+            }
         }
     </script>
 </body>
